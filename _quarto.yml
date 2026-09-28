@@ -11,7 +11,7 @@ website:
   # start of the navigation bar at the top of the website
   navbar:
     pinned: true
-    logo: /img/logo.png
+    logo: /img/fav-icon.png
     
     # your sub-pages
     left:
@@ -20,8 +20,8 @@ website:
     
     # your social media handles
     right:
-      - icon: folder-symlink
-        href: https://www.marvinschmitt.com/blog/website-tutorial-quarto/
+      - icon: github
+        href: https://github.com/namjuncho/
       - icon: linkedin
         href: https://www.linkedin.com/in/namjun-cho
       - icon: envelope
@@ -35,12 +35,11 @@ website:
     location: navbar
     type: textbox
   page-footer: 
-    left: |
-      <span class="faux-block">&#169; 2023 Marvin Schmitt CC BY-SA 4.0</span>
+    left: img/CWRU.png
     center: |
-      <span class="faux-block"><a href="https://www.marvinschmitt.com/blog/website-tutorial-quarto/">View the tutorial for this template!</a></span>
+      
     right: |
-      <span class="faux-block"><a href="https://github.com/marvinschmitt/quarto-website-template/">View source on GitHub</a></span>
+      
 
 project:
   type: website
