@@ -40,5 +40,110 @@
     "title": "Welcome to my website!",
     "section": "",
     "text": "Github\n  \n  \n    \n     LinkedIn\n  \n  \n    \n     Email\n  \n\n\n\n\nWelcome to my website!\nSalutations! My name is Namjun Cho, and I am a PhD candidate in Biomedical Engineering at Case Western Reserve University (CWRU). I earned my Bachelor’s of Science in Bioengineering from the beautiful campus of the University of Illinois at Urbana-Champaign in 2025. There, I first sparked my interest in research under Dr. Jia Dong and Dr. Matthew Hudson by aiding their efforts in protoplast isolation, protoplast transformation, and enhancing lipid production in maize, sorghum, and N. Benthamiana. From there, I diversified my experience by joining Dr. Min Jee Jang’s lab, supporting the newly established lab with neuronal cell culture, calcium imaging, optogenetics, and confocal microscopy, as well as learning about AAV production and spatial transcriptomics. Throughout my degree, I completed rigorous coursework in the therapeutics track and finished the degree with a senior design project on transcutaneous vagus nerve stimulation for individuals with Postural Orthostatic Tachycardia Syndrome. (POTS).\nHere at CWRU, I am in Dr. Mei Zhang’s lab studying fungal biology and immunoengineering for the ultimate goal of enabling microbiome-based therapeutic strategies. As part of my training, I am supporting benchtop and clinical research for our established CD11b-targeting therapy, which promotes differentiation of monocytes into dendritic cells. In parallel, I am employing fungal biology, neuronal cell culture, and protein-based signaling analyses to understand how commensal skin fungi contribute to the skin-brain axis. I am currently learning many hard and soft skills, including fungal and neuronal cell culture, Agrobacterium tumefaciens-mediated gene transfer (ATMT), yeast-to-hyphal induction, mass spectrometry (MS), good manufacturing practices (GMP), and many more.\nPlease feel free to contact me if you would like to chat, collaborate, or just want to comment. All is welcome!"
+  },
+  {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Since this was my first time building a website, I followed the tutorial and template generously shared online by Marvin Schmitt:\nhttps://marvin-schmitt.com/blog/website-tutorial-quarto/\nI am still in the process of learning R and Github, so I played around with the template structure to get an idea of how things work in this environment. Doing so helped me understand the function of each component and become more confident with my coding."
+  },
+  {
+    "objectID": "blog/index.html#building-the-website",
+    "href": "blog/index.html#building-the-website",
+    "title": "Blog",
+    "section": "",
+    "text": "Since this was my first time building a website, I followed the tutorial and template generously shared online by Marvin Schmitt:\nhttps://marvin-schmitt.com/blog/website-tutorial-quarto/\nI am still in the process of learning R and Github, so I played around with the template structure to get an idea of how things work in this environment. Doing so helped me understand the function of each component and become more confident with my coding."
+  },
+  {
+    "objectID": "blog/index.html#central-hypothesis",
+    "href": "blog/index.html#central-hypothesis",
+    "title": "Blog",
+    "section": "Central Hypothesis",
+    "text": "Central Hypothesis\n\nView the tutorial for this template (+ download link)"
+  },
+  {
+    "objectID": "dashboard/index.html",
+    "href": "dashboard/index.html",
+    "title": "Dashboard",
+    "section": "",
+    "text": "arXiv Preprint | Code\nOver the centuries, I have devoted countless hours to deciphering and translating the ancient scripts and dialects of the various peoples of Middle-earth. My goal is to gain a deeper understanding of the cultures and histories of these peoples by studying their languages. Currently, I am working on a monograph that explores the linguistic roots of the Elvish languages. Through extensive research and analysis, I hope to shed light on the connections between the different dialects of Elvish and their origins. This project has been particularly challenging, as Elvish is a complex and nuanced language, but I am determined to see it through to completion."
+  },
+  {
+    "objectID": "dashboard/index.html#the-languages-of-middle-earth",
+    "href": "dashboard/index.html#the-languages-of-middle-earth",
+    "title": "Dashboard",
+    "section": "",
+    "text": "arXiv Preprint | Code\nOver the centuries, I have devoted countless hours to deciphering and translating the ancient scripts and dialects of the various peoples of Middle-earth. My goal is to gain a deeper understanding of the cultures and histories of these peoples by studying their languages. Currently, I am working on a monograph that explores the linguistic roots of the Elvish languages. Through extensive research and analysis, I hope to shed light on the connections between the different dialects of Elvish and their origins. This project has been particularly challenging, as Elvish is a complex and nuanced language, but I am determined to see it through to completion."
+  },
+  {
+    "objectID": "dashboard/index.html#the-history-of-the-war-of-the-ring",
+    "href": "dashboard/index.html#the-history-of-the-war-of-the-ring",
+    "title": "Dashboard",
+    "section": "The History of the War of the Ring",
+    "text": "The History of the War of the Ring\n\narXiv Preprint | Code\nI am creating a comprehensive and detailed history of the conflict that goes beyond the surface-level events. By gathering information from a variety of sources, including my own memories, written accounts, and oral histories, I hope to shed new light on this important period in Middle-earth’s history and provide valuable insights into the motivations and actions of the various players involved.\n\nView the tutorial for this template (+ download link)"
+  },
+  {
+    "objectID": "dashboard/LICENSE.html",
+    "href": "dashboard/LICENSE.html",
+    "title": "Namjun Cho",
+    "section": "",
+    "text": "This work is licensed under a Creative Commons Attribution 4.0 International License."
+  },
+  {
+    "objectID": "dashboard/dashboard.html",
+    "href": "dashboard/dashboard.html",
+    "title": "Labor and Delivery Dashboard",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(readxl)\nlibrary(scales)\nlibrary(DT)\nlibrary(gt)\ntheme_set(theme_minimal(base_size = 24, base_family = \"sans\"))\nld &lt;- read_excel(\"data/ld.xlsx\")\ntime_period &lt;- paste(params$month, params$year)\nld &lt;- ld |&gt;\n  mutate(\n    delivery_method = str_to_sentence(delivery_method),\n    term = str_to_sentence(term),\n    parity = case_when(\n      parity == \"1\"  ~ \"Nulliparous\",\n      parity == \"2\"  ~ \"Primiparous\",\n      parity == \"3+\" ~ \"Multiparous\"\n    ),\n    parity = fct_relevel(parity, \"Nulliparous\", \"Primiparous\", \"Multiparous\"),\n    maternal_age = fct_relevel(maternal_age, \"&lt;20\", \"20-34\", \"35+\")\n  )"
+  },
+  {
+    "objectID": "dashboard/dashboard.html#row",
+    "href": "dashboard/dashboard.html#row",
+    "title": "Labor and Delivery Dashboard",
+    "section": "Row",
+    "text": "Row\n\nlist(\n  icon = \"file-medical\",\n  color = \"primary\",\n  value = n_births\n)\n\n$icon\n[1] \"file-medical\"\n\n$color\n[1] \"primary\"\n\n$value\n[1] 161\n\n\n\nlist(\n  icon = \"clipboard2-pulse\",\n  color = p_cesarean_color,\n  value = label_percent(accuracy = 0.1)(p_cesarean)\n)\n\n$icon\n[1] \"clipboard2-pulse\"\n\n$color\n[1] \"warning\"\n\n$value\n[1] \"33.5%\"\n\n\n\nlist(\n  icon = \"calendar-week\",\n  color = p_preterm_color,\n  value = label_percent(accuracy = 0.1)(p_preterm)\n)\n\n$icon\n[1] \"calendar-week\"\n\n$color\n[1] \"danger\"\n\n$value\n[1] \"18.6%\""
+  },
+  {
+    "objectID": "dashboard/dashboard.html#row-1",
+    "href": "dashboard/dashboard.html#row-1",
+    "title": "Labor and Delivery Dashboard",
+    "section": "Row",
+    "text": "Row\nColumn\n\nld |&gt;\n  count(delivery_method) |&gt;\n  mutate(p = n / sum(n)) |&gt;\n  gt() |&gt;\n  fmt_percent(\n    columns = p,\n    decimals = 1\n  ) |&gt;\n  tab_style(\n    style = cell_text(color = \"#ae8b2d\", weight = \"bold\"),\n    locations = cells_body(\n      columns = everything(),\n      rows = delivery_method == \"Cesarean\"\n    )\n  ) |&gt;\n  tab_style(\n    style = cell_text(color = \"#0e2635\", weight = \"bold\"),\n    locations = cells_body(\n      columns = everything(),\n      rows = delivery_method == \"Vaginal\"\n    )\n  ) |&gt;\n  cols_label(\n    delivery_method = \"\",\n    n = \"Number of&lt;br&gt;deliveries\",\n    p = \"Proportion of&lt;br&gt;deliveries\",\n    .fn = md\n  )\n\n\n\n\n\n\n\n\n\n\n\nNumber ofdeliveries\nProportion ofdeliveries\n\n\n\nCesarean\n54\n33.5%\n\n\nVaginal\n107\n66.5%\n\n\n\n\n\n\nColumn\n\nld |&gt;\n  count(maternal_age) |&gt;\n  mutate(p = n / sum(n)) |&gt;\n  ggplot(aes(x = maternal_age, y = n, group = 1)) +\n  geom_line(linewidth = 2, color = \"#0e263560\") +\n  geom_point(size = 3, color = \"#0e2635\") +\n  geom_point(size = 6, color = \"#0e2635\", shape = \"circle open\") +\n  labs(x = NULL) +\n  scale_y_continuous(\n    \"Count\",\n    sec.axis = sec_axis(~ . / n_births, name = \"Proportion\", labels = label_percent())\n  )"
+  },
+  {
+    "objectID": "dashboard/dashboard.html#row-2",
+    "href": "dashboard/dashboard.html#row-2",
+    "title": "Labor and Delivery Dashboard",
+    "section": "Row",
+    "text": "Row\n\nld |&gt;\n  count(parity, delivery_method) |&gt;\n  ggplot(aes(x = n, y = fct_rev(parity), fill = delivery_method)) +\n  geom_col(position = \"fill\", color = \"white\") +\n  scale_fill_manual(\n    values = c(\"#ae8b2d\", \"#0e2635\"),\n    guide = guide_legend(reverse = TRUE)\n  ) +\n  scale_x_continuous(labels = label_percent()) +\n  labs(y = NULL, x = NULL, fill = \"Delivery\\nmethod\")\n\n\n\n\n\n\n\n\nld |&gt;\n  count(maternal_age, delivery_method) |&gt;\n  ggplot(aes(x = n, y = fct_rev(maternal_age), fill = delivery_method)) +\n  geom_col(position = \"fill\", color = \"white\") +\n  scale_fill_manual(\n    values = c(\"#ae8b2d\", \"#0e2635\"),\n    guide = guide_legend(reverse = TRUE)\n  ) +\n  scale_x_continuous(labels = label_percent()) +\n  labs(y = NULL, x = NULL, fill = \"Delivery\\nmethod\")"
+  },
+  {
+    "objectID": "dashboard/dashboard.html#column-2",
+    "href": "dashboard/dashboard.html#column-2",
+    "title": "Labor and Delivery Dashboard",
+    "section": "Column",
+    "text": "Column\n\nld_v &lt;- ld |&gt;\n  filter(delivery_method == \"Vaginal\")\n\nn_births_v &lt;- nrow(ld_v)\n\np_preterm_v &lt;- ld_v |&gt;\n  count(term) |&gt;\n  mutate(p = n / sum(n)) |&gt;\n  filter(term == \"Pre-term\") |&gt;\n  pull(p)\n\np_preterm_color_v &lt;- case_when(\n  between(p_preterm_v, params$us_preterm_rate, params$us_preterm_rate + params$threshold_diff) ~ \"warning\",\n  p_preterm_v &gt; params$us_preterm_rate + params$threshold_diff ~ \"danger\",\n  .default = \"light\"\n  )\n\nRow\n\nlist(\n  icon = \"file-medical\",\n  color = \"primary\",\n  value = n_births_v\n)\n\n$icon\n[1] \"file-medical\"\n\n$color\n[1] \"primary\"\n\n$value\n[1] 107\n\n\n\nlist(\n  icon = \"calendar-week\",\n  color = p_preterm_color_v,\n  value = label_percent(accuracy = 0.1)(p_preterm_v)\n)\n\n$icon\n[1] \"calendar-week\"\n\n$color\n[1] \"danger\"\n\n$value\n[1] \"13.1%\"\n\n\nRow\n\nld_v |&gt;\n  count(maternal_age) |&gt;\n  mutate(p = n / sum(n)) |&gt;\n  ggplot(aes(x = maternal_age, y = n, group = 1)) +\n  geom_line(linewidth = 2, color = \"#0e263560\") +\n  geom_point(size = 3, color = \"#0e2635\") +\n  geom_point(size = 6, color = \"#0e2635\", shape = \"circle open\") +\n  labs(x = NULL) +\n  scale_y_continuous(\n    \"Count\",\n    sec.axis = sec_axis(~ . / n_births, name = \"Proportion\", labels = label_percent())\n  )\n\n\n\n\n\n\n\nRow\n\nld_v |&gt;\n  count(maternal_age, parity) |&gt;\n  ggplot(aes(x = n, y = fct_rev(maternal_age), fill = fct_rev(parity))) +\n  geom_col(position = \"fill\", color = \"white\") +\n  scale_fill_brewer(\n    palette = \"Blues\",\n    guide = guide_legend(reverse = TRUE),\n    direction = -1\n  ) +\n  scale_x_continuous(labels = label_percent()) +\n  labs(y = NULL, x = NULL, fill = \"Parity\")\n\n\n\n\n\n\n\n\nld_v |&gt;\n  count(maternal_age, term) |&gt;\n  ggplot(aes(x = n, y = fct_rev(maternal_age), fill = fct_rev(term))) +\n  geom_col(position = \"fill\", color = \"white\") +\n  scale_fill_brewer(\n    palette = \"Greens\",\n    guide = guide_legend(reverse = TRUE),\n    direction = -1\n  ) +\n  scale_x_continuous(labels = label_percent()) +\n  labs(y = NULL, x = NULL, fill = \"Term\")"
+  },
+  {
+    "objectID": "dashboard/dashboard.html#column-3",
+    "href": "dashboard/dashboard.html#column-3",
+    "title": "Labor and Delivery Dashboard",
+    "section": "Column",
+    "text": "Column\n\nld_v |&gt;\n  select(-delivery_method) |&gt;\n  arrange(patient_id) |&gt;\n  datatable(\n    colnames = c(\"ID\", \"Maternal age\", \"Parity\", \"Term\"),\n    options = list(\n      dom = \"lrtip\", \n      paging = TRUE,\n      lengthMenu = c(5, 10, 25),\n      pageLength = 10, \n      scrollY = TRUE\n    ),\n  )"
+  },
+  {
+    "objectID": "dashboard/dashboard.html#column-4",
+    "href": "dashboard/dashboard.html#column-4",
+    "title": "Labor and Delivery Dashboard",
+    "section": "Column",
+    "text": "Column\n\nld_c &lt;- ld |&gt;\n  filter(delivery_method == \"Cesarean\")\n\nn_births_c &lt;- nrow(ld_c)\n\np_preterm_c &lt;- ld_c |&gt;\n  count(term) |&gt;\n  mutate(p = n / sum(n)) |&gt;\n  filter(term == \"Pre-term\") |&gt;\n  pull(p)\n\np_preterm_color_c &lt;- case_when(\n  between(p_preterm_c, params$us_preterm_rate, params$us_preterm_rate + params$threshold_diff) ~ \"warning\",\n  p_preterm_c &gt; params$us_preterm_rate + params$threshold_diff ~ \"danger\",\n  .default = \"light\"\n  )\n\nRow\n\nlist(\n  icon = \"file-medical\",\n  color = \"primary\",\n  value = n_births_c\n)\n\n$icon\n[1] \"file-medical\"\n\n$color\n[1] \"primary\"\n\n$value\n[1] 54\n\n\n\nlist(\n  icon = \"calendar-week\",\n  color = p_preterm_color_c,\n  value = label_percent(accuracy = 0.1)(p_preterm_c)\n)\n\n$icon\n[1] \"calendar-week\"\n\n$color\n[1] \"danger\"\n\n$value\n[1] \"29.6%\"\n\n\nRow\n\nld_c |&gt;\n  count(maternal_age) |&gt;\n  mutate(p = n / sum(n)) |&gt;\n  ggplot(aes(x = maternal_age, y = n, group = 1)) +\n  geom_line(linewidth = 2, color = \"#0e263560\") +\n  geom_point(size = 3, color = \"#0e2635\") +\n  geom_point(size = 6, color = \"#0e2635\", shape = \"circle open\") +\n  labs(x = NULL) +\n  scale_y_continuous(\n    \"Count\",\n    sec.axis = sec_axis(~ . / n_births, name = \"Proportion\", labels = label_percent())\n  )\n\n\n\n\n\n\n\nRow\n\nld_c |&gt;\n  count(maternal_age, parity) |&gt;\n  ggplot(aes(x = n, y = fct_rev(maternal_age), fill = fct_rev(parity))) +\n  geom_col(position = \"fill\", color = \"white\") +\n  scale_fill_brewer(\n    palette = \"Blues\",\n    guide = guide_legend(reverse = TRUE),\n    direction = -1\n  ) +\n  scale_x_continuous(labels = label_percent()) +\n  labs(y = NULL, x = NULL, fill = \"Parity\")\n\n\n\n\n\n\n\n\nld_c |&gt;\n  count(maternal_age, term) |&gt;\n  ggplot(aes(x = n, y = fct_rev(maternal_age), fill = fct_rev(term))) +\n  geom_col(position = \"fill\", color = \"white\") +\n  scale_fill_brewer(\n    palette = \"Greens\",\n    guide = guide_legend(reverse = TRUE),\n    direction = -1\n  ) +\n  scale_x_continuous(labels = label_percent()) +\n  labs(y = NULL, x = NULL, fill = \"Term\")"
+  },
+  {
+    "objectID": "dashboard/dashboard.html#column-5",
+    "href": "dashboard/dashboard.html#column-5",
+    "title": "Labor and Delivery Dashboard",
+    "section": "Column",
+    "text": "Column\n\nld_c |&gt;\n  select(-delivery_method) |&gt;\n  arrange(patient_id) |&gt;\n  datatable(\n    colnames = c(\"ID\", \"Maternal age\", \"Parity\", \"Term\"),\n    options = list(\n      dom = \"lrtip\", \n      paging = TRUE,\n      lengthMenu = c(5, 10, 25),\n      pageLength = 10, \n      scrollY = TRUE\n    ),\n  )"
   }
 ]
