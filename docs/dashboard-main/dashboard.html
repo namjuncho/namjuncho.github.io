@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>______ Dashboard – Namjun Cho</title>
+<title>Labor and Delivery Dashboard – Namjun Cho</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -25,41 +25,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -202,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a href="#"><img src="images/logo.png" alt="" class="navbar-logo light-content d-inline-block"></a>
     <a href="#"><img src="images/logo.png" alt="" class="navbar-logo dark-content d-inline-block"></a>
       <div class="navbar-title">
-        <div class="navbar-title-text"><a href="#">______ Dashboard</a></div>
+        <div class="navbar-title-text"><a href="#">Labor and Delivery Dashboard</a></div>
         
         
       </div>
@@ -216,97 +181,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
 <!-- main -->
 
-<div class="bslib-sidebar-layout html-fill-item sidebar-right html-fill-container" data-bslib-sidebar-open="desktop" data-bslib-sidebar-init="true" data-bslib-sidebar-border="false" data-bslib-sidebar-border-radius="false"><div class="main html-fill-container html-fill-item"><div class="sidebar-content html-fill-item html-fill-container">
-<div class="tab-content bslib-grid html-fill-item html-fill-container" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
+<div class="bslib-sidebar-layout html-fill-item html-fill-container" data-bslib-sidebar-open="desktop" data-bslib-sidebar-init="true" data-bslib-sidebar-border="false" data-bslib-sidebar-border-radius="false"><div class="main html-fill-container html-fill-item"><div class="sidebar-content html-fill-item html-fill-container">
+<div class="tab-content bslib-grid html-fill-item html-fill-container" style="display: grid; grid-template-columns: minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
-<div class="card cell bslib-card html-fill-container html-fill-item" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">24</span>, <span class="at">base_family =</span> <span class="st">"sans"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
-    <template>Expand</template>
-    <span class="bslib-full-screen-enter badge rounded-pill">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
-    </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card cell bslib-card html-fill-container html-fill-item" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ld <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/ld.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
-    <template>Expand</template>
-    <span class="bslib-full-screen-enter badge rounded-pill">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
-    </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card cell bslib-card html-fill-container html-fill-item" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>time_period <span class="ot">&lt;-</span> <span class="fu">paste</span>(params<span class="sc">$</span>month, params<span class="sc">$</span>year)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
-    <template>Expand</template>
-    <span class="bslib-full-screen-enter badge rounded-pill">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
-    </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card cell bslib-card html-fill-container html-fill-item" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ld <span class="ot">&lt;-</span> ld <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">delivery_method =</span> <span class="fu">str_to_sentence</span>(delivery_method),</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">term =</span> <span class="fu">str_to_sentence</span>(term),</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">parity =</span> <span class="fu">case_when</span>(</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      parity <span class="sc">==</span> <span class="st">"1"</span>  <span class="sc">~</span> <span class="st">"Nulliparous"</span>,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      parity <span class="sc">==</span> <span class="st">"2"</span>  <span class="sc">~</span> <span class="st">"Primiparous"</span>,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      parity <span class="sc">==</span> <span class="st">"3+"</span> <span class="sc">~</span> <span class="st">"Multiparous"</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">parity =</span> <span class="fu">fct_relevel</span>(parity, <span class="st">"Nulliparous"</span>, <span class="st">"Primiparous"</span>, <span class="st">"Multiparous"</span>),</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">maternal_age =</span> <span class="fu">fct_relevel</span>(maternal_age, <span class="st">"&lt;20"</span>, <span class="st">"20-34"</span>, <span class="st">"35+"</span>)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
-    <template>Expand</template>
-    <span class="bslib-full-screen-enter badge rounded-pill">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
-    </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div id="all" class="dashboard-page tab-pane show active html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-all">
-<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 40fr) minmax(3em, 20fr) minmax(3em, 40fr) minmax(3em, 40fr); grid-auto-columns: minmax(0, 1fr);">
-<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>n_births <span class="ot">&lt;-</span> <span class="fu">nrow</span>(ld)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>p_cesarean <span class="ot">&lt;-</span> ld <span class="sc">|&gt;</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(delivery_method) <span class="sc">|&gt;</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(delivery_method <span class="sc">==</span> <span class="st">"Cesarean"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(p)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>p_cesarean_color <span class="ot">&lt;-</span> <span class="fu">case_when</span>(</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">between</span>(p_cesarean, params<span class="sc">$</span>us_cesarean_rate, params<span class="sc">$</span>us_cesarean_rate <span class="sc">+</span> params<span class="sc">$</span>threshold_diff) <span class="sc">~</span> <span class="st">"warning"</span>,</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  p_cesarean <span class="sc">&gt;</span> params<span class="sc">$</span>us_cesarean_rate <span class="sc">+</span> params<span class="sc">$</span>threshold_diff <span class="sc">~</span> <span class="st">"danger"</span>,</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">.default =</span> <span class="st">"light"</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>p_preterm <span class="ot">&lt;-</span> ld <span class="sc">|&gt;</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(term) <span class="sc">|&gt;</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"Pre-term"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(p)</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>p_preterm_color <span class="ot">&lt;-</span> <span class="fu">case_when</span>(</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">between</span>(p_preterm, params<span class="sc">$</span>us_preterm_rate, params<span class="sc">$</span>us_preterm_rate <span class="sc">+</span> params<span class="sc">$</span>threshold_diff) <span class="sc">~</span> <span class="st">"warning"</span>,</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  p_preterm <span class="sc">&gt;</span> params<span class="sc">$</span>us_preterm_rate <span class="sc">+</span> params<span class="sc">$</span>threshold_diff <span class="sc">~</span> <span class="st">"danger"</span>,</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">.default =</span> <span class="st">"light"</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
-    <template>Expand</template>
-    <span class="bslib-full-screen-enter badge rounded-pill">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
-    </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+<div id="all" class="dashboard-page tab-pane show active html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-all">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 20fr) minmax(3em, 40fr) minmax(3em, 40fr); grid-auto-columns: minmax(0, 1fr);">
 <div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
 <div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
@@ -367,52 +246,24 @@ grid-auto-rows: minmax(0, 1fr);">
 Delivery method
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ld <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(delivery_method) <span class="sc">|&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_percent</span>(</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> p,</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">1</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"#ae8b2d"</span>, <span class="at">weight =</span> <span class="st">"bold"</span>),</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> <span class="fu">everything</span>(),</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">rows =</span> delivery_method <span class="sc">==</span> <span class="st">"Cesarean"</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"#0e2635"</span>, <span class="at">weight =</span> <span class="st">"bold"</span>),</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> <span class="fu">everything</span>(),</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">rows =</span> delivery_method <span class="sc">==</span> <span class="st">"Vaginal"</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">delivery_method =</span> <span class="st">""</span>,</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="st">"Number of&lt;br&gt;deliveries"</span>,</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">p =</span> <span class="st">"Proportion of&lt;br&gt;deliveries"</span>,</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">.fn =</span> md</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display html-fill-item html-fill-container">
-<div id="jsdczrrvwb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;" class="html-fill-item html-fill-container">
-<style>#jsdczrrvwb table {
+<div id="jkvshcmedi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;" class="html-fill-item html-fill-container">
+<style>#jkvshcmedi table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jsdczrrvwb thead, #jsdczrrvwb tbody, #jsdczrrvwb tfoot, #jsdczrrvwb tr, #jsdczrrvwb td, #jsdczrrvwb th {
+#jkvshcmedi thead, #jkvshcmedi tbody, #jkvshcmedi tfoot, #jkvshcmedi tr, #jkvshcmedi td, #jkvshcmedi th {
   border-style: none;
 }
 
-#jsdczrrvwb p {
+#jkvshcmedi p {
   margin: 0;
   padding: 0;
 }
 
-#jsdczrrvwb .gt_table {
+#jkvshcmedi .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -438,12 +289,12 @@ Delivery method
   border-left-color: #D3D3D3;
 }
 
-#jsdczrrvwb .gt_caption {
+#jkvshcmedi .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jsdczrrvwb .gt_title {
+#jkvshcmedi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -455,7 +306,7 @@ Delivery method
   border-bottom-width: 0;
 }
 
-#jsdczrrvwb .gt_subtitle {
+#jkvshcmedi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -467,7 +318,7 @@ Delivery method
   border-top-width: 0;
 }
 
-#jsdczrrvwb .gt_heading {
+#jkvshcmedi .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -479,13 +330,13 @@ Delivery method
   border-right-color: #D3D3D3;
 }
 
-#jsdczrrvwb .gt_bottom_border {
+#jkvshcmedi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jsdczrrvwb .gt_col_headings {
+#jkvshcmedi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -500,7 +351,7 @@ Delivery method
   border-right-color: #D3D3D3;
 }
 
-#jsdczrrvwb .gt_col_heading {
+#jkvshcmedi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -520,7 +371,7 @@ Delivery method
   overflow-x: hidden;
 }
 
-#jsdczrrvwb .gt_column_spanner_outer {
+#jkvshcmedi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -532,15 +383,15 @@ Delivery method
   padding-right: 4px;
 }
 
-#jsdczrrvwb .gt_column_spanner_outer:first-child {
+#jkvshcmedi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jsdczrrvwb .gt_column_spanner_outer:last-child {
+#jkvshcmedi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jsdczrrvwb .gt_column_spanner {
+#jkvshcmedi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -552,11 +403,11 @@ Delivery method
   width: 100%;
 }
 
-#jsdczrrvwb .gt_spanner_row {
+#jkvshcmedi .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jsdczrrvwb .gt_group_heading {
+#jkvshcmedi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -582,7 +433,7 @@ Delivery method
   text-align: left;
 }
 
-#jsdczrrvwb .gt_empty_group_heading {
+#jkvshcmedi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -597,15 +448,15 @@ Delivery method
   vertical-align: middle;
 }
 
-#jsdczrrvwb .gt_from_md > :first-child {
+#jkvshcmedi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jsdczrrvwb .gt_from_md > :last-child {
+#jkvshcmedi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jsdczrrvwb .gt_row {
+#jkvshcmedi .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -624,7 +475,7 @@ Delivery method
   overflow-x: hidden;
 }
 
-#jsdczrrvwb .gt_stub {
+#jkvshcmedi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -637,7 +488,7 @@ Delivery method
   padding-right: 5px;
 }
 
-#jsdczrrvwb .gt_stub_row_group {
+#jkvshcmedi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -651,15 +502,15 @@ Delivery method
   vertical-align: top;
 }
 
-#jsdczrrvwb .gt_row_group_first td {
+#jkvshcmedi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jsdczrrvwb .gt_row_group_first th {
+#jkvshcmedi .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jsdczrrvwb .gt_summary_row {
+#jkvshcmedi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -669,16 +520,16 @@ Delivery method
   padding-right: 5px;
 }
 
-#jsdczrrvwb .gt_first_summary_row {
+#jkvshcmedi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jsdczrrvwb .gt_first_summary_row.thick {
+#jkvshcmedi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jsdczrrvwb .gt_last_summary_row {
+#jkvshcmedi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -688,7 +539,7 @@ Delivery method
   border-bottom-color: #D3D3D3;
 }
 
-#jsdczrrvwb .gt_grand_summary_row {
+#jkvshcmedi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -698,7 +549,7 @@ Delivery method
   padding-right: 5px;
 }
 
-#jsdczrrvwb .gt_first_grand_summary_row {
+#jkvshcmedi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -708,7 +559,7 @@ Delivery method
   border-top-color: #D3D3D3;
 }
 
-#jsdczrrvwb .gt_last_grand_summary_row_top {
+#jkvshcmedi .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -718,11 +569,11 @@ Delivery method
   border-bottom-color: #D3D3D3;
 }
 
-#jsdczrrvwb .gt_striped {
+#jkvshcmedi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jsdczrrvwb .gt_table_body {
+#jkvshcmedi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -731,7 +582,7 @@ Delivery method
   border-bottom-color: #D3D3D3;
 }
 
-#jsdczrrvwb .gt_footnotes {
+#jkvshcmedi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -745,7 +596,7 @@ Delivery method
   border-right-color: #D3D3D3;
 }
 
-#jsdczrrvwb .gt_footnote {
+#jkvshcmedi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -754,7 +605,7 @@ Delivery method
   padding-right: 5px;
 }
 
-#jsdczrrvwb .gt_sourcenotes {
+#jkvshcmedi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -768,7 +619,7 @@ Delivery method
   border-right-color: #D3D3D3;
 }
 
-#jsdczrrvwb .gt_sourcenote {
+#jkvshcmedi .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -776,72 +627,72 @@ Delivery method
   padding-right: 5px;
 }
 
-#jsdczrrvwb .gt_left {
+#jkvshcmedi .gt_left {
   text-align: left;
 }
 
-#jsdczrrvwb .gt_center {
+#jkvshcmedi .gt_center {
   text-align: center;
 }
 
-#jsdczrrvwb .gt_right {
+#jkvshcmedi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jsdczrrvwb .gt_font_normal {
+#jkvshcmedi .gt_font_normal {
   font-weight: normal;
 }
 
-#jsdczrrvwb .gt_font_bold {
+#jkvshcmedi .gt_font_bold {
   font-weight: bold;
 }
 
-#jsdczrrvwb .gt_font_italic {
+#jkvshcmedi .gt_font_italic {
   font-style: italic;
 }
 
-#jsdczrrvwb .gt_super {
+#jkvshcmedi .gt_super {
   font-size: 65%;
 }
 
-#jsdczrrvwb .gt_footnote_marks {
+#jkvshcmedi .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jsdczrrvwb .gt_asterisk {
+#jkvshcmedi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jsdczrrvwb .gt_indent_1 {
+#jkvshcmedi .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jsdczrrvwb .gt_indent_2 {
+#jkvshcmedi .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jsdczrrvwb .gt_indent_3 {
+#jkvshcmedi .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jsdczrrvwb .gt_indent_4 {
+#jkvshcmedi .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jsdczrrvwb .gt_indent_5 {
+#jkvshcmedi .gt_indent_5 {
   text-indent: 25px;
 }
 
-#jsdczrrvwb .katex-display {
+#jkvshcmedi .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#jsdczrrvwb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#jkvshcmedi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -888,18 +739,6 @@ Delivery method
 Maternal age
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ld <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(maternal_age) <span class="sc">|&gt;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> maternal_age, <span class="at">y =</span> n, <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"#0e263560"</span>) <span class="sc">+</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">"#0e2635"</span>) <span class="sc">+</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">6</span>, <span class="at">color =</span> <span class="st">"#0e2635"</span>, <span class="at">shape =</span> <span class="st">"circle open"</span>) <span class="sc">+</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Count"</span>,</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(<span class="sc">~</span> . <span class="sc">/</span> n_births, <span class="at">name =</span> <span class="st">"Proportion"</span>, <span class="at">labels =</span> <span class="fu">label_percent</span>())</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display html-fill-item html-fill-container">
 <img src="dashboard_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-dashboard-img-contain">
 </div>
@@ -919,16 +758,6 @@ grid-auto-rows: minmax(0, 1fr);">
 Delivery method and parity
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ld <span class="sc">|&gt;</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(parity, delivery_method) <span class="sc">|&gt;</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> <span class="fu">fct_rev</span>(parity), <span class="at">fill =</span> delivery_method)) <span class="sc">+</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"fill"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#ae8b2d"</span>, <span class="st">"#0e2635"</span>),</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">guide =</span> <span class="fu">guide_legend</span>(<span class="at">reverse =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="fu">label_percent</span>()) <span class="sc">+</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="st">"Delivery</span><span class="sc">\n</span><span class="st">method"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display html-fill-item html-fill-container">
 <img src="dashboard_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-dashboard-img-contain">
 </div>
@@ -943,16 +772,6 @@ Delivery method and parity
 Delivery method and maternal age
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ld <span class="sc">|&gt;</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(maternal_age, delivery_method) <span class="sc">|&gt;</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> <span class="fu">fct_rev</span>(maternal_age), <span class="at">fill =</span> delivery_method)) <span class="sc">+</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"fill"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#ae8b2d"</span>, <span class="st">"#0e2635"</span>),</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">guide =</span> <span class="fu">guide_legend</span>(<span class="at">reverse =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="fu">label_percent</span>()) <span class="sc">+</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="st">"Delivery</span><span class="sc">\n</span><span class="st">method"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display html-fill-item html-fill-container">
 <img src="dashboard_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid quarto-dashboard-img-contain">
 </div>
@@ -968,32 +787,7 @@ Delivery method and maternal age
 </div><div id="vaginal" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="columns" aria-labelledby="tab-vaginal">
 <div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 60fr) minmax(3em, 40fr);
 grid-auto-rows: minmax(0, 1fr);">
-<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 20fr) minmax(3em, 20fr) minmax(3em, 40fr) minmax(3em, 20fr); grid-auto-columns: minmax(0, 1fr);">
-<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ld_v <span class="ot">&lt;-</span> ld <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(delivery_method <span class="sc">==</span> <span class="st">"Vaginal"</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>n_births_v <span class="ot">&lt;-</span> <span class="fu">nrow</span>(ld_v)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>p_preterm_v <span class="ot">&lt;-</span> ld_v <span class="sc">|&gt;</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(term) <span class="sc">|&gt;</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"Pre-term"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(p)</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>p_preterm_color_v <span class="ot">&lt;-</span> <span class="fu">case_when</span>(</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">between</span>(p_preterm_v, params<span class="sc">$</span>us_preterm_rate, params<span class="sc">$</span>us_preterm_rate <span class="sc">+</span> params<span class="sc">$</span>threshold_diff) <span class="sc">~</span> <span class="st">"warning"</span>,</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  p_preterm_v <span class="sc">&gt;</span> params<span class="sc">$</span>us_preterm_rate <span class="sc">+</span> params<span class="sc">$</span>threshold_diff <span class="sc">~</span> <span class="st">"danger"</span>,</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">.default =</span> <span class="st">"light"</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
-    <template>Expand</template>
-    <span class="bslib-full-screen-enter badge rounded-pill">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
-    </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 20fr) minmax(3em, 40fr) minmax(3em, 40fr); grid-auto-columns: minmax(0, 1fr);">
 <div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
 <div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
@@ -1037,18 +831,6 @@ grid-auto-rows: minmax(0, 1fr);">
 Maternal age
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ld_v <span class="sc">|&gt;</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(maternal_age) <span class="sc">|&gt;</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> maternal_age, <span class="at">y =</span> n, <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"#0e263560"</span>) <span class="sc">+</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">"#0e2635"</span>) <span class="sc">+</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">6</span>, <span class="at">color =</span> <span class="st">"#0e2635"</span>, <span class="at">shape =</span> <span class="st">"circle open"</span>) <span class="sc">+</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Count"</span>,</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(<span class="sc">~</span> . <span class="sc">/</span> n_births, <span class="at">name =</span> <span class="st">"Proportion"</span>, <span class="at">labels =</span> <span class="fu">label_percent</span>())</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display html-fill-item html-fill-container">
 <img src="dashboard_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid quarto-dashboard-img-contain">
 </div>
@@ -1063,36 +845,14 @@ Maternal age
 <div class="card tabset html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-header dashboard-card-no-title bslib-navs-card-title">
 
-<ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-17"><li class="nav-item" role="presentation"><a href="#card-tabset-17-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Maternal age and parity" aria-selected="true" class="nav-link active">Maternal age and parity</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-17-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Maternal age and term" aria-selected="false" class="nav-link">Maternal age and term</a></li></ul></div>
+<ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-11"><li class="nav-item" role="presentation"><a href="#card-tabset-11-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Maternal age and parity" aria-selected="true" class="nav-link active">Maternal age and parity</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-11-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Maternal age and term" aria-selected="false" class="nav-link">Maternal age and term</a></li></ul></div>
 
 
-<div class="tab-content html-fill-item html-fill-container" data-tabset-id="card-tabset-17"><div class="tab-pane active show html-fill-item html-fill-container" role="tabpanel" id="card-tabset-17-1"><div class="card-body html-fill-item html-fill-container" data-title="Maternal age and parity">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ld_v <span class="sc">|&gt;</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(maternal_age, parity) <span class="sc">|&gt;</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> <span class="fu">fct_rev</span>(maternal_age), <span class="at">fill =</span> <span class="fu">fct_rev</span>(parity))) <span class="sc">+</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"fill"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette =</span> <span class="st">"Blues"</span>,</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">guide =</span> <span class="fu">guide_legend</span>(<span class="at">reverse =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="fu">label_percent</span>()) <span class="sc">+</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="st">"Parity"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="tab-content html-fill-item html-fill-container" data-tabset-id="card-tabset-11"><div class="tab-pane active show html-fill-item html-fill-container" role="tabpanel" id="card-tabset-11-1"><div class="card-body html-fill-item html-fill-container" data-title="Maternal age and parity">
 <div class="cell-output-display html-fill-item html-fill-container">
 <img src="dashboard_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid quarto-dashboard-img-contain">
 </div>
-</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-17-2"><div class="card-body html-fill-item html-fill-container" data-title="Maternal age and term">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ld_v <span class="sc">|&gt;</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(maternal_age, term) <span class="sc">|&gt;</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> <span class="fu">fct_rev</span>(maternal_age), <span class="at">fill =</span> <span class="fu">fct_rev</span>(term))) <span class="sc">+</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"fill"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette =</span> <span class="st">"Greens"</span>,</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">guide =</span> <span class="fu">guide_legend</span>(<span class="at">reverse =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="fu">label_percent</span>()) <span class="sc">+</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="st">"Term"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-11-2"><div class="card-body html-fill-item html-fill-container" data-title="Maternal age and term">
 <div class="cell-output-display html-fill-item html-fill-container">
 <img src="dashboard_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid quarto-dashboard-img-contain">
 </div>
@@ -1108,22 +868,9 @@ Maternal age
 Data
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ld_v <span class="sc">|&gt;</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>delivery_method) <span class="sc">|&gt;</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(patient_id) <span class="sc">|&gt;</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">colnames =</span> <span class="fu">c</span>(<span class="st">"ID"</span>, <span class="st">"Maternal age"</span>, <span class="st">"Parity"</span>, <span class="st">"Term"</span>),</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">options =</span> <span class="fu">list</span>(</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">dom =</span> <span class="st">"lrtip"</span>, </span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">paging =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">lengthMenu =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">25</span>),</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">pageLength =</span> <span class="dv">10</span>, </span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">scrollY =</span> <span class="cn">TRUE</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-79f65ce107d8b51f022b" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-79f65ce107d8b51f022b">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107"],[1,2,3,5,7,8,10,15,17,19,21,22,24,25,26,27,28,29,30,31,35,36,39,40,41,42,43,44,45,47,48,49,50,51,52,56,57,58,59,60,62,63,64,65,67,68,69,70,72,73,74,75,76,77,78,79,80,86,87,88,89,90,92,93,94,95,96,97,98,100,102,103,104,105,106,110,111,112,113,114,115,116,117,118,119,120,121,122,125,127,128,131,132,133,135,136,138,140,141,142,146,147,151,152,153,154,159],["&lt;20","20-34","&lt;20","&lt;20","&lt;20","&lt;20","20-34","20-34","&lt;20","20-34","&lt;20","20-34","&lt;20","20-34","35+","20-34","20-34","&lt;20","20-34","35+","35+","20-34","20-34","20-34","&lt;20","35+","35+","20-34","&lt;20","20-34","20-34","&lt;20","20-34","&lt;20","20-34","&lt;20","35+","20-34","20-34","&lt;20","20-34","20-34","35+","35+","20-34","20-34","20-34","&lt;20","&lt;20","35+","35+","20-34","20-34","20-34","35+","20-34","&lt;20","20-34","20-34","20-34","20-34","20-34","35+","20-34","35+","20-34","20-34","&lt;20","20-34","20-34","35+","20-34","20-34","20-34","&lt;20","&lt;20","35+","35+","20-34","20-34","20-34","20-34","20-34","20-34","&lt;20","20-34","20-34","35+","20-34","35+","20-34","20-34","20-34","35+","20-34","&lt;20","20-34","35+","20-34","35+","20-34","&lt;20","&lt;20","35+","35+","&lt;20","&lt;20"],["Nulliparous","Multiparous","Nulliparous","Nulliparous","Primiparous","Nulliparous","Multiparous","Primiparous","Nulliparous","Multiparous","Primiparous","Nulliparous","Nulliparous","Nulliparous","Nulliparous","Multiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Nulliparous","Primiparous","Nulliparous","Nulliparous","Multiparous","Nulliparous","Multiparous","Nulliparous","Multiparous","Nulliparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Multiparous","Nulliparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Multiparous","Nulliparous","Primiparous","Multiparous","Multiparous","Primiparous","Multiparous","Multiparous","Nulliparous","Nulliparous","Nulliparous","Nulliparous","Nulliparous","Multiparous","Multiparous","Primiparous","Multiparous","Multiparous","Primiparous","Nulliparous","Multiparous","Primiparous","Primiparous","Primiparous","Primiparous","Primiparous","Primiparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Multiparous","Multiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Nulliparous"],["Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Pre-term","Term","Pre-term","Pre-term","Term","Term","Term","Term"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>ID<\/th>\n      <th>Maternal age<\/th>\n      <th>Parity<\/th>\n      <th>Term<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"lrtip","paging":true,"lengthMenu":[5,10,25],"pageLength":10,"scrollY":true,"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"patient_id","targets":1},{"name":"maternal_age","targets":2},{"name":"parity","targets":3},{"name":"term","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-0b195338baa0ca0bf510" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-0b195338baa0ca0bf510">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107"],[1,2,3,5,7,8,10,15,17,19,21,22,24,25,26,27,28,29,30,31,35,36,39,40,41,42,43,44,45,47,48,49,50,51,52,56,57,58,59,60,62,63,64,65,67,68,69,70,72,73,74,75,76,77,78,79,80,86,87,88,89,90,92,93,94,95,96,97,98,100,102,103,104,105,106,110,111,112,113,114,115,116,117,118,119,120,121,122,125,127,128,131,132,133,135,136,138,140,141,142,146,147,151,152,153,154,159],["&lt;20","20-34","&lt;20","&lt;20","&lt;20","&lt;20","20-34","20-34","&lt;20","20-34","&lt;20","20-34","&lt;20","20-34","35+","20-34","20-34","&lt;20","20-34","35+","35+","20-34","20-34","20-34","&lt;20","35+","35+","20-34","&lt;20","20-34","20-34","&lt;20","20-34","&lt;20","20-34","&lt;20","35+","20-34","20-34","&lt;20","20-34","20-34","35+","35+","20-34","20-34","20-34","&lt;20","&lt;20","35+","35+","20-34","20-34","20-34","35+","20-34","&lt;20","20-34","20-34","20-34","20-34","20-34","35+","20-34","35+","20-34","20-34","&lt;20","20-34","20-34","35+","20-34","20-34","20-34","&lt;20","&lt;20","35+","35+","20-34","20-34","20-34","20-34","20-34","20-34","&lt;20","20-34","20-34","35+","20-34","35+","20-34","20-34","20-34","35+","20-34","&lt;20","20-34","35+","20-34","35+","20-34","&lt;20","&lt;20","35+","35+","&lt;20","&lt;20"],["Nulliparous","Multiparous","Nulliparous","Nulliparous","Primiparous","Nulliparous","Multiparous","Primiparous","Nulliparous","Multiparous","Primiparous","Nulliparous","Nulliparous","Nulliparous","Nulliparous","Multiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Nulliparous","Primiparous","Nulliparous","Nulliparous","Multiparous","Nulliparous","Multiparous","Nulliparous","Multiparous","Nulliparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Multiparous","Nulliparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Multiparous","Nulliparous","Primiparous","Multiparous","Multiparous","Primiparous","Multiparous","Multiparous","Nulliparous","Nulliparous","Nulliparous","Nulliparous","Nulliparous","Multiparous","Multiparous","Primiparous","Multiparous","Multiparous","Primiparous","Nulliparous","Multiparous","Primiparous","Primiparous","Primiparous","Primiparous","Primiparous","Primiparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Multiparous","Multiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Nulliparous"],["Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Pre-term","Term","Pre-term","Pre-term","Term","Term","Term","Term"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>ID<\/th>\n      <th>Maternal age<\/th>\n      <th>Parity<\/th>\n      <th>Term<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"lrtip","language":{"info":"Showing _TOTAL_ entries"},"paging":true,"lengthMenu":[5,10,25],"pageLength":10,"scrollY":true,"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"patient_id","targets":1},{"name":"maternal_age","targets":2},{"name":"parity","targets":3},{"name":"term","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -1137,32 +884,7 @@ Data
 </div><div id="caesarean" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="columns" aria-labelledby="tab-caesarean">
 <div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 60fr) minmax(3em, 40fr);
 grid-auto-rows: minmax(0, 1fr);">
-<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 20fr) minmax(3em, 20fr) minmax(3em, 40fr) minmax(3em, 20fr); grid-auto-columns: minmax(0, 1fr);">
-<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ld_c <span class="ot">&lt;-</span> ld <span class="sc">|&gt;</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(delivery_method <span class="sc">==</span> <span class="st">"Cesarean"</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>n_births_c <span class="ot">&lt;-</span> <span class="fu">nrow</span>(ld_c)</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>p_preterm_c <span class="ot">&lt;-</span> ld_c <span class="sc">|&gt;</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(term) <span class="sc">|&gt;</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"Pre-term"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(p)</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>p_preterm_color_c <span class="ot">&lt;-</span> <span class="fu">case_when</span>(</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">between</span>(p_preterm_c, params<span class="sc">$</span>us_preterm_rate, params<span class="sc">$</span>us_preterm_rate <span class="sc">+</span> params<span class="sc">$</span>threshold_diff) <span class="sc">~</span> <span class="st">"warning"</span>,</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  p_preterm_c <span class="sc">&gt;</span> params<span class="sc">$</span>us_preterm_rate <span class="sc">+</span> params<span class="sc">$</span>threshold_diff <span class="sc">~</span> <span class="st">"danger"</span>,</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">.default =</span> <span class="st">"light"</span></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
-    <template>Expand</template>
-    <span class="bslib-full-screen-enter badge rounded-pill">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
-    </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 20fr) minmax(3em, 40fr) minmax(3em, 40fr); grid-auto-columns: minmax(0, 1fr);">
 <div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
 <div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
@@ -1206,18 +928,6 @@ grid-auto-rows: minmax(0, 1fr);">
 Maternal age
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ld_c <span class="sc">|&gt;</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(maternal_age) <span class="sc">|&gt;</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> maternal_age, <span class="at">y =</span> n, <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"#0e263560"</span>) <span class="sc">+</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">"#0e2635"</span>) <span class="sc">+</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">6</span>, <span class="at">color =</span> <span class="st">"#0e2635"</span>, <span class="at">shape =</span> <span class="st">"circle open"</span>) <span class="sc">+</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Count"</span>,</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(<span class="sc">~</span> . <span class="sc">/</span> n_births, <span class="at">name =</span> <span class="st">"Proportion"</span>, <span class="at">labels =</span> <span class="fu">label_percent</span>())</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display html-fill-item html-fill-container">
 <img src="dashboard_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid quarto-dashboard-img-contain">
 </div>
@@ -1232,36 +942,14 @@ Maternal age
 <div class="card tabset html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-header dashboard-card-no-title bslib-navs-card-title">
 
-<ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-23"><li class="nav-item" role="presentation"><a href="#card-tabset-23-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Maternal age and parity" aria-selected="true" class="nav-link active">Maternal age and parity</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-23-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Maternal age and term" aria-selected="false" class="nav-link">Maternal age and term</a></li></ul></div>
+<ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-16"><li class="nav-item" role="presentation"><a href="#card-tabset-16-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Maternal age and parity" aria-selected="true" class="nav-link active">Maternal age and parity</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-16-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Maternal age and term" aria-selected="false" class="nav-link">Maternal age and term</a></li></ul></div>
 
 
-<div class="tab-content html-fill-item html-fill-container" data-tabset-id="card-tabset-23"><div class="tab-pane active show html-fill-item html-fill-container" role="tabpanel" id="card-tabset-23-1"><div class="card-body html-fill-item html-fill-container" data-title="Maternal age and parity">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ld_c <span class="sc">|&gt;</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(maternal_age, parity) <span class="sc">|&gt;</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> <span class="fu">fct_rev</span>(maternal_age), <span class="at">fill =</span> <span class="fu">fct_rev</span>(parity))) <span class="sc">+</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"fill"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette =</span> <span class="st">"Blues"</span>,</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">guide =</span> <span class="fu">guide_legend</span>(<span class="at">reverse =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="fu">label_percent</span>()) <span class="sc">+</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="st">"Parity"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="tab-content html-fill-item html-fill-container" data-tabset-id="card-tabset-16"><div class="tab-pane active show html-fill-item html-fill-container" role="tabpanel" id="card-tabset-16-1"><div class="card-body html-fill-item html-fill-container" data-title="Maternal age and parity">
 <div class="cell-output-display html-fill-item html-fill-container">
 <img src="dashboard_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid quarto-dashboard-img-contain">
 </div>
-</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-23-2"><div class="card-body html-fill-item html-fill-container" data-title="Maternal age and term">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ld_c <span class="sc">|&gt;</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(maternal_age, term) <span class="sc">|&gt;</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> <span class="fu">fct_rev</span>(maternal_age), <span class="at">fill =</span> <span class="fu">fct_rev</span>(term))) <span class="sc">+</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"fill"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette =</span> <span class="st">"Greens"</span>,</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">guide =</span> <span class="fu">guide_legend</span>(<span class="at">reverse =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="fu">label_percent</span>()) <span class="sc">+</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="st">"Term"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-16-2"><div class="card-body html-fill-item html-fill-container" data-title="Maternal age and term">
 <div class="cell-output-display html-fill-item html-fill-container">
 <img src="dashboard_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid quarto-dashboard-img-contain">
 </div>
@@ -1277,22 +965,9 @@ Maternal age
 Data
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ld_c <span class="sc">|&gt;</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>delivery_method) <span class="sc">|&gt;</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(patient_id) <span class="sc">|&gt;</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">colnames =</span> <span class="fu">c</span>(<span class="st">"ID"</span>, <span class="st">"Maternal age"</span>, <span class="st">"Parity"</span>, <span class="st">"Term"</span>),</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">options =</span> <span class="fu">list</span>(</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">dom =</span> <span class="st">"lrtip"</span>, </span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">paging =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">lengthMenu =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">25</span>),</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">pageLength =</span> <span class="dv">10</span>, </span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">scrollY =</span> <span class="cn">TRUE</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-42190802d9b17a074696" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-42190802d9b17a074696">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54"],[4,6,9,11,12,13,14,16,18,20,23,32,33,34,37,38,46,53,54,55,61,66,71,81,82,83,84,85,91,99,101,107,108,109,123,124,126,129,130,134,137,139,143,144,145,148,149,150,155,156,157,158,160,161],["20-34","35+","35+","35+","&lt;20","20-34","20-34","20-34","35+","&lt;20","35+","20-34","35+","&lt;20","35+","20-34","&lt;20","35+","35+","20-34","35+","20-34","&lt;20","&lt;20","35+","35+","20-34","35+","&lt;20","20-34","35+","35+","35+","20-34","&lt;20","35+","35+","&lt;20","35+","35+","20-34","35+","20-34","20-34","35+","35+","35+","&lt;20","20-34","20-34","35+","35+","20-34","&lt;20"],["Primiparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Nulliparous","Multiparous","Primiparous","Primiparous","Primiparous","Multiparous","Multiparous","Nulliparous","Nulliparous","Multiparous","Multiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Primiparous","Multiparous","Primiparous","Multiparous","Multiparous","Multiparous","Nulliparous","Multiparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Multiparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Multiparous","Multiparous","Multiparous","Primiparous"],["Term","Term","Term","Pre-term","Pre-term","Pre-term","Term","Pre-term","Term","Pre-term","Term","Term","Term","Term","Term","Pre-term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Pre-term","Term","Term","Term","Term","Pre-term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Pre-term","Term"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>ID<\/th>\n      <th>Maternal age<\/th>\n      <th>Parity<\/th>\n      <th>Term<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"lrtip","paging":true,"lengthMenu":[5,10,25],"pageLength":10,"scrollY":true,"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"patient_id","targets":1},{"name":"maternal_age","targets":2},{"name":"parity","targets":3},{"name":"term","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-cf2d89d0a325ecb19c17" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-cf2d89d0a325ecb19c17">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54"],[4,6,9,11,12,13,14,16,18,20,23,32,33,34,37,38,46,53,54,55,61,66,71,81,82,83,84,85,91,99,101,107,108,109,123,124,126,129,130,134,137,139,143,144,145,148,149,150,155,156,157,158,160,161],["20-34","35+","35+","35+","&lt;20","20-34","20-34","20-34","35+","&lt;20","35+","20-34","35+","&lt;20","35+","20-34","&lt;20","35+","35+","20-34","35+","20-34","&lt;20","&lt;20","35+","35+","20-34","35+","&lt;20","20-34","35+","35+","35+","20-34","&lt;20","35+","35+","&lt;20","35+","35+","20-34","35+","20-34","20-34","35+","35+","35+","&lt;20","20-34","20-34","35+","35+","20-34","&lt;20"],["Primiparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Nulliparous","Multiparous","Primiparous","Primiparous","Primiparous","Multiparous","Multiparous","Nulliparous","Nulliparous","Multiparous","Multiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Primiparous","Multiparous","Primiparous","Multiparous","Multiparous","Multiparous","Nulliparous","Multiparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Multiparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Multiparous","Multiparous","Multiparous","Primiparous"],["Term","Term","Term","Pre-term","Pre-term","Pre-term","Term","Pre-term","Term","Pre-term","Term","Term","Term","Term","Term","Pre-term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Pre-term","Term","Term","Term","Term","Pre-term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Pre-term","Term"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>ID<\/th>\n      <th>Maternal age<\/th>\n      <th>Parity<\/th>\n      <th>Term<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"lrtip","language":{"info":"Showing _TOTAL_ entries"},"paging":true,"lengthMenu":[5,10,25],"pageLength":10,"scrollY":true,"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"patient_id","targets":1},{"name":"maternal_age","targets":2},{"name":"parity","targets":3},{"name":"term","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -1307,15 +982,9 @@ Data
 <div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
 <div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ld <span class="sc">|&gt;</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(patient_id) <span class="sc">|&gt;</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">colnames =</span> <span class="fu">c</span>(<span class="st">"ID"</span>, <span class="st">"Maternal age"</span>, <span class="st">"Delivery method"</span>, <span class="st">"Parity"</span>, <span class="st">"Term"</span>),</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">options =</span> <span class="fu">list</span>(<span class="at">dom =</span> <span class="st">'ftp'</span>, <span class="at">paging =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-795e254e708c850df468" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-795e254e708c850df468">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161],["&lt;20","20-34","&lt;20","20-34","&lt;20","35+","&lt;20","&lt;20","35+","20-34","35+","&lt;20","20-34","20-34","20-34","20-34","&lt;20","35+","20-34","&lt;20","&lt;20","20-34","35+","&lt;20","20-34","35+","20-34","20-34","&lt;20","20-34","35+","20-34","35+","&lt;20","35+","20-34","35+","20-34","20-34","20-34","&lt;20","35+","35+","20-34","&lt;20","&lt;20","20-34","20-34","&lt;20","20-34","&lt;20","20-34","35+","35+","20-34","&lt;20","35+","20-34","20-34","&lt;20","35+","20-34","20-34","35+","35+","20-34","20-34","20-34","20-34","&lt;20","&lt;20","&lt;20","35+","35+","20-34","20-34","20-34","35+","20-34","&lt;20","&lt;20","35+","35+","20-34","35+","20-34","20-34","20-34","20-34","20-34","&lt;20","35+","20-34","35+","20-34","20-34","&lt;20","20-34","20-34","20-34","35+","35+","20-34","20-34","20-34","&lt;20","35+","35+","20-34","&lt;20","35+","35+","20-34","20-34","20-34","20-34","20-34","20-34","&lt;20","20-34","20-34","35+","&lt;20","35+","20-34","35+","35+","20-34","&lt;20","35+","20-34","20-34","35+","35+","20-34","&lt;20","20-34","20-34","35+","35+","20-34","35+","20-34","20-34","35+","20-34","&lt;20","35+","35+","&lt;20","&lt;20","35+","35+","&lt;20","20-34","20-34","35+","35+","&lt;20","20-34","&lt;20"],["Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Cesarean","Vaginal","Vaginal","Cesarean","Vaginal","Cesarean","Cesarean","Cesarean","Cesarean","Vaginal","Cesarean","Vaginal","Cesarean","Vaginal","Cesarean","Vaginal","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Cesarean","Cesarean","Vaginal","Vaginal","Cesarean","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Cesarean","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Cesarean","Cesarean","Cesarean","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Cesarean","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Cesarean","Vaginal","Cesarean","Vaginal","Vaginal","Cesarean","Cesarean","Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Vaginal","Cesarean","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Cesarean","Cesarean","Cesarean","Vaginal","Vaginal","Cesarean","Cesarean","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Cesarean","Cesarean","Cesarean","Vaginal","Cesarean","Cesarean"],["Nulliparous","Multiparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Multiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Nulliparous","Primiparous","Multiparous","Nulliparous","Primiparous","Nulliparous","Multiparous","Nulliparous","Nulliparous","Nulliparous","Multiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Primiparous","Nulliparous","Multiparous","Multiparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Nulliparous","Nulliparous","Multiparous","Nulliparous","Multiparous","Nulliparous","Multiparous","Multiparous","Nulliparous","Multiparous","Nulliparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Multiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Multiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Multiparous","Nulliparous","Primiparous","Multiparous","Multiparous","Multiparous","Multiparous","Primiparous","Multiparous","Multiparous","Nulliparous","Nulliparous","Multiparous","Nulliparous","Multiparous","Nulliparous","Nulliparous","Nulliparous","Multiparous","Multiparous","Primiparous","Multiparous","Multiparous","Primiparous","Nulliparous","Multiparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Multiparous","Multiparous","Primiparous","Multiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Multiparous","Multiparous","Nulliparous","Multiparous","Primiparous"],["Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Pre-term","Pre-term","Pre-term","Term","Term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Pre-term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Pre-term","Term","Pre-term","Term","Term","Pre-term","Term","Term","Term","Term","Pre-term","Pre-term","Term","Term","Pre-term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Pre-term","Term"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>ID<\/th>\n      <th>Maternal age<\/th>\n      <th>Delivery method<\/th>\n      <th>Parity<\/th>\n      <th>Term<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"ftp","paging":true,"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"patient_id","targets":1},{"name":"maternal_age","targets":2},{"name":"delivery_method","targets":3},{"name":"parity","targets":4},{"name":"term","targets":5}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-b7538d40a47b988b48b4" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-b7538d40a47b988b48b4">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161],["&lt;20","20-34","&lt;20","20-34","&lt;20","35+","&lt;20","&lt;20","35+","20-34","35+","&lt;20","20-34","20-34","20-34","20-34","&lt;20","35+","20-34","&lt;20","&lt;20","20-34","35+","&lt;20","20-34","35+","20-34","20-34","&lt;20","20-34","35+","20-34","35+","&lt;20","35+","20-34","35+","20-34","20-34","20-34","&lt;20","35+","35+","20-34","&lt;20","&lt;20","20-34","20-34","&lt;20","20-34","&lt;20","20-34","35+","35+","20-34","&lt;20","35+","20-34","20-34","&lt;20","35+","20-34","20-34","35+","35+","20-34","20-34","20-34","20-34","&lt;20","&lt;20","&lt;20","35+","35+","20-34","20-34","20-34","35+","20-34","&lt;20","&lt;20","35+","35+","20-34","35+","20-34","20-34","20-34","20-34","20-34","&lt;20","35+","20-34","35+","20-34","20-34","&lt;20","20-34","20-34","20-34","35+","35+","20-34","20-34","20-34","&lt;20","35+","35+","20-34","&lt;20","35+","35+","20-34","20-34","20-34","20-34","20-34","20-34","&lt;20","20-34","20-34","35+","&lt;20","35+","20-34","35+","35+","20-34","&lt;20","35+","20-34","20-34","35+","35+","20-34","&lt;20","20-34","20-34","35+","35+","20-34","35+","20-34","20-34","35+","20-34","&lt;20","35+","35+","&lt;20","&lt;20","35+","35+","&lt;20","20-34","20-34","35+","35+","&lt;20","20-34","&lt;20"],["Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Cesarean","Vaginal","Vaginal","Cesarean","Vaginal","Cesarean","Cesarean","Cesarean","Cesarean","Vaginal","Cesarean","Vaginal","Cesarean","Vaginal","Cesarean","Vaginal","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Cesarean","Cesarean","Vaginal","Vaginal","Cesarean","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Cesarean","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Cesarean","Cesarean","Cesarean","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Cesarean","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Cesarean","Vaginal","Cesarean","Vaginal","Vaginal","Cesarean","Cesarean","Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Vaginal","Cesarean","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Cesarean","Cesarean","Cesarean","Vaginal","Vaginal","Cesarean","Cesarean","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Cesarean","Cesarean","Cesarean","Vaginal","Cesarean","Cesarean"],["Nulliparous","Multiparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Multiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Nulliparous","Primiparous","Multiparous","Nulliparous","Primiparous","Nulliparous","Multiparous","Nulliparous","Nulliparous","Nulliparous","Multiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Primiparous","Nulliparous","Multiparous","Multiparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Nulliparous","Nulliparous","Multiparous","Nulliparous","Multiparous","Nulliparous","Multiparous","Multiparous","Nulliparous","Multiparous","Nulliparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Multiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Multiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Multiparous","Nulliparous","Primiparous","Multiparous","Multiparous","Multiparous","Multiparous","Primiparous","Multiparous","Multiparous","Nulliparous","Nulliparous","Multiparous","Nulliparous","Multiparous","Nulliparous","Nulliparous","Nulliparous","Multiparous","Multiparous","Primiparous","Multiparous","Multiparous","Primiparous","Nulliparous","Multiparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Multiparous","Multiparous","Primiparous","Multiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Multiparous","Multiparous","Nulliparous","Multiparous","Primiparous"],["Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Pre-term","Pre-term","Pre-term","Term","Term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Pre-term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Pre-term","Term","Pre-term","Term","Term","Pre-term","Term","Term","Term","Term","Pre-term","Pre-term","Term","Term","Pre-term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Pre-term","Term"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>ID<\/th>\n      <th>Maternal age<\/th>\n      <th>Delivery method<\/th>\n      <th>Parity<\/th>\n      <th>Term<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"ftp","language":{"info":"Showing _TOTAL_ entries"},"paging":true,"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"patient_id","targets":1},{"name":"maternal_age","targets":2},{"name":"delivery_method","targets":3},{"name":"parity","targets":4},{"name":"term","targets":5}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">

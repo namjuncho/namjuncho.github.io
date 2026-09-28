@@ -1,10 +1,9 @@
 ---
-title: "______ Dashboard"
+title: "Labor and Delivery Dashboard"
 format: 
   dashboard:
-    nav-buttons: [github]
-    github: https://github.com/mine-cetinkaya-rundel/ld-dashboard
-logo: images/logo.png
+    page-title: "Labor and Delivery Dashboard"
+logo: images/logo.png 
 theme: [sandstone, theme/custom.scss]
 fig-width: 10
 fig-asp: 0.3
