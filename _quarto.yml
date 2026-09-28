@@ -16,7 +16,7 @@ website:
     # your sub-pages
     left:
       - text: "Dashboard"
-        href: dashboard/index.qmd
+        href: dashboard-main/dashboard.qmd
       - text: "Blog"
         href: blog/index.qmd
       - text: "CV"
