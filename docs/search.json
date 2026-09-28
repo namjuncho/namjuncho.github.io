@@ -11,14 +11,14 @@
     "href": "blog/index.html",
     "title": "Blog",
     "section": "",
-    "text": "Since this was my first time building a website, I followed the tutorial and template generously shared online by Marvin Schmitt.\nI am still in the process of learning R and Github, so I played around with the template structure to get an idea of how things work in this environment. Doing so helped me understand the function of each component and become more confident with my coding."
+    "text": "Building the Website\nSince this was my first time building a website, I followed the tutorial and template generously shared online by Marvin Schmitt. It gives a step-by-step with helpful explanations that anybody could follow.\nI am still in the process of learning R and Github, so I played around with the template structure to get an idea of how things work in this environment. Doing so helped me understand the function of each component and become more confident with my coding. With each obstacle, I learned something new.\n\n\n\nCentral Hypothesis"
   },
   {
     "objectID": "blog/index.html#building-the-website",
     "href": "blog/index.html#building-the-website",
     "title": "Blog",
     "section": "",
-    "text": "Since this was my first time building a website, I followed the tutorial and template generously shared online by Marvin Schmitt.\nI am still in the process of learning R and Github, so I played around with the template structure to get an idea of how things work in this environment. Doing so helped me understand the function of each component and become more confident with my coding."
+    "text": "Since this was my first time building a website, I followed the tutorial and template generously shared online by Marvin Schmitt. It gives a step-by-step with helpful explanations that anybody could follow.\nI am still in the process of learning R and Github, so I played around with the template structure to get an idea of how things work in this environment. Doing so helped me understand the function of each component and become more confident with my coding. With each obstacle, I learned something new."
   },
   {
     "objectID": "blog/index.html#central-hypothesis",
@@ -61,5 +61,61 @@
     "title": "Dashboard",
     "section": "The History of the War of the Ring",
     "text": "The History of the War of the Ring\n\narXiv Preprint | Code\nI am creating a comprehensive and detailed history of the conflict that goes beyond the surface-level events. By gathering information from a variety of sources, including my own memories, written accounts, and oral histories, I hope to shed new light on this important period in Middle-earth’s history and provide valuable insights into the motivations and actions of the various players involved.\n\nView the tutorial for this template (+ download link)"
+  },
+  {
+    "objectID": "dashboard/dashboard.html",
+    "href": "dashboard/dashboard.html",
+    "title": "Labor and Delivery Dashboard",
+    "section": "",
+    "text": "This dashboard displays statistics for:\n\n\nHospital\nGrey Sloan Memorial\n\n\nUnit\nLabor and Delivery\n\n\nMonth\nOctober 2023\n\n\n\nIn October 2023 the staff breakdown in the unit was as follows:\n\n\nAttending physicians\n14\n\n\nResidents\n21\n\n\nNurses\n12\n\n\n\n\n\n\n\n\n\nNoteDisclaimer\n\n\n\n\n\nThis is a fictional hospital. The data are simulated based on realistic birth characteristics and risk factors from this report by the CDC."
+  },
+  {
+    "objectID": "dashboard/dashboard.html#row",
+    "href": "dashboard/dashboard.html#row",
+    "title": "Labor and Delivery Dashboard",
+    "section": "Row",
+    "text": "Row\n\n\n$icon\n[1] \"file-medical\"\n\n$color\n[1] \"primary\"\n\n$value\n[1] 161\n\n\n\n\n$icon\n[1] \"clipboard2-pulse\"\n\n$color\n[1] \"warning\"\n\n$value\n[1] \"33.5%\"\n\n\n\n\n$icon\n[1] \"calendar-week\"\n\n$color\n[1] \"danger\"\n\n$value\n[1] \"18.6%\""
+  },
+  {
+    "objectID": "dashboard/dashboard.html#row-1",
+    "href": "dashboard/dashboard.html#row-1",
+    "title": "Labor and Delivery Dashboard",
+    "section": "Row",
+    "text": "Row\nColumn\n\n\n\n\n\n\n\n\n\n\n\n\nNumber ofdeliveries\nProportion ofdeliveries\n\n\n\nCesarean\n54\n33.5%\n\n\nVaginal\n107\n66.5%\n\n\n\n\n\n\nColumn"
+  },
+  {
+    "objectID": "dashboard/dashboard.html#row-2",
+    "href": "dashboard/dashboard.html#row-2",
+    "title": "Labor and Delivery Dashboard",
+    "section": "Row",
+    "text": "Row"
+  },
+  {
+    "objectID": "dashboard/dashboard.html#column-2",
+    "href": "dashboard/dashboard.html#column-2",
+    "title": "Labor and Delivery Dashboard",
+    "section": "Column",
+    "text": "Column\nRow\n\n\n$icon\n[1] \"file-medical\"\n\n$color\n[1] \"primary\"\n\n$value\n[1] 107\n\n\n\n\n$icon\n[1] \"calendar-week\"\n\n$color\n[1] \"danger\"\n\n$value\n[1] \"13.1%\"\n\n\nRow\n\n\n\n\n\n\n\n\nRow"
+  },
+  {
+    "objectID": "dashboard/dashboard.html#column-3",
+    "href": "dashboard/dashboard.html#column-3",
+    "title": "Labor and Delivery Dashboard",
+    "section": "Column",
+    "text": "Column"
+  },
+  {
+    "objectID": "dashboard/dashboard.html#column-4",
+    "href": "dashboard/dashboard.html#column-4",
+    "title": "Labor and Delivery Dashboard",
+    "section": "Column",
+    "text": "Column\nRow\n\n\n$icon\n[1] \"file-medical\"\n\n$color\n[1] \"primary\"\n\n$value\n[1] 54\n\n\n\n\n$icon\n[1] \"calendar-week\"\n\n$color\n[1] \"danger\"\n\n$value\n[1] \"29.6%\"\n\n\nRow\n\n\n\n\n\n\n\n\nRow"
+  },
+  {
+    "objectID": "dashboard/dashboard.html#column-5",
+    "href": "dashboard/dashboard.html#column-5",
+    "title": "Labor and Delivery Dashboard",
+    "section": "Column",
+    "text": "Column"
   }
 ]

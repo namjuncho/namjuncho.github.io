@@ -1,8 +1,8 @@
 ---
-title: Blog
+title: "Blog"
 ---
 
-## Building the Website
+# Building the Website
 
 Since this was my first time building a website, I followed the <span class="faux-block"><a href="https://www.marvinschmitt.com/blog/website-tutorial-quarto/">tutorial</a></span> and template generously shared online by <span class="faux-block"><a href="https://github.com/marvinschmitt/quarto-website-template/">Marvin Schmitt</a></span>. It gives a step-by-step with helpful explanations that anybody could follow.
 
@@ -10,6 +10,6 @@ I am still in the process of learning R and Github, so I played around with the 
 
 ----
 
-## Central Hypothesis
+# Central Hypothesis
 
 
