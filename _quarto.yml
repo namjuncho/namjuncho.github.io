@@ -53,7 +53,7 @@ project:
     navigate: true
 
 execute:
-  freeze: false
+  freeze: true
 
 format:
   html:
