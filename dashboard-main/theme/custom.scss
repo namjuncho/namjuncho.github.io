@@ -35,3 +35,43 @@ div.callout-note.callout {
 div.callout-note.callout-style-default>.callout-header {
   background-color: #9ea8ae;
 }
+
+/* Dashboard value boxes */
+.value-box .value-box-value {
+  font-size: 2rem !important;
+}
+
+.value-box .value-box-title {
+  font-size: 1rem !important;
+}
+
+.value-box .bi {
+  font-size: 2rem !important;
+}
+
+/* Sidebar */
+.sidebar {
+  font-size: 0.9rem;
+}
+
+.sidebar p,
+.sidebar td,
+.sidebar th {
+  font-size: 0.9rem;
+}
+
+.sidebar h1,
+.sidebar h2,
+.sidebar h3 {
+  font-size: 1.15rem;
+}
+
+/* Dashboard card titles */
+.card-header {
+  font-size: 1rem;
+}
+
+/* General dashboard text */
+.dashboard-page {
+  font-size: 0.95rem;
+}

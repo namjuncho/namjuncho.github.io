@@ -1,19 +1,11 @@
 ---
-title: "Labor and Delivery Dashboard"
+title: "BMI vs. Systolic Blood Pressure Dashboard"
 format: 
   dashboard:
-    page-title: "Labor and Delivery Dashboard"
+    page-title: "BMI vs. Systolic Blood Pressure Dashboard"
 logo: images/logo.png 
 theme: [sandstone, theme/custom.scss]
-fig-width: 10
-fig-asp: 0.3
-params:
-  month: "October"
-  year: "2023"
-  # 2021 rates: https://www.cdc.gov/nchs/data/nvsr/nvsr72/nvsr72-01.pdf
-  us_cesarean_rate: 0.321 
-  us_preterm_rate:  0.1049
-  threshold_diff: 0.02
+
 editor_options: 
   chunk_output_type: console
 ---
@@ -21,482 +13,650 @@ editor_options:
 ```{r}
 #| label: load-packages
 #| message: false
+#| include: false
 
+library(nhanesA)
 library(tidyverse)
-library(readxl)
-library(scales)
-library(DT)
-library(gt)
-theme_set(theme_minimal(base_size = 24, base_family = "sans"))
 ```
 
 ```{r}
 #| label: load-data
 #| message: false
+#| include: false
 
-ld <- read_excel("data/ld.xlsx")
+# bmx_raw <- nhanes('P_BMX') |> tibble()
+# bpxo_raw <- nhanes('P_BPXO') |> tibble()
+# demo_raw <- nhanes('P_DEMO') |> tibble()
+
+# saveRDS(bmx_raw, "data/P_BMX.Rds")
+# saveRDS(bpxo_raw, "data/P_BPXO.Rds")
+# saveRDS(demo_raw, "data/P_DEMO.Rds")
+
+bmx_raw <- readRDS("data/P_BMX.Rds")
+bpxo_raw <- readRDS("data/P_BPXO.Rds")
+demo_raw <- readRDS("data/P_DEMO.Rds")
+
 ```
 
 ```{r}
-#| label: set-inputs
+#| label: inspect-data
+#| message: false
+#| include: false
 
-time_period <- paste(params$month, params$year)
+dim(demo_raw)
+dim(bmx_raw)
+dim(bpxo_raw)
+
+names(demo_raw)
+names(bmx_raw)
+names(bpxo_raw)
 ```
 
 ```{r}
-#| label: prep-data
+#| label: merge-data
+#| message: false
+#| include: false
 
-ld <- ld |>
+analytic_raw <-
+  demo_raw |>
+  select(
+    SEQN,
+    RIDSTATR,
+    RIDAGEYR,
+    RIAGENDR,
+    DMDEDUC2
+  ) |>
+  left_join(
+    bmx_raw |>
+      select(
+        SEQN,
+        BMXBMI
+      ),
+    by = "SEQN"
+  ) |>
+  left_join(
+    bpxo_raw |>
+      select(
+        SEQN,
+        BPXOSY1,
+        BPXOSY2,
+        BPXOSY3
+      ),
+    by = "SEQN"
+  ) |>
+  filter(
+    RIDSTATR == "Both interviewed and MEC examined",
+    RIDAGEYR >= 20,
+    RIDAGEYR <= 79
+  )
+```
+
+```{r}
+#| label: clean-data
+#| message: false
+#| include: false
+
+
+analytic_data <-
+  analytic_raw |>
   mutate(
-    delivery_method = str_to_sentence(delivery_method),
-    term = str_to_sentence(term),
-    parity = case_when(
-      parity == "1"  ~ "Nulliparous",
-      parity == "2"  ~ "Primiparous",
-      parity == "3+" ~ "Multiparous"
+    avg_sbp = rowMeans(
+      cbind(BPXOSY1, BPXOSY2, BPXOSY3),
+      na.rm = TRUE
     ),
-    parity = fct_relevel(parity, "Nulliparous", "Primiparous", "Multiparous"),
-    maternal_age = fct_relevel(maternal_age, "<20", "20-34", "35+")
+    avg_sbp = if_else(is.nan(avg_sbp), NA_real_, avg_sbp),
+
+    sex = factor(
+      case_when(
+        RIAGENDR == "Male" ~ "Male",
+        RIAGENDR == "Female" ~ "Female",
+        TRUE ~ NA_character_
+      ),
+      levels = c("Female", "Male")
+    ),
+
+    education = factor(
+      case_when(
+        DMDEDUC2 %in% c(
+          "Less than 9th grade",
+          "9-11th grade (Includes 12th grade with no diploma)"
+        ) ~ "Less than HS",
+        
+        DMDEDUC2 == "High school graduate/GED or equivalent" ~ "HS Grad",
+        
+        DMDEDUC2 == "Some college or AA degree" ~ "Some College",
+        
+        DMDEDUC2 == "College graduate or above" ~ "College Grad",
+        
+        TRUE ~ NA_character_
+      ),
+      levels = c(
+        "Less than HS",
+        "HS Grad",
+        "Some College",
+        "College Grad"
+      )
+    ),
+
+    obesity = factor(
+      case_when(
+        BMXBMI >= 30 ~ "Obese",
+        BMXBMI < 30 ~ "Not obese",
+        TRUE ~ NA_character_
+      ),
+      levels = c("Not obese", "Obese")
+    )
+  )
+```
+
+```{r}
+#| label: check-data
+#| message: false
+#| include: false
+
+
+analytic_data |>
+  summarise(
+    n = n(),
+    complete_sbp = sum(!is.na(avg_sbp)),
+    complete_bmi = sum(!is.na(BMXBMI)),
+    complete_all = sum(
+      complete.cases(
+        SEQN,
+        RIDSTATR,
+        RIDAGEYR,
+        avg_sbp,
+        BMXBMI,
+        sex,
+        education,
+        obesity
+      )
+    ),
+    min_age = min(RIDAGEYR, na.rm = TRUE),
+    max_age = max(RIDAGEYR, na.rm = TRUE),
+    n_sbp_values = n_distinct(avg_sbp, na.rm = TRUE),
+    n_bmi_values = n_distinct(BMXBMI, na.rm = TRUE)
   )
 ```
 
 #  {.sidebar}
 
-This dashboard displays statistics for:
+This dashboard summarizes systolic blood pressure data among adults aged 20–79 years in the 2017 – March 2020 pre-pandemic dataset from NHANES.
 
-|              |                     |
-|--------------|---------------------|
-| **Hospital** | Grey Sloan Memorial |
-| **Unit**     | Labor and Delivery  |
-| **Month**    | `{r} time_period`   |
-
-------------------------------------------------------------------------
-
-In `{r} time_period` the staff breakdown in the unit was as follows:
-
-|                          |     |
-|--------------------------|-----|
-| **Attending physicians** |  14 |
-| **Residents**            |  21 |
-| **Nurses**               |  12 |
+| | |
+|---|---|
+| **Dataset** | NHANES |
+| **Cycle** | 2017–March 2020 |
+| **Population** | Adults aged 20–79 years |
+| **Total sample** | 7,968 |
+| **Complete SBP** | 7,187 |
+|---|---|
 
 ------------------------------------------------------------------------
+# Overview
 
-::: {.callout-note collapse="true"}
-## Disclaimer
-
-This is a fictional hospital. The data are simulated based on realistic birth characteristics and risk factors from [this report by the CDC](https://www.cdc.gov/nchs/data/nvsr/nvsr72/nvsr72-01.pdf).
-:::
-
-# All
-
-```{r}
-#| label: all-values
-#| results: hide
-
-n_births <- nrow(ld)
-
-p_cesarean <- ld |>
-  count(delivery_method) |>
-  mutate(p = n / sum(n)) |>
-  filter(delivery_method == "Cesarean") |>
-  pull(p)
-
-p_cesarean_color <- case_when(
-  between(p_cesarean, params$us_cesarean_rate, params$us_cesarean_rate + params$threshold_diff) ~ "warning",
-  p_cesarean > params$us_cesarean_rate + params$threshold_diff ~ "danger",
-  .default = "light"
-  )
-
-p_preterm <- ld |>
-  count(term) |>
-  mutate(p = n / sum(n)) |>
-  filter(term == "Pre-term") |>
-  pull(p)
-
-p_preterm_color <- case_when(
-  between(p_preterm, params$us_preterm_rate, params$us_preterm_rate + params$threshold_diff) ~ "warning",
-  p_preterm > params$us_preterm_rate + params$threshold_diff ~ "danger",
-  .default = "light"
-  )
-```
-
-## Row {height="20%"}
-
-```{r}
-#| content: valuebox
-#| title: "Total births"
-
-list(
-  icon = "file-medical",
-  color = "primary",
-  value = n_births
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "Cesarean deliveries"
-
-list(
-  icon = "clipboard2-pulse",
-  color = p_cesarean_color,
-  value = label_percent(accuracy = 0.1)(p_cesarean)
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "Pre-term births"
-
-list(
-  icon = "calendar-week",
-  color = p_preterm_color,
-  value = label_percent(accuracy = 0.1)(p_preterm)
-)
-```
-
-## Row {height="40%"}
-
-### Column {width="40%"}
-
-```{r}
-#| title: Delivery method
-
-ld |>
-  count(delivery_method) |>
-  mutate(p = n / sum(n)) |>
-  gt() |>
-  fmt_percent(
-    columns = p,
-    decimals = 1
-  ) |>
-  tab_style(
-    style = cell_text(color = "#ae8b2d", weight = "bold"),
-    locations = cells_body(
-      columns = everything(),
-      rows = delivery_method == "Cesarean"
-    )
-  ) |>
-  tab_style(
-    style = cell_text(color = "#0e2635", weight = "bold"),
-    locations = cells_body(
-      columns = everything(),
-      rows = delivery_method == "Vaginal"
-    )
-  ) |>
-  cols_label(
-    delivery_method = "",
-    n = "Number of<br>deliveries",
-    p = "Proportion of<br>deliveries",
-    .fn = md
-  )
-```
-
-### Column {width="60%"}
-
-```{r}
-#| title: Maternal age
-
-ld |>
-  count(maternal_age) |>
-  mutate(p = n / sum(n)) |>
-  ggplot(aes(x = maternal_age, y = n, group = 1)) +
-  geom_line(linewidth = 2, color = "#0e263560") +
-  geom_point(size = 3, color = "#0e2635") +
-  geom_point(size = 6, color = "#0e2635", shape = "circle open") +
-  labs(x = NULL) +
-  scale_y_continuous(
-    "Count",
-    sec.axis = sec_axis(~ . / n_births, name = "Proportion", labels = label_percent())
-  )
-```
-
-## Row {height="40%"}
-
-```{r}
-#| title: Delivery method and parity
-
-ld |>
-  count(parity, delivery_method) |>
-  ggplot(aes(x = n, y = fct_rev(parity), fill = delivery_method)) +
-  geom_col(position = "fill", color = "white") +
-  scale_fill_manual(
-    values = c("#ae8b2d", "#0e2635"),
-    guide = guide_legend(reverse = TRUE)
-  ) +
-  scale_x_continuous(labels = label_percent()) +
-  labs(y = NULL, x = NULL, fill = "Delivery\nmethod")
-```
-
-```{r}
-#| title: Delivery method and maternal age
-
-ld |>
-  count(maternal_age, delivery_method) |>
-  ggplot(aes(x = n, y = fct_rev(maternal_age), fill = delivery_method)) +
-  geom_col(position = "fill", color = "white") +
-  scale_fill_manual(
-    values = c("#ae8b2d", "#0e2635"),
-    guide = guide_legend(reverse = TRUE)
-  ) +
-  scale_x_continuous(labels = label_percent()) +
-  labs(y = NULL, x = NULL, fill = "Delivery\nmethod")
-```
-
-# Vaginal {orientation="columns"}
-
-## Column {width="60%"}
-
-```{r}
-#| label: vaginal-values
-#| results: hide
-
-ld_v <- ld |>
-  filter(delivery_method == "Vaginal")
-
-n_births_v <- nrow(ld_v)
-
-p_preterm_v <- ld_v |>
-  count(term) |>
-  mutate(p = n / sum(n)) |>
-  filter(term == "Pre-term") |>
-  pull(p)
-
-p_preterm_color_v <- case_when(
-  between(p_preterm_v, params$us_preterm_rate, params$us_preterm_rate + params$threshold_diff) ~ "warning",
-  p_preterm_v > params$us_preterm_rate + params$threshold_diff ~ "danger",
-  .default = "light"
-  )
-```
-
-### Row {height="20%"}
+## Row {height="25%"}
 
 ```{r}
 #| component: valuebox
-#| title: "Total births"
+#| title: "Participants"
 
 list(
-  icon = "file-medical",
-  color = "primary",
-  value = n_births_v
+  value = nrow(analytic_data)
 )
 ```
 
 ```{r}
 #| component: valuebox
-#| title: "Pre-term births"
+#| title: "Mean SBP"
+
+mean_sbp_overall <- mean(analytic_data$avg_sbp, na.rm = TRUE)
 
 list(
-  icon = "calendar-week",
-  color = p_preterm_color_v,
-  value = label_percent(accuracy = 0.1)(p_preterm_v)
+  color = "primary",
+  value = paste0(round(mean_sbp_overall, 1), " mmHg")
 )
 ```
 
-### Row {height="40%"}
+```{r}
+#| component: valuebox
+#| title: "Mean BMI"
+
+mean_bmi_overall <- mean(analytic_data$BMXBMI, na.rm = TRUE)
+
+list(
+  color = "primary",
+  value = round(mean_bmi_overall, 1)
+)
+```
 
 ```{r}
-#| title: Maternal age
+#| component: valuebox
+#| title: "Age Range"
 
-ld_v |>
-  count(maternal_age) |>
-  mutate(p = n / sum(n)) |>
-  ggplot(aes(x = maternal_age, y = n, group = 1)) +
-  geom_line(linewidth = 2, color = "#0e263560") +
-  geom_point(size = 3, color = "#0e2635") +
-  geom_point(size = 6, color = "#0e2635", shape = "circle open") +
-  labs(x = NULL) +
-  scale_y_continuous(
-    "Count",
-    sec.axis = sec_axis(~ . / n_births, name = "Proportion", labels = label_percent())
+list(
+  color = "primary",
+  value = paste0(
+    min(analytic_data$RIDAGEYR, na.rm = TRUE),
+    "–",
+    max(analytic_data$RIDAGEYR, na.rm = TRUE),
+    " years"
+  )
+)
+```
+
+## Row {height="75%"}
+
+### Column {width="50%"}
+
+```{r}
+#| title: "Distribution of Systolic Blood Pressure"
+
+analytic_data |>
+  filter(!is.na(avg_sbp)) |>
+  ggplot(aes(x = avg_sbp)) +
+  geom_histogram(
+    bins = 35,
+    color = "white"
+  ) +
+  labs(
+    x = "Average systolic blood pressure (mmHg)",
+    y = "Number of participants"
+  ) +
+  theme_minimal()
+```
+
+### Column {width="50%"}
+
+```{r}
+#| title: "Distribution of BMI"
+
+analytic_data |>
+  filter(!is.na(BMXBMI)) |>
+  ggplot(aes(x = BMXBMI)) +
+  geom_histogram(
+    bins = 35,
+    color = "white"
+  ) +
+  labs(
+    x = "BMI (kg/m²)",
+    y = "Number of participants"
+  ) +
+  theme_minimal()
+```
+
+# Sex and Systolic Blood Pressure
+
+```{r}
+#| label: analysis-b
+#| results: hide
+#| message: false
+#| include: false
+
+analysis_B <-
+  analytic_data |>
+  filter(
+    !is.na(avg_sbp),
+    !is.na(sex)
+  )
+
+analysis_B_summary <-
+  analysis_B |>
+  group_by(sex) |>
+  summarise(
+    n = n(),
+    mean_sbp = mean(avg_sbp),
+    sd_sbp = sd(avg_sbp),
+    median_sbp = median(avg_sbp),
+    IQR_sbp = IQR(avg_sbp),
+    .groups = "drop"
+  )
+
+analysis_B_test <- t.test(
+  avg_sbp ~ sex,
+  data = analysis_B,
+  conf.level = 0.90
+)
+```
+
+## Row {height="25%"}
+
+```{r}
+#| component: valuebox
+#| title: "Female Mean SBP"
+
+female_mean <- analysis_B_summary |>
+  filter(sex == "Female") |>
+  pull(mean_sbp)
+
+list(
+  color = "primary",
+  value = paste0(round(female_mean, 1), " mmHg")
+)
+```
+
+```{r}
+#| component: valuebox
+#| title: "Male Mean SBP"
+
+male_mean <- analysis_B_summary |>
+  filter(sex == "Male") |>
+  pull(mean_sbp)
+
+list(
+  color = "primary",
+  value = paste0(round(male_mean, 1), " mmHg")
+)
+```
+
+```{r}
+#| component: valuebox
+#| title: "Mean Difference"
+
+mean_difference <- female_mean - male_mean
+
+list(
+  color = "primary",
+  value = paste0(round(mean_difference, 2), " mmHg")
+)
+```
+
+## Row {height="75%"}
+
+### Column {width="55%"}
+
+```{r}
+#| title: "SBP Distribution by Sex"
+
+analysis_B |>
+  ggplot(aes(x = sex, y = avg_sbp, fill = sex)) +
+  geom_boxplot(alpha = 0.8, show.legend = FALSE) +
+  labs(
+    x = NULL,
+    y = "Average systolic blood pressure (mmHg)"
+  ) +
+  theme_minimal()
+```
+
+### Column {width="45%"}
+
+```{r}
+#| title: "Analysis B Summary"
+
+analysis_B_summary |>
+  mutate(
+    mean_sbp = round(mean_sbp, 1),
+    sd_sbp = round(sd_sbp, 1),
+    median_sbp = round(median_sbp, 1),
+    IQR_sbp = round(IQR_sbp, 1)
+  ) |>
+  knitr::kable(
+    col.names = c(
+      "Sex",
+      "n",
+      "Mean",
+      "SD",
+      "Median",
+      "IQR"
+    )
   )
 ```
 
-### Row {height="40%" .tabset}
+
+
+# Education and Systolic Blood Pressure
 
 ```{r}
-#| title: Maternal age and parity
+#| label: analysis-c
+#| include: false
 
-ld_v |>
-  count(maternal_age, parity) |>
-  ggplot(aes(x = n, y = fct_rev(maternal_age), fill = fct_rev(parity))) +
-  geom_col(position = "fill", color = "white") +
-  scale_fill_brewer(
-    palette = "Blues",
-    guide = guide_legend(reverse = TRUE),
-    direction = -1
-  ) +
-  scale_x_continuous(labels = label_percent()) +
-  labs(y = NULL, x = NULL, fill = "Parity")
+analysis_C <-
+  analytic_data |>
+  filter(
+    !is.na(avg_sbp),
+    !is.na(education)
+  )
+
+# Education level
+analysis_C_summary <-
+  analysis_C |>
+  group_by(education) |>
+  summarise(
+    n = n(),
+    mean_sbp = mean(avg_sbp),
+    sd_sbp = sd(avg_sbp),
+    median_sbp = median(avg_sbp),
+    IQR_sbp = IQR(avg_sbp),
+    se_sbp = sd_sbp / sqrt(n),
+    lower_90 = mean_sbp - qt(0.95, df = n - 1) * se_sbp,
+    upper_90 = mean_sbp + qt(0.95, df = n - 1) * se_sbp,
+    .groups = "drop"
+  )
+
+# One-way ANOVA
+analysis_C_model <-
+  aov(avg_sbp ~ education, data = analysis_C)
+
+# ANOVA results
+analysis_C_anova <-
+  summary(analysis_C_model)
+
+# Tukey with 90% confidence intervals
+analysis_C_tukey <-
+  TukeyHSD(
+    analysis_C_model,
+    "education",
+    conf.level = 0.90
+  )
+
+# Displaying Tukey output
+analysis_C_tukey_table <-
+  as.data.frame(analysis_C_tukey$education) |>
+  rownames_to_column("comparison") |>
+  rename(
+    difference = diff,
+    lower_90 = lwr,
+    upper_90 = upr,
+    p_value = `p adj`
+  )
+
+# Overall ANOVA p-value
+analysis_C_p <-
+  summary(analysis_C_model)[[1]][["Pr(>F)"]][1]
+```
+
+## Row {height="25%"}
+
+```{r}
+#| component: valuebox
+#| title: "Participants"
+
+list(
+  icon = "people",
+  color = "primary",
+  value = nrow(analysis_C)
+)
 ```
 
 ```{r}
-#| title: Maternal age and term
+#| component: valuebox
+#| title: "Lowest Mean SBP"
 
-ld_v |>
-  count(maternal_age, term) |>
-  ggplot(aes(x = n, y = fct_rev(maternal_age), fill = fct_rev(term))) +
-  geom_col(position = "fill", color = "white") +
-  scale_fill_brewer(
-    palette = "Greens",
-    guide = guide_legend(reverse = TRUE),
-    direction = -1
-  ) +
-  scale_x_continuous(labels = label_percent()) +
-  labs(y = NULL, x = NULL, fill = "Term")
+lowest_education <-
+  analysis_C_summary |>
+  slice_min(mean_sbp, n = 1)
+
+list(
+  icon = "arrow-down",
+  color = "primary",
+  value = paste0(
+    lowest_education$education,
+    ": ",
+    round(lowest_education$mean_sbp, 1),
+    " mmHg"
+  )
+)
 ```
 
-## Column {width="40%"}
+```{r}
+#| component: valuebox
+#| title: "Highest Mean SBP"
+
+highest_education <-
+  analysis_C_summary |>
+  slice_max(mean_sbp, n = 1)
+
+list(
+  icon = "arrow-up",
+  color = "primary",
+  value = paste0(
+    highest_education$education,
+    ": ",
+    round(highest_education$mean_sbp, 1),
+    " mmHg"
+  )
+)
+```
 
 ```{r}
-#| title: Data
+#| component: valuebox
+#| title: "ANOVA p-value"
 
-ld_v |>
-  select(-delivery_method) |>
-  arrange(patient_id) |>
-  datatable(
-    colnames = c("ID", "Maternal age", "Parity", "Term"),
-    options = list(
-      dom = "lrtip", 
-      paging = TRUE,
-      lengthMenu = c(5, 10, 25),
-      pageLength = 10, 
-      scrollY = TRUE
+anova_p_label <-
+  ifelse(
+    analysis_C_p < 0.001,
+    "< 0.001",
+    format(round(analysis_C_p, 3), nsmall = 3)
+  )
+
+list(
+  icon = "calculator",
+  color = "primary",
+  value = anova_p_label
+)
+```
+
+## Row {height="50%"}
+
+### Column {width="50%"}
+
+```{r}
+#| title: "SBP Distribution by Education"
+
+analysis_C |>
+  ggplot(
+    aes(
+      x = education,
+      y = avg_sbp,
+      fill = education
+    )
+  ) +
+  geom_boxplot(
+    alpha = 0.8,
+    show.legend = FALSE
+  ) +
+  labs(
+    x = NULL,
+    y = "Average systolic blood pressure (mmHg)"
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(
+    axis.text.x = element_text(
+      angle = 20,
+      hjust = 1
+    )
+  )
+```
+
+### Column {width="50%"}
+
+```{r}
+#| title: "Mean SBP and 90% Confidence Intervals"
+
+analysis_C_summary |>
+  ggplot(
+    aes(
+      x = education,
+      y = mean_sbp
+    )
+  ) +
+  geom_point(size = 3) +
+  geom_errorbar(
+    aes(
+      ymin = lower_90,
+      ymax = upper_90
     ),
-  )
-```
-
-# Caesarean {orientation="columns"}
-
-## Column {width="60%"}
-
-```{r}
-#| label: cesarean-values
-#| results: hide
-
-ld_c <- ld |>
-  filter(delivery_method == "Cesarean")
-
-n_births_c <- nrow(ld_c)
-
-p_preterm_c <- ld_c |>
-  count(term) |>
-  mutate(p = n / sum(n)) |>
-  filter(term == "Pre-term") |>
-  pull(p)
-
-p_preterm_color_c <- case_when(
-  between(p_preterm_c, params$us_preterm_rate, params$us_preterm_rate + params$threshold_diff) ~ "warning",
-  p_preterm_c > params$us_preterm_rate + params$threshold_diff ~ "danger",
-  .default = "light"
-  )
-```
-
-### Row {height="20%"}
-
-```{r}
-#| component: valuebox
-#| title: "Total births"
-
-list(
-  icon = "file-medical",
-  color = "primary",
-  value = n_births_c
-)
-```
-
-```{r}
-#| component: valuebox
-#| title: "Pre-term births"
-
-list(
-  icon = "calendar-week",
-  color = p_preterm_color_c,
-  value = label_percent(accuracy = 0.1)(p_preterm_c)
-)
-```
-
-### Row {height="40%"}
-
-```{r}
-#| title: Maternal age
-
-ld_c |>
-  count(maternal_age) |>
-  mutate(p = n / sum(n)) |>
-  ggplot(aes(x = maternal_age, y = n, group = 1)) +
-  geom_line(linewidth = 2, color = "#0e263560") +
-  geom_point(size = 3, color = "#0e2635") +
-  geom_point(size = 6, color = "#0e2635", shape = "circle open") +
-  labs(x = NULL) +
-  scale_y_continuous(
-    "Count",
-    sec.axis = sec_axis(~ . / n_births, name = "Proportion", labels = label_percent())
-  )
-```
-
-### Row {height="40%" .tabset}
-
-```{r}
-#| title: Maternal age and parity
-
-ld_c |>
-  count(maternal_age, parity) |>
-  ggplot(aes(x = n, y = fct_rev(maternal_age), fill = fct_rev(parity))) +
-  geom_col(position = "fill", color = "white") +
-  scale_fill_brewer(
-    palette = "Blues",
-    guide = guide_legend(reverse = TRUE),
-    direction = -1
+    width = 0.15
   ) +
-  scale_x_continuous(labels = label_percent()) +
-  labs(y = NULL, x = NULL, fill = "Parity")
-```
-
-```{r}
-#| title: Maternal age and term
-
-ld_c |>
-  count(maternal_age, term) |>
-  ggplot(aes(x = n, y = fct_rev(maternal_age), fill = fct_rev(term))) +
-  geom_col(position = "fill", color = "white") +
-  scale_fill_brewer(
-    palette = "Greens",
-    guide = guide_legend(reverse = TRUE),
-    direction = -1
+  labs(
+    x = NULL,
+    y = "Mean systolic blood pressure (mmHg)"
   ) +
-  scale_x_continuous(labels = label_percent()) +
-  labs(y = NULL, x = NULL, fill = "Term")
-```
-
-## Column {width="40%"}
-
-```{r}
-#| title: Data
-
-ld_c |>
-  select(-delivery_method) |>
-  arrange(patient_id) |>
-  datatable(
-    colnames = c("ID", "Maternal age", "Parity", "Term"),
-    options = list(
-      dom = "lrtip", 
-      paging = TRUE,
-      lengthMenu = c(5, 10, 25),
-      pageLength = 10, 
-      scrollY = TRUE
-    ),
-  )
-```
-
-# Data
-
-```{r}
-ld |>
-  arrange(patient_id) |>
-  datatable(
-    colnames = c("ID", "Maternal age", "Delivery method", "Parity", "Term"),
-    options = list(dom = 'ftp', paging = TRUE)
+  theme_minimal(base_size = 11) +
+  theme(
+    axis.text.x = element_text(
+      angle = 20,
+      hjust = 1
     )
+  )
+```
+
+## Row {height="25%" .tabset}
+
+### Group Summary
+
+```{r}
+#| title: "Descriptive Statistics"
+
+analysis_C_summary |>
+  select(
+    education,
+    n,
+    mean_sbp,
+    sd_sbp,
+    median_sbp,
+    IQR_sbp
+  ) |>
+  mutate(
+    mean_sbp = round(mean_sbp, 1),
+    sd_sbp = round(sd_sbp, 1),
+    median_sbp = round(median_sbp, 1),
+    IQR_sbp = round(IQR_sbp, 1)
+  ) |>
+  knitr::kable(
+    col.names = c(
+      "Education",
+      "n",
+      "Mean SBP",
+      "SD",
+      "Median",
+      "IQR"
+    )
+  )
+```
+
+### Tukey Comparisons
+
+```{r}
+#| title: "Tukey HSD Pairwise Comparisons"
+
+analysis_C_tukey_table |>
+  mutate(
+    difference = round(difference, 2),
+    lower_90 = round(lower_90, 2),
+    upper_90 = round(upper_90, 2),
+    p_value = case_when(
+      p_value < 0.001 ~ "<0.001",
+      TRUE ~ sprintf("%.3f", p_value)
+    )
+  ) |>
+  knitr::kable(
+    col.names = c(
+      "Comparison",
+      "Mean Difference",
+      "90% CI Lower",
+      "90% CI Upper",
+      "Adjusted p-value"
+    )
+  )
 ```

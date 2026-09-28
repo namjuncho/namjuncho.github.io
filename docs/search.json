@@ -18,7 +18,14 @@
     "href": "blog/index.html",
     "title": "Blog",
     "section": "",
-    "text": "Building the Website\nSince this was my first time building a website, I followed the tutorial and template generously shared online by Marvin Schmitt. It gives a step-by-step with helpful explanations that anybody could follow.\nI am still in the process of learning R and Github, so I played around with the template structure to get an idea of how things work in this environment. Doing so helped me understand the function of each component and become more confident with my coding. With each obstacle, I learned something new.\n\n\n\nCentral Hypothesis"
+    "text": "Since this was my first time building a website, I followed the tutorial and template generously shared online by Marvin Schmitt. It gives a step-by-step with helpful explanations that anybody could follow.\nI am still in the process of learning R and Github, so I played around with the template structure to get an idea of how things work in this environment. Doing so helped me understand the function of each component and become more confident with my coding. With each obstacle, I learned something new."
+  },
+  {
+    "objectID": "blog/index.html#section",
+    "href": "blog/index.html#section",
+    "title": "Blog",
+    "section": "",
+    "text": "Among adults aged 20–79 in the 2017–March 2020 pre-pandemic NHANES sample, the mean systolic blood pressure was 121.26 mmHg for females and 126.70 mmHg for males. The estimated difference in population means (female minus male) was −5.44 mmHg. Using Welch’s two-sample t procedure, the 90% confidence interval for this difference was −6.16 to −4.72 mmHg. Because this interval does not include 0, the results provide evidence of a difference in mean systolic blood pressure between females and males, with females having a lower mean systolic blood pressure."
   },
   {
     "objectID": "dashboard-main/LICENSE.html",

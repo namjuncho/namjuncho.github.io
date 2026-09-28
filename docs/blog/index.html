@@ -168,8 +168,24 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="central-hypothesis" class="level1">
 <h1>Central Hypothesis</h1>
+<p><em>Research question:</em> Is body mass index associated with systolic blood pressure?</p>
+<p><em>Hypothesis:</em> Adults with higher body mass index will tend to have higher systolic blood pressure.</p>
+<p>I centered my first project around the hypothesis that higher BMI is associated with higher systolic blood pressure among U.S. adults between the ages of 21 and 79 years old. I kept it very simple, since the goal of this project is to get comfortable with data presentation on a website using R.</p>
+<hr>
+</section>
+<section id="the-data" class="level1">
+<h1>The Data</h1>
+<p>Data from the NHANES 2017–March 2020 pre-pandemic Demographics, Body Measures, and Blood Pressure Examination files were merged using the unique participant identifier, SEQN. The analytic sample was restricted to participants aged 20–79 years who completed both the interview and MEC examination. Average systolic blood pressure was calculated from up to three available systolic blood pressure measurements, retaining the mean when at least one measurement was present. Education was collapsed into four categories, sex was coded as female or male, and obesity status was defined using BMI ≥ 30.0 kg/m². Missing values were retained as NA, and participants with complete data on all variables used in the main analyses were identified for quality checks.</p>
+<hr>
+</section>
+<section id="analysis" class="level1">
+<h1>Analysis</h1>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+<p>Among adults aged 20–79 in the 2017–March 2020 pre-pandemic NHANES sample, the mean systolic blood pressure was 121.26 mmHg for females and 126.70 mmHg for males. The estimated difference in population means (female minus male) was −5.44 mmHg. Using Welch’s two-sample t procedure, the 90% confidence interval for this difference was −6.16 to −4.72 mmHg. Because this interval does not include 0, the results provide evidence of a difference in mean systolic blood pressure between females and males, with females having a lower mean systolic blood pressure.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
