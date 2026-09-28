@@ -6,7 +6,7 @@ website:
   description: "Namjun is a PhD candidate in Biomedical Engineering at Case Western Reserve University."   # A brief slogan (optional)
   image: img/Campus_Headshot.jpg
   
-  favicon: img/fav-icon.jpg
+  favicon: img/fav-icon.png
   
   # start of the navigation bar at the top of the website
   navbar:
@@ -17,7 +17,7 @@ website:
     left:
       - text: "Dashboard"
         href: dashboard/index.qmd
-      - text: "blog"
+      - text: "Blog"
         href: blog/index.qmd
       - text: "CV"
         href: cv/index.qmd
@@ -39,7 +39,10 @@ website:
     location: navbar
     type: textbox
   page-footer: 
-    left: img/CWRU.png
+    left: |
+      <span class="faux-block">&#169; 2026 Namjun Cho CC BY-SA 4.0</span>
+    right: |
+      <span class="faux-block"><a href="https://github.com/marvinschmitt/quarto-website-template/">View source on GitHub</a></span>
       
 
 project:
@@ -53,7 +56,7 @@ project:
     navigate: true
 
 execute:
-  freeze: false
+  freeze: true
 
 format:
   html:

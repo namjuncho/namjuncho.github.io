@@ -38,7 +38,7 @@ $dark:      $black !default;
 
 
 // Links
-$link-color: $primary !default;
+$link-color: $blue !default;
 $link-decoration: none !default;
 $link-hover-color: $red !default;
 $link-hover-decoration: underline !default;
@@ -70,7 +70,7 @@ $btn-code-copy-color-active: $orange !default;
     //font-family: $footer-font-family;
 
     a {
-        color: $primary;
+        color: $blue;
     }
 
     .faux-block {
