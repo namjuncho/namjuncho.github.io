@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
 <title>Labor and Delivery Dashboard – Namjun Cho</title>
 <style>
 /* Default styles provided by pandoc.
@@ -25,6 +28,7 @@ ul.task-list li input[type="checkbox"] {
 }
 </style>
 
+
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -38,10 +42,23 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-80460df9f125b315f97beb10c6e06575.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-8d71110d5176f8ffd427c618edb59d2b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-8d71110d5176f8ffd427c618edb59d2b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-8d71110d5176f8ffd427c618edb59d2b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-dashboard/quarto-dashboard.js"></script>
+<script src="../site_libs/quarto-dashboard/stickythead.js"></script>
+
+
+
+<script src="../site_libs/quarto-dashboard/web-components.js" type="module"></script>
+<script src="../site_libs/quarto-dashboard/components.js"></script>
+
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -66,20 +83,33 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><link href="../site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
-<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="../site_libs/datatables-binding-0.34.0/datatables.js"></script><script src="../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+}</script>
+<link href="../site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="../site_libs/datatables-binding-0.34.0/datatables.js"></script>
+<script src="../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="../site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script><link href="../site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+<script src="../site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="../site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
 <script src="../site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+
+
 </head>
-<body class="nav-fixed fullcontent quarto-light">
+
+<body class="quarto-dashboard nav-fixed dashboard-fill dashboard-sidebar fullcontent quarto-light">
+
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../img/fav-icon.png" alt="" class="navbar-logo light-content"><img src="../img/fav-icon.png" alt="" class="navbar-logo dark-content"></a>
+    <img src="../img/fav-icon.png" alt="" class="navbar-logo light-content">
+    <img src="../img/fav-icon.png" alt="" class="navbar-logo dark-content">
+    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Namjun Cho</span>
     </a>
@@ -90,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-<li class="nav-item">
+  <li class="nav-item">
     <a class="nav-link" href="../dashboard/index.qmd"> 
 <span class="menu-text">Dashboard</span></a>
   </li>  
@@ -103,8 +133,8 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">CV</span></a>
   </li>  
 </ul>
-<ul class="navbar-nav navbar-nav-scroll ms-auto">
-<li class="nav-item compact">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/namjuncho/"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
@@ -120,122 +150,104 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-</div> <!-- /navcollapse -->
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
-    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav>
+<header id="quarto-dashboard-header">
+<nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
+  <div class="navbar-container container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+
+
+    <div class="navbar-brand-container">
+    <a href="#"><img src="images/logo.png" alt="" class="navbar-logo light-content d-inline-block"></a>
+    <a href="#"><img src="images/logo.png" alt="" class="navbar-logo dark-content d-inline-block"></a>
+      <div class="navbar-title">
+        <div class="navbar-title-text"><a href="#">Labor and Delivery Dashboard</a></div>
+        
+        
+      </div>
+    </div>
+<div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-all" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#all" data-scrolling="false" href="#all" aria-controls="all" aria-selected="true"><span class="nav-link-text">All</span></a></li><li class="nav-item" role="presentation"><a id="tab-vaginal" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#vaginal" data-scrolling="false" href="#vaginal" aria-controls="vaginal" aria-selected="false"><span class="nav-link-text">Vaginal</span></a></li><li class="nav-item" role="presentation"><a id="tab-caesarean" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#caesarean" data-scrolling="false" href="#caesarean" aria-controls="caesarean" aria-selected="false"><span class="nav-link-text">Caesarean</span></a></li><li class="nav-item" role="presentation"><a id="tab-data" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#data" data-scrolling="false" href="#data" aria-controls="data" aria-selected="false"><span class="nav-link-text">Data</span></a></li></ul></div></div>
+</nav>
+</header></header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill quarto-dashboard-pages dashboard-sidebar-container">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Labor and Delivery Dashboard</h1>
-</div>
 
+<div class="bslib-sidebar-layout html-fill-item html-fill-container" data-bslib-sidebar-open="desktop" data-bslib-sidebar-init="true" data-bslib-sidebar-border="false" data-bslib-sidebar-border-radius="false"><div class="main html-fill-container html-fill-item"><div class="sidebar-content html-fill-item html-fill-container">
+<div class="tab-content bslib-grid html-fill-item html-fill-container" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div id="all" class="dashboard-page tab-pane show active html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-all">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 20fr) minmax(3em, 40fr) minmax(3em, 40fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div data-icon="file-medical" class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
 
+<i class="bi bi-file-medical"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Total births
+</p>
+<p class="value-box-value">
+161
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-warning showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div data-icon="clipboard2-pulse" class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
 
-<div class="quarto-title-meta">
+<i class="bi bi-clipboard2-pulse"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Cesarean deliveries
+</p>
+<p class="value-box-value">
+33.5%
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-danger showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div data-icon="calendar-week" class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
 
-    
-  
-    
-  </div>
-  
-
-
-</header><section id="section" class="level1 sidebar"><h1 class="sidebar"></h1>
-<p>This dashboard displays statistics for:</p>
-<table class="caption-top table"><tbody>
-<tr class="odd">
-<td><strong>Hospital</strong></td>
-<td>Grey Sloan Memorial</td>
-</tr>
-<tr class="even">
-<td><strong>Unit</strong></td>
-<td>Labor and Delivery</td>
-</tr>
-<tr class="odd">
-<td><strong>Month</strong></td>
-<td>October 2023</td>
-</tr>
-</tbody></table>
-<hr>
-<p>In October 2023 the staff breakdown in the unit was as follows:</p>
-<table class="caption-top table"><tbody>
-<tr class="odd">
-<td><strong>Attending physicians</strong></td>
-<td>14</td>
-</tr>
-<tr class="even">
-<td><strong>Residents</strong></td>
-<td>21</td>
-</tr>
-<tr class="odd">
-<td><strong>Nurses</strong></td>
-<td>12</td>
-</tr>
-</tbody></table>
-<hr>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Disclaimer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>This is a fictional hospital. The data are simulated based on realistic birth characteristics and risk factors from <a href="https://www.cdc.gov/nchs/data/nvsr/nvsr72/nvsr72-01.pdf">this report by the CDC</a>.</p>
+<i class="bi bi-calendar-week"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Pre-term births
+</p>
+<p class="value-box-value">
+18.6%
+</p>
 </div>
 </div>
 </div>
-</section><section id="all" class="level1"><h1>All</h1>
-<section id="row" class="level2" height="20%"><h2 height="20%" class="anchored" data-anchor-id="row">Row</h2>
-<div class="cell" content="valuebox" title="Total births">
-<div class="cell-output cell-output-stdout">
-<pre><code>$icon
-[1] "file-medical"
-
-$color
-[1] "primary"
-
-$value
-[1] 161</code></pre>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
 </div>
-</div>
-<div class="cell" content="valuebox" title="Cesarean deliveries">
-<div class="cell-output cell-output-stdout">
-<pre><code>$icon
-[1] "clipboard2-pulse"
-
-$color
-[1] "warning"
-
-$value
-[1] "33.5%"</code></pre>
-</div>
-</div>
-<div class="cell" content="valuebox" title="Pre-term births">
-<div class="cell-output cell-output-stdout">
-<pre><code>$icon
-[1] "calendar-week"
-
-$color
-[1] "danger"
-
-$value
-[1] "18.6%"</code></pre>
-</div>
-</div>
-</section><section id="row-1" class="level2" height="40%"><h2 height="40%" class="anchored" data-anchor-id="row-1">Row</h2>
-<section id="column" class="level3" width="40%"><h3 width="40%" class="anchored" data-anchor-id="column">Column</h3>
-<div class="cell" title="Delivery method">
-<div class="cell-output-display">
-<div id="nknloqcltl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 40fr) minmax(3em, 60fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Delivery method" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title html-fill-item html-fill-container"><span style="display: inline">
+Delivery method
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div id="nknloqcltl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;" class="html-fill-item html-fill-container">
 <style>#nknloqcltl table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
@@ -684,17 +696,20 @@ $value
   height: 0px !important;
 }
 </style>
+
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
 <col style="width: 33%">
 </colgroup>
-<thead><tr class="gt_col_headings header">
+<thead>
+<tr class="gt_col_headings header">
 <th id="delivery_method" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
 <th id="n" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Number of<br>deliveries</th>
 <th id="p" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Proportion of<br>deliveries</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody class="gt_table_body">
 <tr class="odd">
 <td class="gt_row gt_left" headers="delivery_method" style="color: #AE8B2D; font-weight: bold">Cesarean</td>
@@ -708,165 +723,350 @@ $value
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-</div>
-</section><section id="column-1" class="level3" width="60%"><h3 width="60%" class="anchored" data-anchor-id="column-1">Column</h3>
-<div class="cell" title="Maternal age">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="dashboard_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</section></section><section id="row-2" class="level2" height="40%"><h2 height="40%" class="anchored" data-anchor-id="row-2">Row</h2>
-<div class="cell" title="Delivery method and parity">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="dashboard_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell" title="Delivery method and maternal age">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="dashboard_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</section></section><section id="vaginal" class="level1" data-orientation="columns"><h1 data-orientation="columns">Vaginal</h1>
-<section id="column-2" class="level2" width="60%"><h2 width="60%" class="anchored" data-anchor-id="column-2">Column</h2>
-<section id="row-3" class="level3" height="20%"><h3 height="20%" class="anchored" data-anchor-id="row-3">Row</h3>
-<div class="cell" data-component="valuebox" title="Total births">
-<div class="cell-output cell-output-stdout">
-<pre><code>$icon
-[1] "file-medical"
 
-$color
-[1] "primary"
+</div>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Maternal age" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title html-fill-item html-fill-container"><span style="display: inline">
+Maternal age
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="dashboard_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-dashboard-img-contain">
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Delivery method and parity" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title html-fill-item html-fill-container"><span style="display: inline">
+Delivery method and parity
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="dashboard_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-dashboard-img-contain">
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card cell html-fill-item html-fill-container bslib-card" data-title="Delivery method and maternal age" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title html-fill-item html-fill-container"><span style="display: inline">
+Delivery method and maternal age
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="dashboard_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid quarto-dashboard-img-contain">
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+</div><div id="vaginal" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="columns" aria-labelledby="tab-vaginal">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 60fr) minmax(3em, 40fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 20fr) minmax(3em, 40fr) minmax(3em, 40fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div data-icon="file-medical" class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
 
-$value
-[1] 107</code></pre>
+<i class="bi bi-file-medical"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Total births
+</p>
+<p class="value-box-value">
+107
+</p>
 </div>
 </div>
-<div class="cell" data-component="valuebox" title="Pre-term births">
-<div class="cell-output cell-output-stdout">
-<pre><code>$icon
-[1] "calendar-week"
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-danger showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div data-icon="calendar-week" class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
 
-$color
-[1] "danger"
+<i class="bi bi-calendar-week"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Pre-term births
+</p>
+<p class="value-box-value">
+13.1%
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Maternal age" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title html-fill-item html-fill-container"><span style="display: inline">
+Maternal age
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="dashboard_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid quarto-dashboard-img-contain">
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+<div class="card tabset html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header dashboard-card-no-title bslib-navs-card-title">
 
-$value
-[1] "13.1%"</code></pre>
+<ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-11"><li class="nav-item" role="presentation"><a href="#card-tabset-11-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Maternal age and parity" aria-selected="true" class="nav-link active">Maternal age and parity</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-11-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Maternal age and term" aria-selected="false" class="nav-link">Maternal age and term</a></li></ul></div>
+
+
+<div class="tab-content html-fill-item html-fill-container" data-tabset-id="card-tabset-11"><div class="tab-pane active show html-fill-item html-fill-container" role="tabpanel" id="card-tabset-11-1"><div class="card-body html-fill-item html-fill-container" data-title="Maternal age and parity">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="dashboard_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid quarto-dashboard-img-contain">
 </div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-11-2"><div class="card-body html-fill-item html-fill-container" data-title="Maternal age and term">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="dashboard_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid quarto-dashboard-img-contain">
 </div>
-</section><section id="row-4" class="level3" height="40%"><h3 height="40%" class="anchored" data-anchor-id="row-4">Row</h3>
-<div class="cell" title="Maternal age">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="dashboard_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</section><section id="row-5" class="level3 tabset" height="40%"><h3 class="tabset anchored" height="40%" data-anchor-id="row-5">Row</h3>
-<div class="cell" title="Maternal age and parity">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="dashboard_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell" title="Maternal age and term">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="dashboard_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</section></section><section id="column-3" class="level2" width="40%"><h2 width="40%" class="anchored" data-anchor-id="column-3">Column</h2>
-<div class="cell" title="Data">
-<div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-d628e1da0ed39f2c56cb" style="width:100%;height:auto;"></div>
+</div></div></div><bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Data" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title html-fill-item html-fill-container"><span style="display: inline">
+Data
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-d628e1da0ed39f2c56cb" style="width:100%;height:auto;"></div>
 <script type="application/json" data-for="htmlwidget-d628e1da0ed39f2c56cb">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107"],[1,2,3,5,7,8,10,15,17,19,21,22,24,25,26,27,28,29,30,31,35,36,39,40,41,42,43,44,45,47,48,49,50,51,52,56,57,58,59,60,62,63,64,65,67,68,69,70,72,73,74,75,76,77,78,79,80,86,87,88,89,90,92,93,94,95,96,97,98,100,102,103,104,105,106,110,111,112,113,114,115,116,117,118,119,120,121,122,125,127,128,131,132,133,135,136,138,140,141,142,146,147,151,152,153,154,159],["&lt;20","20-34","&lt;20","&lt;20","&lt;20","&lt;20","20-34","20-34","&lt;20","20-34","&lt;20","20-34","&lt;20","20-34","35+","20-34","20-34","&lt;20","20-34","35+","35+","20-34","20-34","20-34","&lt;20","35+","35+","20-34","&lt;20","20-34","20-34","&lt;20","20-34","&lt;20","20-34","&lt;20","35+","20-34","20-34","&lt;20","20-34","20-34","35+","35+","20-34","20-34","20-34","&lt;20","&lt;20","35+","35+","20-34","20-34","20-34","35+","20-34","&lt;20","20-34","20-34","20-34","20-34","20-34","35+","20-34","35+","20-34","20-34","&lt;20","20-34","20-34","35+","20-34","20-34","20-34","&lt;20","&lt;20","35+","35+","20-34","20-34","20-34","20-34","20-34","20-34","&lt;20","20-34","20-34","35+","20-34","35+","20-34","20-34","20-34","35+","20-34","&lt;20","20-34","35+","20-34","35+","20-34","&lt;20","&lt;20","35+","35+","&lt;20","&lt;20"],["Nulliparous","Multiparous","Nulliparous","Nulliparous","Primiparous","Nulliparous","Multiparous","Primiparous","Nulliparous","Multiparous","Primiparous","Nulliparous","Nulliparous","Nulliparous","Nulliparous","Multiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Nulliparous","Primiparous","Nulliparous","Nulliparous","Multiparous","Nulliparous","Multiparous","Nulliparous","Multiparous","Nulliparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Multiparous","Nulliparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Multiparous","Nulliparous","Primiparous","Multiparous","Multiparous","Primiparous","Multiparous","Multiparous","Nulliparous","Nulliparous","Nulliparous","Nulliparous","Nulliparous","Multiparous","Multiparous","Primiparous","Multiparous","Multiparous","Primiparous","Nulliparous","Multiparous","Primiparous","Primiparous","Primiparous","Primiparous","Primiparous","Primiparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Multiparous","Multiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Nulliparous"],["Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Pre-term","Term","Pre-term","Pre-term","Term","Term","Term","Term"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>ID<\/th>\n      <th>Maternal age<\/th>\n      <th>Parity<\/th>\n      <th>Term<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"lrtip","language":{"info":"Showing _TOTAL_ entries"},"paging":true,"lengthMenu":[5,10,25],"pageLength":10,"scrollY":true,"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"patient_id","targets":1},{"name":"maternal_age","targets":2},{"name":"parity","targets":3},{"name":"term","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-</section></section><section id="caesarean" class="level1" data-orientation="columns"><h1 data-orientation="columns">Caesarean</h1>
-<section id="column-4" class="level2" width="60%"><h2 width="60%" class="anchored" data-anchor-id="column-4">Column</h2>
-<section id="row-6" class="level3" height="20%"><h3 height="20%" class="anchored" data-anchor-id="row-6">Row</h3>
-<div class="cell" data-component="valuebox" title="Total births">
-<div class="cell-output cell-output-stdout">
-<pre><code>$icon
-[1] "file-medical"
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+</div><div id="caesarean" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="columns" aria-labelledby="tab-caesarean">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 60fr) minmax(3em, 40fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 20fr) minmax(3em, 40fr) minmax(3em, 40fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div data-icon="file-medical" class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
 
-$color
-[1] "primary"
+<i class="bi bi-file-medical"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Total births
+</p>
+<p class="value-box-value">
+54
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-danger showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div data-icon="calendar-week" class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
 
-$value
-[1] 54</code></pre>
+<i class="bi bi-calendar-week"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Pre-term births
+</p>
+<p class="value-box-value">
+29.6%
+</p>
 </div>
 </div>
-<div class="cell" data-component="valuebox" title="Pre-term births">
-<div class="cell-output cell-output-stdout">
-<pre><code>$icon
-[1] "calendar-week"
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Maternal age" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title html-fill-item html-fill-container"><span style="display: inline">
+Maternal age
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="dashboard_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid quarto-dashboard-img-contain">
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+<div class="card tabset html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header dashboard-card-no-title bslib-navs-card-title">
 
-$color
-[1] "danger"
+<ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-16"><li class="nav-item" role="presentation"><a href="#card-tabset-16-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Maternal age and parity" aria-selected="true" class="nav-link active">Maternal age and parity</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-16-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Maternal age and term" aria-selected="false" class="nav-link">Maternal age and term</a></li></ul></div>
 
-$value
-[1] "29.6%"</code></pre>
+
+<div class="tab-content html-fill-item html-fill-container" data-tabset-id="card-tabset-16"><div class="tab-pane active show html-fill-item html-fill-container" role="tabpanel" id="card-tabset-16-1"><div class="card-body html-fill-item html-fill-container" data-title="Maternal age and parity">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="dashboard_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid quarto-dashboard-img-contain">
 </div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-16-2"><div class="card-body html-fill-item html-fill-container" data-title="Maternal age and term">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="dashboard_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid quarto-dashboard-img-contain">
 </div>
-</section><section id="row-7" class="level3" height="40%"><h3 height="40%" class="anchored" data-anchor-id="row-7">Row</h3>
-<div class="cell" title="Maternal age">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="dashboard_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</section><section id="row-8" class="level3 tabset" height="40%"><h3 class="tabset anchored" height="40%" data-anchor-id="row-8">Row</h3>
-<div class="cell" title="Maternal age and parity">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="dashboard_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell" title="Maternal age and term">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="dashboard_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</section></section><section id="column-5" class="level2" width="40%"><h2 width="40%" class="anchored" data-anchor-id="column-5">Column</h2>
-<div class="cell" title="Data">
-<div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-e14a1cd72af1b4b95924" style="width:100%;height:auto;"></div>
+</div></div></div><bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Data" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title html-fill-item html-fill-container"><span style="display: inline">
+Data
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-e14a1cd72af1b4b95924" style="width:100%;height:auto;"></div>
 <script type="application/json" data-for="htmlwidget-e14a1cd72af1b4b95924">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54"],[4,6,9,11,12,13,14,16,18,20,23,32,33,34,37,38,46,53,54,55,61,66,71,81,82,83,84,85,91,99,101,107,108,109,123,124,126,129,130,134,137,139,143,144,145,148,149,150,155,156,157,158,160,161],["20-34","35+","35+","35+","&lt;20","20-34","20-34","20-34","35+","&lt;20","35+","20-34","35+","&lt;20","35+","20-34","&lt;20","35+","35+","20-34","35+","20-34","&lt;20","&lt;20","35+","35+","20-34","35+","&lt;20","20-34","35+","35+","35+","20-34","&lt;20","35+","35+","&lt;20","35+","35+","20-34","35+","20-34","20-34","35+","35+","35+","&lt;20","20-34","20-34","35+","35+","20-34","&lt;20"],["Primiparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Nulliparous","Multiparous","Primiparous","Primiparous","Primiparous","Multiparous","Multiparous","Nulliparous","Nulliparous","Multiparous","Multiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Primiparous","Multiparous","Primiparous","Multiparous","Multiparous","Multiparous","Nulliparous","Multiparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Multiparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Multiparous","Multiparous","Multiparous","Primiparous"],["Term","Term","Term","Pre-term","Pre-term","Pre-term","Term","Pre-term","Term","Pre-term","Term","Term","Term","Term","Term","Pre-term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Pre-term","Term","Term","Term","Term","Pre-term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Pre-term","Term"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>ID<\/th>\n      <th>Maternal age<\/th>\n      <th>Parity<\/th>\n      <th>Term<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"lrtip","language":{"info":"Showing _TOTAL_ entries"},"paging":true,"lengthMenu":[5,10,25],"pageLength":10,"scrollY":true,"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"patient_id","targets":1},{"name":"maternal_age","targets":2},{"name":"parity","targets":3},{"name":"term","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-</section></section><section id="data" class="level1"><h1>Data</h1>
-<div class="cell">
-<div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-0a8fc4429d11d31b992b" style="width:100%;height:auto;"></div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+</div><div id="data" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-data">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-0a8fc4429d11d31b992b" style="width:100%;height:auto;"></div>
 <script type="application/json" data-for="htmlwidget-0a8fc4429d11d31b992b">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161],["&lt;20","20-34","&lt;20","20-34","&lt;20","35+","&lt;20","&lt;20","35+","20-34","35+","&lt;20","20-34","20-34","20-34","20-34","&lt;20","35+","20-34","&lt;20","&lt;20","20-34","35+","&lt;20","20-34","35+","20-34","20-34","&lt;20","20-34","35+","20-34","35+","&lt;20","35+","20-34","35+","20-34","20-34","20-34","&lt;20","35+","35+","20-34","&lt;20","&lt;20","20-34","20-34","&lt;20","20-34","&lt;20","20-34","35+","35+","20-34","&lt;20","35+","20-34","20-34","&lt;20","35+","20-34","20-34","35+","35+","20-34","20-34","20-34","20-34","&lt;20","&lt;20","&lt;20","35+","35+","20-34","20-34","20-34","35+","20-34","&lt;20","&lt;20","35+","35+","20-34","35+","20-34","20-34","20-34","20-34","20-34","&lt;20","35+","20-34","35+","20-34","20-34","&lt;20","20-34","20-34","20-34","35+","35+","20-34","20-34","20-34","&lt;20","35+","35+","20-34","&lt;20","35+","35+","20-34","20-34","20-34","20-34","20-34","20-34","&lt;20","20-34","20-34","35+","&lt;20","35+","20-34","35+","35+","20-34","&lt;20","35+","20-34","20-34","35+","35+","20-34","&lt;20","20-34","20-34","35+","35+","20-34","35+","20-34","20-34","35+","20-34","&lt;20","35+","35+","&lt;20","&lt;20","35+","35+","&lt;20","20-34","20-34","35+","35+","&lt;20","20-34","&lt;20"],["Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Cesarean","Vaginal","Vaginal","Cesarean","Vaginal","Cesarean","Cesarean","Cesarean","Cesarean","Vaginal","Cesarean","Vaginal","Cesarean","Vaginal","Cesarean","Vaginal","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Cesarean","Cesarean","Vaginal","Vaginal","Cesarean","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Cesarean","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Cesarean","Cesarean","Cesarean","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Cesarean","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Cesarean","Vaginal","Cesarean","Vaginal","Vaginal","Cesarean","Cesarean","Vaginal","Vaginal","Vaginal","Cesarean","Vaginal","Vaginal","Cesarean","Vaginal","Cesarean","Vaginal","Vaginal","Vaginal","Cesarean","Cesarean","Cesarean","Vaginal","Vaginal","Cesarean","Cesarean","Cesarean","Vaginal","Vaginal","Vaginal","Vaginal","Cesarean","Cesarean","Cesarean","Cesarean","Vaginal","Cesarean","Cesarean"],["Nulliparous","Multiparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Multiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Nulliparous","Primiparous","Multiparous","Nulliparous","Primiparous","Nulliparous","Multiparous","Nulliparous","Nulliparous","Nulliparous","Multiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Primiparous","Nulliparous","Multiparous","Multiparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Nulliparous","Nulliparous","Multiparous","Nulliparous","Multiparous","Nulliparous","Multiparous","Multiparous","Nulliparous","Multiparous","Nulliparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Multiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Multiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Primiparous","Multiparous","Nulliparous","Primiparous","Multiparous","Multiparous","Multiparous","Multiparous","Primiparous","Multiparous","Multiparous","Nulliparous","Nulliparous","Multiparous","Nulliparous","Multiparous","Nulliparous","Nulliparous","Nulliparous","Multiparous","Multiparous","Primiparous","Multiparous","Multiparous","Primiparous","Nulliparous","Multiparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Primiparous","Primiparous","Nulliparous","Nulliparous","Multiparous","Multiparous","Primiparous","Multiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Nulliparous","Primiparous","Primiparous","Nulliparous","Primiparous","Primiparous","Multiparous","Multiparous","Nulliparous","Multiparous","Primiparous"],["Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Pre-term","Pre-term","Pre-term","Term","Term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Pre-term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Pre-term","Term","Term","Term","Term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Pre-term","Term","Pre-term","Term","Term","Pre-term","Term","Term","Term","Term","Pre-term","Pre-term","Term","Term","Pre-term","Term","Term","Term","Term","Pre-term","Term","Term","Term","Pre-term","Term"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>ID<\/th>\n      <th>Maternal age<\/th>\n      <th>Delivery method<\/th>\n      <th>Parity<\/th>\n      <th>Term<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"ftp","language":{"info":"Showing _TOTAL_ entries"},"paging":true,"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"patient_id","targets":1},{"name":"maternal_age","targets":2},{"name":"delivery_method","targets":3},{"name":"parity","targets":4},{"name":"term","targets":5}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+</div>
+</div></div><aside id="bslib-sidebar-1" class="sidebar html-fill-container html-fill-item"><div class="html-fill-container html-fill-item">
+<p>This dashboard displays statistics for:</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><strong>Hospital</strong></td>
+<td>Grey Sloan Memorial</td>
+</tr>
+<tr class="even">
+<td><strong>Unit</strong></td>
+<td>Labor and Delivery</td>
+</tr>
+<tr class="odd">
+<td><strong>Month</strong></td>
+<td>October 2023</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>In October 2023 the staff breakdown in the unit was as follows:</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><strong>Attending physicians</strong></td>
+<td>14</td>
+</tr>
+<tr class="even">
+<td><strong>Residents</strong></td>
+<td>21</td>
+</tr>
+<tr class="odd">
+<td><strong>Nurses</strong></td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Disclaimer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This is a fictional hospital. The data are simulated based on realistic birth characteristics and risk factors from <a href="https://www.cdc.gov/nchs/data/nvsr/nvsr72/nvsr72-01.pdf">this report by the CDC</a>.</p>
+</div>
+</div>
+</div>
+</div></aside>
+<button class="collapse-toggle" type="button" title="Toggle sidebar" aria-expanded="true" aria-controls="bslib-sidebar-1">
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" class="bi bi-chevron-left collapse-icon" style="fill:currentColor;" aria-hidden="true" role="img">
+      <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path>
+    </svg>
+</button>
+<script data-bslib-sidebar-init="">
+bslib.Sidebar.initCollapsibleAll()
+</script>
+</div>
+
+
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -1267,7 +1467,8 @@ $value
   });
   </script>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
 <p><span class="faux-block">© 2026 Namjun Cho CC BY-SA 4.0</span></p>
 </div>   
@@ -1279,6 +1480,16 @@ $value
 </div>
   </div>
 </footer>
+
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (_event) {
+  if (window.bslib.Card) {
+    window.bslib.Card.initializeAllCards();
+  }
+}); 
+</script>
+  
+
 
 
 </body></html>
