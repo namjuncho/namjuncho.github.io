@@ -4,9 +4,9 @@ title: "Blog"
 
 # Building the Website
 
-Since this was my first time building a website, I followed the <a href="https://www.marvinschmitt.com/blog/website-tutorial-quarto/">tutorial</a> and template generously shared online by <a href="https://github.com/marvinschmitt/quarto-website-template/">Marvin Schmitt</a>. It gives a step-by-step with helpful explanations that anybody could follow.
+Since this was my first time building a website, I followed the <a href="https://www.marvinschmitt.com/blog/website-tutorial-quarto/">tutorial</a> and template generously shared online by <a href="https://github.com/marvinschmitt/quarto-website-template/">Marvin Schmitt</a>. It gives a step-by-step with helpful explanations that anybody could follow. For the data presentation, I used the Labor and Delivery dashboard template provided by Dr. Zhang in PQHS 431 at CWRU.
 
-I am still in the process of learning R and Github, so I played around with the template structure to get an idea of how things work in this environment. Doing so helped me understand the function of each component and become more confident with my coding. With each obstacle, I learned something new.
+I am still in the process of learning R and Github, so I played around with the structures of both templates and Googled function parameters to get an idea of how things work in this environment. Doing so helped me understand the function of each component and become more confident with my coding. With each obstacle, I learned something new.
 
 ----
 

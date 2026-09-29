@@ -31,11 +31,16 @@ library(tidyverse)
 # saveRDS(bpxo_raw, "data/P_BPXO.Rds")
 # saveRDS(demo_raw, "data/P_DEMO.Rds")
 
-bmx_raw <- readRDS("data/P_BMX.Rds")
-bpxo_raw <- readRDS("data/P_BPXO.Rds")
-demo_raw <- readRDS("data/P_DEMO.Rds")
+bmx_raw <- readRDS("dashboard-main/data/P_BMX.Rds")
+bpxo_raw <- readRDS("dashboard-main/data/P_BPXO.Rds")
+demo_raw <- readRDS("dashboard-main/data/P_DEMO.Rds")
 
 ```
+
+
+<!--
+DATA DEVELOPMENT AND CLEANING
+-->
 
 ```{r}
 #| label: inspect-data
@@ -106,11 +111,7 @@ analytic_data <-
     avg_sbp = if_else(is.nan(avg_sbp), NA_real_, avg_sbp),
 
     sex = factor(
-      case_when(
-        RIAGENDR == "Male" ~ "Male",
-        RIAGENDR == "Female" ~ "Female",
-        TRUE ~ NA_character_
-      ),
+      RIAGENDR,
       levels = c("Female", "Male")
     ),
 
@@ -178,6 +179,12 @@ analytic_data |>
   )
 ```
 
+
+
+<!--
+OVERVIEW DISPLAY
+-->
+
 #  {.sidebar}
 
 This dashboard summarizes systolic blood pressure data among adults aged 20–79 years in the 2017 – March 2020 pre-pandemic dataset from NHANES.
@@ -187,8 +194,8 @@ This dashboard summarizes systolic blood pressure data among adults aged 20–79
 | **Source** | NHANES |
 | **Cycle** | 2017–March 2020 |
 | **Population** | Adults aged 20–79 years |
-| **Total sample** | 7,968 |
-| **Complete SBP** | 7,187 |
+| **Total participants** | 7,968 |
+| **Complete data** | 7,187 |
 
 ------------------------------------------------------------------------
 # Overview
@@ -212,7 +219,7 @@ mean_sbp_overall <- mean(analytic_data$avg_sbp, na.rm = TRUE)
 
 list(
   color = "primary",
-  value = paste0(round(mean_sbp_overall, 1), " mmHg")
+  value = paste(round(mean_sbp_overall, 1), "mmHg")
 )
 ```
 
@@ -234,11 +241,11 @@ list(
 
 list(
   color = "primary",
-  value = paste0(
+  value = paste(
     min(analytic_data$RIDAGEYR, na.rm = TRUE),
     "–",
     max(analytic_data$RIDAGEYR, na.rm = TRUE),
-    " years"
+    "years"
   )
 )
 ```
@@ -285,16 +292,9 @@ analytic_data |>
 
 
 
-
-
-
-
-
-
-
-
-
-
+<!--
+ANALYSIS B
+-->
 
 # Sex and Systolic Blood Pressure
 
@@ -342,7 +342,7 @@ female_mean <- analysis_B_summary |>
 
 list(
   color = "primary",
-  value = paste0(round(female_mean, 1), " mmHg")
+  value = paste(round(female_mean, 1), "mmHg")
 )
 ```
 
@@ -356,7 +356,7 @@ male_mean <- analysis_B_summary |>
 
 list(
   color = "primary",
-  value = paste0(round(male_mean, 1), " mmHg")
+  value = paste(round(male_mean, 1), "mmHg")
 )
 ```
 
@@ -368,7 +368,7 @@ mean_difference <- female_mean - male_mean
 
 list(
   color = "primary",
-  value = paste0(round(mean_difference, 2), " mmHg")
+  value = paste(round(mean_difference, 2), "mmHg")
 )
 ```
 
@@ -415,16 +415,9 @@ analysis_B_summary |>
 
 
 
-
-
-
-
-
-
-
-
-
-
+<!--
+ANALYSIS C
+-->
 
 # Education and Systolic Blood Pressure {orientation="columns"}
 
@@ -509,9 +502,9 @@ lowest_education <-
 
 list(
   color = "primary",
-  value = paste0(
+  value = paste(
     round(lowest_education$mean_sbp, 1),
-    " mmHg"
+    "mmHg"
   )
 )
 ```
@@ -526,9 +519,9 @@ highest_education <-
 
 list(
   color = "primary",
-  value = paste0(
+  value = paste(
     round(highest_education$mean_sbp, 1),
-    " mmHg"
+    "mmHg"
   )
 )
 ```
