@@ -261,7 +261,7 @@ analytic_data |>
     x = "Average systolic blood pressure (mmHg)",
     y = "Number of participants"
   ) +
-  theme_minimal()
+  theme_minimal(base_size = 18)
 ```
 
 ### Column {width="50%"}
@@ -280,7 +280,7 @@ analytic_data |>
     x = "BMI (kg/m²)",
     y = "Number of participants"
   ) +
-  theme_minimal()
+  theme_minimal(base_size= 18)
 ```
 
 
@@ -386,7 +386,7 @@ analysis_B |>
     x = NULL,
     y = "Average systolic blood pressure (mmHg)"
   ) +
-  theme_minimal()
+  theme_minimal(base_size = 18)
 ```
 
 ### Column {width="45%"}
@@ -571,7 +571,7 @@ analysis_C |>
     x = NULL,
     y = "Average systolic blood pressure (mmHg)"
   ) +
-  theme_minimal(base_size = 11) +
+  theme_minimal(base_size = 18) +
   theme(
     axis.text.x = element_text(
       angle = 20,
@@ -603,7 +603,7 @@ analysis_C_summary |>
     x = NULL,
     y = "Mean systolic blood pressure (mmHg)"
   ) +
-  theme_minimal(base_size = 11) +
+  theme_minimal(base_size = 18) +
   theme(
     axis.text.x = element_text(
       angle = 20,
