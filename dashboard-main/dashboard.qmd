@@ -3,7 +3,6 @@ title: "BMI vs. Systolic Blood Pressure Dashboard"
 format: 
   dashboard:
     page-title: "BMI vs. Systolic Blood Pressure Dashboard"
-logo: images/logo.png 
 theme: [sandstone, theme/custom.scss]
 
 editor_options: 
@@ -185,12 +184,11 @@ This dashboard summarizes systolic blood pressure data among adults aged 20–79
 
 | | |
 |---|---|
-| **Dataset** | NHANES |
+| **Source** | NHANES |
 | **Cycle** | 2017–March 2020 |
 | **Population** | Adults aged 20–79 years |
 | **Total sample** | 7,968 |
 | **Complete SBP** | 7,187 |
-|---|---|
 
 ------------------------------------------------------------------------
 # Overview
@@ -284,6 +282,19 @@ analytic_data |>
   ) +
   theme_minimal()
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Sex and Systolic Blood Pressure
 
@@ -404,7 +415,18 @@ analysis_B_summary |>
 
 
 
-# Education and Systolic Blood Pressure
+
+
+
+
+
+
+
+
+
+
+
+# Education and Systolic Blood Pressure {orientation="columns"}
 
 ```{r}
 #| label: analysis-c
@@ -465,14 +487,13 @@ analysis_C_p <-
   summary(analysis_C_model)[[1]][["Pr(>F)"]][1]
 ```
 
-## Row {height="25%"}
+## Column {width="20%"}
 
 ```{r}
 #| component: valuebox
 #| title: "Participants"
 
 list(
-  icon = "people",
   color = "primary",
   value = nrow(analysis_C)
 )
@@ -480,18 +501,15 @@ list(
 
 ```{r}
 #| component: valuebox
-#| title: "Lowest Mean SBP"
+#| title: "College Grad Mean SBP"
 
 lowest_education <-
   analysis_C_summary |>
   slice_min(mean_sbp, n = 1)
 
 list(
-  icon = "arrow-down",
   color = "primary",
   value = paste0(
-    lowest_education$education,
-    ": ",
     round(lowest_education$mean_sbp, 1),
     " mmHg"
   )
@@ -500,18 +518,15 @@ list(
 
 ```{r}
 #| component: valuebox
-#| title: "Highest Mean SBP"
+#| title: "Less than HS Mean SBP"
 
 highest_education <-
   analysis_C_summary |>
   slice_max(mean_sbp, n = 1)
 
 list(
-  icon = "arrow-up",
   color = "primary",
   value = paste0(
-    highest_education$education,
-    ": ",
     round(highest_education$mean_sbp, 1),
     " mmHg"
   )
@@ -530,15 +545,12 @@ anova_p_label <-
   )
 
 list(
-  icon = "calculator",
   color = "primary",
   value = anova_p_label
 )
 ```
 
-## Row {height="50%"}
-
-### Column {width="50%"}
+## Column {width="40%"}
 
 ```{r}
 #| title: "SBP Distribution by Education"
@@ -568,7 +580,6 @@ analysis_C |>
   )
 ```
 
-### Column {width="50%"}
 
 ```{r}
 #| title: "Mean SBP and 90% Confidence Intervals"
@@ -601,12 +612,12 @@ analysis_C_summary |>
   )
 ```
 
-## Row {height="25%" .tabset}
+## Column {width="40%"}
 
 ### Group Summary
 
 ```{r}
-#| title: "Descriptive Statistics"
+#| title: "Group Summary"
 
 analysis_C_summary |>
   select(
@@ -638,7 +649,7 @@ analysis_C_summary |>
 ### Tukey Comparisons
 
 ```{r}
-#| title: "Tukey HSD Pairwise Comparisons"
+#| title: "Tukey Comparisons"
 
 analysis_C_tukey_table |>
   mutate(
