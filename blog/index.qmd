@@ -11,9 +11,9 @@ I am still in the process of learning R and Github, so I played around with the 
 ----
 
 # Central Hypothesis
-*Research question:* Is body mass index associated with systolic blood pressure?
+**Research question:** How is systolic blood pressure associated with sex, education level, and obesity status among U.S. adults?
 
-*Hypothesis:* Adults with higher body mass index will tend to have higher systolic blood pressure.
+**Hypothesis:** Systolic blood pressure will vary by sex, education level, and obesity status, with the largest differences expected between obesity groups.
 
 I centered my first project around the hypothesis that higher BMI is associated with higher systolic blood pressure among U.S. adults between the ages of 21 and 79 years old. I kept it very simple, since the goal of this project is to get comfortable with data presentation on a website using R.
 

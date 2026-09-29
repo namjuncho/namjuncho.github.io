@@ -1,8 +1,8 @@
 ---
-title: "BMI vs. Systolic Blood Pressure Dashboard"
+title: "Systolic Blood Pressure (SBP) Dashboard"
 format: 
   dashboard:
-    page-title: "BMI vs. Systolic Blood Pressure Dashboard"
+    page-title: "Systolic Blood Pressure (SBP) Dashboard"
 theme: [sandstone, theme/custom.scss]
 
 editor_options: 
@@ -38,11 +38,14 @@ demo_raw <- readRDS("dashboard-main/data/P_DEMO.Rds")
 ```
 
 
-<!--
-DATA DEVELOPMENT AND CLEANING
--->
+
 
 ```{r}
+#___________________________________________________________________________________________
+# DATA DEVELOPMENT AND CLEANING
+#___________________________________________________________________________________________
+
+
 #| label: inspect-data
 #| message: false
 #| include: false
@@ -145,7 +148,16 @@ analytic_data <-
         TRUE ~ NA_character_
       ),
       levels = c("Not obese", "Obese")
-    )
+    ),
+    
+    high_sbp = factor(
+      case_when(
+        avg_sbp >= 120 ~ "Elevated/High SBP",
+        avg_sbp < 120 ~ "Normal SBP",
+        TRUE ~ NA_character_
+        ),
+      levels = c("Normal SBP", "Elevated/High SBP")
+      )
   )
 ```
 
@@ -181,9 +193,12 @@ analytic_data |>
 
 
 
-<!--
-OVERVIEW DISPLAY
--->
+
+```{r}
+#___________________________________________________________________________________________
+# OVERVIEW DISPLAY
+#___________________________________________________________________________________________
+```
 
 #  {.sidebar}
 
@@ -292,13 +307,15 @@ analytic_data |>
 
 
 
-<!--
-ANALYSIS B
--->
 
-# Sex and Systolic Blood Pressure
+# Sex
 
 ```{r}
+#___________________________________________________________________________________________
+# Analysis B
+#___________________________________________________________________________________________
+
+
 #| label: analysis-b
 #| results: hide
 #| message: false
@@ -392,7 +409,7 @@ analysis_B |>
 ### Column {width="45%"}
 
 ```{r}
-#| title: "Analysis B Summary"
+#| title: "Sex vs. SBP Summary"
 
 analysis_B_summary |>
   mutate(
@@ -415,13 +432,15 @@ analysis_B_summary |>
 
 
 
-<!--
-ANALYSIS C
--->
 
-# Education and Systolic Blood Pressure {orientation="columns"}
+# Education {orientation="columns"}
 
 ```{r}
+#___________________________________________________________________________________________
+# Analysis C
+#___________________________________________________________________________________________
+
+
 #| label: analysis-c
 #| include: false
 
@@ -610,7 +629,7 @@ analysis_C_summary |>
 ### Group Summary
 
 ```{r}
-#| title: "Group Summary"
+#| title: "Education vs. SBP Summary"
 
 analysis_C_summary |>
   select(
@@ -642,7 +661,7 @@ analysis_C_summary |>
 ### Tukey Comparisons
 
 ```{r}
-#| title: "Tukey Comparisons"
+#| title: "Tukey HSD Pairwise Comparisons"
 
 analysis_C_tukey_table |>
   mutate(
@@ -661,6 +680,283 @@ analysis_C_tukey_table |>
       "90% CI Lower",
       "90% CI Upper",
       "Adjusted p-value"
+    )
+  )
+```
+
+
+
+
+# Obesity {orientation="columns"}
+
+```{r}
+#___________________________________________________________________________________________
+# Analysis D
+#___________________________________________________________________________________________
+
+
+
+#| label: analysis-d
+#| include: false
+
+analysis_D <-
+  analytic_data |>
+  filter(
+    !is.na(obesity),
+    !is.na(high_sbp)
+  )
+
+# 2 x 2 table
+analysis_D_table <-
+  table(
+    analysis_D$obesity,
+    analysis_D$high_sbp
+  )
+
+# Counts and within-obesity proportions
+analysis_D_summary <-
+  analysis_D |>
+  count(obesity, high_sbp) |>
+  group_by(obesity) |>
+  mutate(
+    proportion = n / sum(n)
+  ) |>
+  ungroup()
+
+# Extract cell counts
+not_obese_normal <-
+  analysis_D_table["Not obese", "Normal SBP"]
+
+not_obese_high <-
+  analysis_D_table["Not obese", "Elevated/High SBP"]
+
+obese_normal <-
+  analysis_D_table["Obese", "Normal SBP"]
+
+obese_high <-
+  analysis_D_table["Obese", "Elevated/High SBP"]
+
+# Prevalence of high SBP
+risk_not_obese <-
+  not_obese_high /
+  (not_obese_high + not_obese_normal)
+
+risk_obese <-
+  obese_high /
+  (obese_high + obese_normal)
+
+# Relative risk / prevalence ratio: Obese vs Not obese
+risk_ratio <-
+  risk_obese / risk_not_obese
+
+# Odds ratio: Obese vs Not obese
+odds_obese <-
+  obese_high / obese_normal
+
+odds_not_obese <-
+  not_obese_high / not_obese_normal
+
+odds_ratio <-
+  odds_obese / odds_not_obese
+
+# Risk difference: Obese minus Not obese
+risk_difference <-
+  risk_obese - risk_not_obese
+
+# 90% CI for relative risk
+se_log_rr <-
+  sqrt(
+    (1 / obese_high) -
+      (1 / (obese_high + obese_normal)) +
+      (1 / not_obese_high) -
+      (1 / (not_obese_high + not_obese_normal))
+  )
+
+rr_lower <-
+  exp(
+    log(risk_ratio) -
+      qnorm(0.95) * se_log_rr
+  )
+
+rr_upper <-
+  exp(
+    log(risk_ratio) +
+      qnorm(0.95) * se_log_rr
+  )
+
+# 90% CI for odds ratio
+se_log_or <-
+  sqrt(
+    1 / obese_high +
+      1 / obese_normal +
+      1 / not_obese_high +
+      1 / not_obese_normal
+  )
+
+or_lower <-
+  exp(
+    log(odds_ratio) -
+      qnorm(0.95) * se_log_or
+  )
+
+or_upper <-
+  exp(
+    log(odds_ratio) +
+      qnorm(0.95) * se_log_or
+  )
+
+# 90% CI for risk difference
+se_rd <-
+  sqrt(
+    risk_obese * (1 - risk_obese) /
+      (obese_high + obese_normal) +
+      risk_not_obese * (1 - risk_not_obese) /
+      (not_obese_high + not_obese_normal)
+  )
+
+rd_lower <-
+  risk_difference -
+    qnorm(0.95) * se_rd
+
+rd_upper <-
+  risk_difference +
+    qnorm(0.95) * se_rd
+```
+
+## Column {width="25%"}
+
+```{r}
+#| component: valuebox
+#| title: "Elevated/High SBP: Obese"
+
+list(
+  color = "primary",
+  value = paste0(
+    round(risk_obese * 100, 1),
+    "%"
+  )
+)
+```
+
+```{r}
+#| component: valuebox
+#| title: "Elevated/High SBP: Not Obese"
+
+list(
+  color = "primary",
+  value = paste0(
+    round(risk_not_obese * 100, 1),
+    "%"
+  )
+)
+```
+
+```{r}
+#| component: valuebox
+#| title: "Relative Risk"
+
+list(
+  color = "primary",
+  value = round(risk_ratio, 2)
+)
+```
+
+```{r}
+#| component: valuebox
+#| title: "Odds Ratio"
+
+list(
+  color = "primary",
+  value = round(odds_ratio, 2)
+)
+```
+
+## Column {width="40%"}
+
+```{r}
+#| title: "Elevated/High SBP by Obesity Status"
+
+analysis_D_summary |>
+  ggplot(
+    aes(
+      x = obesity,
+      y = proportion,
+      fill = high_sbp
+    )
+  ) +
+  geom_col(
+    position = "stack"
+  ) +
+  scale_y_continuous(
+    labels = scales::percent
+  ) +
+  labs(
+    x = NULL,
+    y = "Proportion",
+    fill = "SBP status"
+  ) +
+  theme_minimal(base_size = 11)
+```
+
+```{r}
+#| title: "2 × 2 Table"
+
+analysis_D |>
+  count(obesity, high_sbp) |>
+  tidyr::pivot_wider(
+    names_from = high_sbp,
+    values_from = n
+  ) |>
+  knitr::kable(
+    col.names = c(
+      "Obesity Status",
+      "Normal SBP",
+      "Elevated/High SBP"
+    )
+  )
+```
+
+## Column {width="35%"}
+
+### Effect Estimates
+
+```{r}
+analysis_D_effects <-
+  tibble(
+    Measure = c(
+      "Relative Risk",
+      "Odds Ratio",
+      "Risk Difference"
+    ),
+    Estimate = c(
+      risk_ratio,
+      odds_ratio,
+      risk_difference
+    ),
+    Lower_90 = c(
+      rr_lower,
+      or_lower,
+      rd_lower
+    ),
+    Upper_90 = c(
+      rr_upper,
+      or_upper,
+      rd_upper
+    )
+  ) |>
+  mutate(
+    Estimate = round(Estimate, 3),
+    Lower_90 = round(Lower_90, 3),
+    Upper_90 = round(Upper_90, 3)
+  )
+
+analysis_D_effects |>
+  knitr::kable(
+    col.names = c(
+      "Measure",
+      "Estimate",
+      "90% CI Lower",
+      "90% CI Upper"
     )
   )
 ```
