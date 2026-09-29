@@ -569,7 +569,7 @@ analysis_C |>
   ) +
   labs(
     x = NULL,
-    y = "Average systolic blood pressure (mmHg)"
+    y = "Systolic blood pressure (mmHg)"
   ) +
   theme_minimal(base_size = 18) +
   theme(
