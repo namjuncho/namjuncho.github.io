@@ -21,11 +21,11 @@
     "text": "Since this was my first time building a website, I followed the tutorial and template generously shared online by Marvin Schmitt. It gives a step-by-step with helpful explanations that anybody could follow. For the data presentation, I used the Labor and Delivery dashboard template provided by Dr. Zhang in PQHS 431 at CWRU.\nI am still in the process of learning R and Github, so I played around with the structures of both templates and Googled function parameters to get an idea of how things work in this environment. Doing so helped me understand the function of each component and become more confident with my coding. With each obstacle, I learned something new."
   },
   {
-    "objectID": "blog/index.html#section",
-    "href": "blog/index.html#section",
+    "objectID": "blog/index.html#sex-vs.-sbp",
+    "href": "blog/index.html#sex-vs.-sbp",
     "title": "Blog",
-    "section": "",
-    "text": "Among adults aged 20–79 in the 2017–March 2020 pre-pandemic NHANES sample, the mean systolic blood pressure was 121.26 mmHg for females and 126.70 mmHg for males. The estimated difference in population means (female minus male) was −5.44 mmHg. Using Welch’s two-sample t procedure, the 90% confidence interval for this difference was −6.16 to −4.72 mmHg. Because this interval does not include 0, the results provide evidence of a difference in mean systolic blood pressure between females and males, with females having a lower mean systolic blood pressure."
+    "section": "Sex vs. SBP",
+    "text": "Sex vs. SBP\nI wanted to tackle the broadest category first, so I chose sex. I found that the mean SBP for females was 121.26 mmHg and for males, it was 126.70 mmHg. The estimated difference in population means (female minus male) was −5.44 mmHg. Then, I used Welch’s two-sample t procedure to obtain the 90% confidence interval for this difference, coming out to −6.16 to −4.72 mmHg. Because interval does not span across 0, the results provide evidence of a difference in mean systolic blood pressure between females and males, with females having a lower mean systolic blood pressure on average."
   },
   {
     "objectID": "dashboard-main/LICENSE.html",

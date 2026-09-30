@@ -32,6 +32,10 @@ library(Epi)
 # saveRDS(bpxo_raw, "data/P_BPXO.Rds")
 # saveRDS(demo_raw, "data/P_DEMO.Rds")
 
+#bmx_raw <- readRDS("dashboard-main/data/P_BMX.Rds")
+#bpxo_raw <- readRDS("dashboard-main/data/P_BPXO.Rds")
+#demo_raw <- readRDS("dashboard-main/data/P_DEMO.Rds")
+
 bmx_raw <- readRDS("data/P_BMX.Rds")
 bpxo_raw <- readRDS("data/P_BPXO.Rds")
 demo_raw <- readRDS("data/P_DEMO.Rds")
@@ -800,7 +804,7 @@ list(
 
 ## Row
 
-### Column {width=50%}
+### Column {width="50%"}
 
 ```{r}
 #| title: "Elevated/High SBP by Obesity Status"
@@ -845,15 +849,10 @@ analysis_D |>
   )
 ```
 
-
 ```{r}
 #| title: "Epi 2 × 2 Results"
-Epi::twoby2(
-  analysis_D_table,
-  conf.level = 0.90,
-  print = TRUE,
-  dec = 3
-)
+
+analysis_D_results
 ```
 
 
@@ -865,13 +864,238 @@ Analysis E
 ____________________________________________________________________________________________
 -->
 
+# Education x Categorized SBP {orientation="columns"}
+
 ```{r}
 #| label: analysis-e
 #| include: false
 
 analysis_E <- 
   analytic_data |>
-  filter 
+  mutate(
+    sbp_category = factor(
+      case_when(
+        avg_sbp < 120 ~ "Healthy",
+        avg_sbp >= 120 & avg_sbp < 130 ~ "Elevated",
+        avg_sbp >= 130 & avg_sbp < 140 ~ "Stage 1",
+        avg_sbp >= 140 ~ "Stage 2 or Crisis",
+        TRUE ~ NA_character_
+      ),
+      levels = c(
+        "Healthy",
+        "Elevated",
+        "Stage 1",
+        "Stage 2 or Crisis"
+      )
+    )
+  ) |>
+  filter(
+    !is.na(education),
+    !is.na(sbp_category)
+  )
+
+# Cross-tabulation
+analysis_E_table <-
+  table(
+    analysis_E$education,
+    analysis_E$sbp_category
+  )
+
+# Chi-squared test
+analysis_E_chisq <-
+  chisq.test(analysis_E_table)
+
+# Counts and within-education proportions
+analysis_E_summary <-
+  analysis_E |>
+  count(education, sbp_category) |>
+  group_by(education) |>
+  mutate(
+    proportion = n/sum(n)
+  ) |>
+  ungroup()
+
+# p-value
+analysis_E_p <-
+  analysis_E_chisq$p.value
+
+# Expected counts for verifications
+analysis_E_expected <-
+  analysis_E_chisq$expected
+
 ```
 
+## Column {width="20%"}
+```{r}
+#| component: valuebox
+#| title: "Participants"
 
+list(
+  color = "primary",
+  value = nrow(analysis_E)
+)
+```
+
+```{r}
+#| component: valuebox
+#| title: "Education x SBP Categories"
+
+list(
+  color = "primary",
+  value = paste(nlevels(analysis_E$education), "x", nlevels(analysis_E$sbp_category))
+)
+```
+
+```{r}
+#| component: valuebox
+#| title: "Chi-square p-value"
+
+list(
+  color = "primary",
+  value = nrow(analysis_E)
+)
+
+chi_p_label <-
+  ifelse(
+    analysis_E_p < 0.001,
+    "< 0.001"
+  )
+
+list(
+  color = "primary",
+  value = chi_p_label
+)
+
+```
+
+``` {r}
+#| component: valuebox
+#| title: "Minimum Expected Count"
+
+list(
+  color = "primary",
+  value = round(min(analysis_E_expected), 1)
+)
+```
+
+## Column {width="40%"}
+
+```{r}
+#| title: "SBP Category by Education"
+
+analysis_E_summary |>
+  ggplot(
+    aes(
+      x = education,
+      y = proportion,
+      fill = sbp_category
+    )
+  ) +
+  geom_col() +
+  scale_y_continuous(
+    labels = scales::percent
+  ) + 
+  labs(
+    x = NULL,
+    y = "Proportion",
+    fill = "SBP category"
+  ) +
+  theme_minimal(base_size = 18) +
+  theme(
+    axis.text.x = element_text(
+      angle = 20,
+      hjust = 1
+    )
+  )
+
+```
+
+```{r}
+#| title: "Distribution of SBP Categories"
+
+analysis_E_summary |>
+  ggplot(
+    aes(
+      x = sbp_category,
+      y = proportion,
+      fill = education
+    )
+  ) +
+  geom_col(
+    position = "dodge"
+  ) + 
+  scale_y_continuous(
+    labels = scales::percent
+  ) + 
+  labs(
+    x = NULL,
+    y = "Proportion within education group",
+    fill = "Education"
+  ) +
+  theme_minimal(base_size = 18) +
+  theme(
+    axis.text.x = element_text(
+      angle = 20,
+      hjust = 1
+    )
+  )
+```
+
+## Column {width="40%"}
+
+### Row {height="33%"}
+
+**Description:**
+The chi-square test of independence showed evidence of an association between the education level and SBP categories, as the X² value computed to 104.38, with  p<0.001. Individuals with a higher education level tended to have a greater proportion of healthy SBP values and a lower proportion of Stage 2 hypertension or crisis-level values. For example, 50.9% of college graduates were in the healthy SBP category compared with 40.3% of participants with less than a high school education, while Stage 2 hypertension or crisis occurred in 13.1% and 25.8% of those groups, respectively.
+
+
+### Row {height="40%"}
+
+```{r}
+#| title: "Education x SBP Category"
+
+analysis_E |>
+  count(education, sbp_category) |>
+  tidyr::pivot_wider(
+    names_from = sbp_category,
+    values_from = n
+  ) |>
+  select(
+    education,
+    Healthy,
+    Elevated,
+    'Stage 1',
+    'Stage 2 or Crisis'
+  ) |>
+  knitr::kable(
+    col.names = c(
+      "Education",
+      "Healthy",
+      "Elevated",
+      "Stage 1",
+      "Stage 2 or Crisis"
+    )
+  )
+```
+
+### Chi-square Test
+
+### Row {height="27%"}
+
+```{r}
+#| title: "Chi-square Test"
+
+tibble(
+  Statistic = unname(analysis_E_chisq$statistic),
+  'Degrees of Freedom' = unname(analysis_E_chisq$parameter),
+  `p-value` = analysis_E_chisq$p.value
+) |>
+  mutate(
+    Statistic = round(Statistic, 2),
+    `p-value` = case_when(
+      `p-value` < 0.001 ~ "<0.001",
+      TRUE ~ sprintf("%.3f", `p-value`)
+    )
+  ) |>
+  knitr::kable()
+```
