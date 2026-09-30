@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>BMI vs.&nbsp;Systolic Blood Pressure Dashboard – Namjun Cho</title>
+<title>Systolic Blood Pressure (SBP) Dashboard – Namjun Cho</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -157,12 +157,12 @@ ul.task-list li input[type="checkbox"] {
 
 
       <div class="navbar-title">
-        <div class="navbar-title-text"><a href="#">BMI vs.&nbsp;Systolic Blood Pressure Dashboard</a></div>
+        <div class="navbar-title-text"><a href="#">Systolic Blood Pressure (SBP) Dashboard</a></div>
         
         
       </div>
     </div>
-<div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-overview" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#overview" data-scrolling="false" href="#overview" aria-controls="overview" aria-selected="true"><span class="nav-link-text">Overview</span></a></li><li class="nav-item" role="presentation"><a id="tab-sex-and-systolic-blood-pressure" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#sex-and-systolic-blood-pressure" data-scrolling="false" href="#sex-and-systolic-blood-pressure" aria-controls="sex-and-systolic-blood-pressure" aria-selected="false"><span class="nav-link-text">Sex and Systolic Blood Pressure</span></a></li><li class="nav-item" role="presentation"><a id="tab-education-and-systolic-blood-pressure" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#education-and-systolic-blood-pressure" data-scrolling="false" href="#education-and-systolic-blood-pressure" aria-controls="education-and-systolic-blood-pressure" aria-selected="false"><span class="nav-link-text">Education and Systolic Blood Pressure</span></a></li></ul></div></div>
+<div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-overview" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#overview" data-scrolling="false" href="#overview" aria-controls="overview" aria-selected="true"><span class="nav-link-text">Overview</span></a></li><li class="nav-item" role="presentation"><a id="tab-sex" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#sex" data-scrolling="false" href="#sex" aria-controls="sex" aria-selected="false"><span class="nav-link-text">Sex</span></a></li><li class="nav-item" role="presentation"><a id="tab-education" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#education" data-scrolling="false" href="#education" aria-controls="education" aria-selected="false"><span class="nav-link-text">Education</span></a></li><li class="nav-item" role="presentation"><a id="tab-obesity" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#obesity" data-scrolling="false" href="#obesity" aria-controls="obesity" aria-selected="false"><span class="nav-link-text">Obesity</span></a></li></ul></div></div>
 </nav>
 </header></header>
 <!-- content -->
@@ -171,6 +171,14 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
 <!-- main -->
 
+<!--
+____________________________________________________________________________________________
+DATA DEVELOPMENT AND CLEANING
+____________________________________________________________________________________________-->
+<!--
+____________________________________________________________________________________________
+DISPLAY
+____________________________________________________________________________________________-->
 <div class="bslib-sidebar-layout html-fill-item html-fill-container" data-bslib-sidebar-open="desktop" data-bslib-sidebar-init="true" data-bslib-sidebar-border="false" data-bslib-sidebar-border-radius="false"><div class="main html-fill-container html-fill-item"><div class="sidebar-content html-fill-item html-fill-container">
 <div class="tab-content bslib-grid html-fill-item html-fill-container" style="display: grid; grid-template-columns: minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
@@ -225,7 +233,7 @@ Mean BMI
 Age Range
 </p>
 <p class="value-box-value">
-20–79 years
+20 – 79 years
 </p>
 </div>
 </div>
@@ -266,10 +274,15 @@ Distribution of BMI
         <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
     </span>
 </bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+<!--
+____________________________________________________________________________________________
+Analysis B
+____________________________________________________________________________________________
+-->
 </div>
 </div>
 </div>
-</div><div id="sex-and-systolic-blood-pressure" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-sex-and-systolic-blood-pressure">
+</div><div id="sex" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-sex">
 <div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 25fr) minmax(3em, 75fr); grid-auto-columns: minmax(0, 1fr);">
 <div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
@@ -333,9 +346,9 @@ SBP Distribution by Sex
     </span>
 </bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
 </div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
-<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Analysis B Summary" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Sex vs. SBP Summary" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-header"><div class="card-title html-fill-item html-fill-container"><span style="display: inline">
-Analysis B Summary
+Sex vs.&nbsp;SBP Summary
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
@@ -377,10 +390,15 @@ Analysis B Summary
         <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
     </span>
 </bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+<!--
+____________________________________________________________________________________________
+Analysis C
+____________________________________________________________________________________________
+-->
 </div>
 </div>
 </div>
-</div><div id="education-and-systolic-blood-pressure" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="columns" aria-labelledby="tab-education-and-systolic-blood-pressure">
+</div><div id="education" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="columns" aria-labelledby="tab-education">
 <div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 20fr) minmax(3em, 40fr) minmax(3em, 40fr);
 grid-auto-rows: minmax(0, 1fr);">
 <div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
@@ -474,9 +492,9 @@ Mean SBP and 90% Confidence Intervals
 </div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr) minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
 <div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
-<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Group Summary" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Education vs. SBP Summary" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-header"><div class="card-title html-fill-item html-fill-container"><span style="display: inline">
-Group Summary
+Education vs.&nbsp;SBP Summary
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
@@ -537,9 +555,9 @@ Group Summary
 </div>
 <div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
-<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Tukey Comparisons" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Tukey HSD Pairwise Comparisons" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-header"><div class="card-title html-fill-item html-fill-container"><span style="display: inline">
-Tukey Comparisons
+Tukey HSD Pairwise Comparisons
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
@@ -612,7 +630,160 @@ Tukey Comparisons
     <span class="bslib-full-screen-enter badge rounded-pill">
         <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
     </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden html-fill-item html-fill-container">
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><!--
+____________________________________________________________________________________________
+Analysis D
+____________________________________________________________________________________________
+-->
+</div>
+</div>
+</div>
+</div><div id="obesity" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-obesity">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 25fr) minmax(3em, 75fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-primary" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-area">
+<p class="value-box-title">
+Elevated/High SBP: Obese
+</p>
+<p class="value-box-value">
+56.7%
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-primary" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-area">
+<p class="value-box-title">
+Elevated/High SBP: Not Obese
+</p>
+<p class="value-box-value">
+50.8%
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-primary" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-area">
+<p class="value-box-title">
+Participants
+</p>
+<p class="value-box-value">
+7133
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-primary" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-area">
+<p class="value-box-title">
+SBP Cutoff
+</p>
+<p class="value-box-value">
+≥120 mmHg
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 50fr) minmax(3em, 50fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Elevated/High SBP by Obesity Status" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title html-fill-item html-fill-container"><span style="display: inline">
+Elevated/High SBP by Obesity Status
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="dashboard_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid quarto-dashboard-img-contain">
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr) minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="2 × 2 Table" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title html-fill-item html-fill-container"><span style="display: inline">
+2 × 2 Table
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Obesity Status</th>
+<th style="text-align: right;">Normal SBP</th>
+<th style="text-align: right;">Elevated/High SBP</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Not obese</td>
+<td style="text-align: right;">1970</td>
+<td style="text-align: right;">2034</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Obese</td>
+<td style="text-align: right;">1356</td>
+<td style="text-align: right;">1773</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Epi 2 × 2 Results" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title html-fill-item html-fill-container"><span style="display: inline">
+Epi 2 × 2 Results
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output cell-output-stdout html-fill-item html-fill-container">
+<pre><code>$table
+          Elevated/High SBP Normal SBP    P(Elevated/High SBP) 90% conf.
+Obese                  1773       1356               0.5666347 0.5520097
+Not obese              2034       1970               0.5079920 0.4949940
+           interval
+Obese     0.5811445
+Not obese 0.5209792
+
+$measures
+                                       90% conf.   interval
+             Relative Risk: 1.1154402 1.07570455 1.15664365
+         Sample Odds Ratio: 1.2663808 1.17030695 1.37034166
+Conditional MLE Odds Ratio: 1.2663283 1.16896181 1.37195141
+    Probability difference: 0.0586427 0.03908617 0.07812049
+
+$p.value
+[1] 8.498649e-07 8.360492e-07</code></pre>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+
+
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden html-fill-item html-fill-container">
 
 </div>
 </div>
@@ -637,11 +808,11 @@ Tukey Comparisons
 <td>Adults aged 20–79 years</td>
 </tr>
 <tr class="even">
-<td><strong>Total sample</strong></td>
+<td><strong>Total participants</strong></td>
 <td>7,968</td>
 </tr>
 <tr class="odd">
-<td><strong>Complete SBP</strong></td>
+<td><strong>Complete data</strong></td>
 <td>7,187</td>
 </tr>
 </tbody>

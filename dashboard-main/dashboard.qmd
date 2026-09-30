@@ -16,6 +16,7 @@ editor_options:
 
 library(nhanesA)
 library(tidyverse)
+library(Epi)
 ```
 
 ```{r}
@@ -31,21 +32,19 @@ library(tidyverse)
 # saveRDS(bpxo_raw, "data/P_BPXO.Rds")
 # saveRDS(demo_raw, "data/P_DEMO.Rds")
 
-bmx_raw <- readRDS("dashboard-main/data/P_BMX.Rds")
-bpxo_raw <- readRDS("dashboard-main/data/P_BPXO.Rds")
-demo_raw <- readRDS("dashboard-main/data/P_DEMO.Rds")
+bmx_raw <- readRDS("data/P_BMX.Rds")
+bpxo_raw <- readRDS("data/P_BPXO.Rds")
+demo_raw <- readRDS("data/P_DEMO.Rds")
 
 ```
 
 
-
+<!--
+____________________________________________________________________________________________
+DATA DEVELOPMENT AND CLEANING
+____________________________________________________________________________________________-->
 
 ```{r}
-#___________________________________________________________________________________________
-# DATA DEVELOPMENT AND CLEANING
-#___________________________________________________________________________________________
-
-
 #| label: inspect-data
 #| message: false
 #| include: false
@@ -193,12 +192,10 @@ analytic_data |>
 
 
 
-
-```{r}
-#___________________________________________________________________________________________
-# OVERVIEW DISPLAY
-#___________________________________________________________________________________________
-```
+<!--
+____________________________________________________________________________________________
+DISPLAY
+____________________________________________________________________________________________-->
 
 #  {.sidebar}
 
@@ -305,17 +302,16 @@ analytic_data |>
   theme_minimal(base_size= 18)
 ```
 
-
+<!--
+____________________________________________________________________________________________
+Analysis B
+____________________________________________________________________________________________
+-->
 
 
 # Sex
 
 ```{r}
-#___________________________________________________________________________________________
-# Analysis B
-#___________________________________________________________________________________________
-
-
 #| label: analysis-b
 #| results: hide
 #| message: false
@@ -431,16 +427,15 @@ analysis_B_summary |>
 ```
 
 
-
+<!--
+____________________________________________________________________________________________
+Analysis C
+____________________________________________________________________________________________
+-->
 
 # Education {orientation="columns"}
 
 ```{r}
-#___________________________________________________________________________________________
-# Analysis C
-#___________________________________________________________________________________________
-
-
 #| label: analysis-c
 #| include: false
 
@@ -686,16 +681,15 @@ analysis_C_tukey_table |>
 
 
 
+<!--
+____________________________________________________________________________________________
+Analysis D
+____________________________________________________________________________________________
+-->
 
-# Obesity {orientation="columns"}
+# Obesity
 
 ```{r}
-#___________________________________________________________________________________________
-# Analysis D
-#___________________________________________________________________________________________
-
-
-
 #| label: analysis-d
 #| include: false
 
@@ -707,13 +701,28 @@ analysis_D <-
   )
 
 # 2 x 2 table
+# Rows: exposure
+# Columns: outcome
 analysis_D_table <-
   table(
-    analysis_D$obesity,
-    analysis_D$high_sbp
+    factor(
+      analysis_D$obesity,
+      levels = c("Obese", "Not obese")
+    ),
+    factor(
+      analysis_D$high_sbp,
+      levels = c("Elevated/High SBP", "Normal SBP")
+    )
   )
 
-# Counts and within-obesity proportions
+# Run 2 x 2 analysis
+analysis_D_results <-
+  Epi::twoby2(
+    analysis_D_table,
+    conf.level = 0.90
+  )
+
+# Counts and within-obesity proportions for plotting
 analysis_D_summary <-
   analysis_D |>
   count(obesity, high_sbp) |>
@@ -723,107 +732,25 @@ analysis_D_summary <-
   ) |>
   ungroup()
 
-# Extract cell counts
-not_obese_normal <-
-  analysis_D_table["Not obese", "Normal SBP"]
+# Prevalence of elevated/high SBP
+prevalence_obese <-
+  analysis_D |>
+  filter(obesity == "Obese") |>
+  summarise(
+    prevalence = mean(high_sbp == "Elevated/High SBP")
+  ) |>
+  pull(prevalence)
 
-not_obese_high <-
-  analysis_D_table["Not obese", "Elevated/High SBP"]
-
-obese_normal <-
-  analysis_D_table["Obese", "Normal SBP"]
-
-obese_high <-
-  analysis_D_table["Obese", "Elevated/High SBP"]
-
-# Prevalence of high SBP
-risk_not_obese <-
-  not_obese_high /
-  (not_obese_high + not_obese_normal)
-
-risk_obese <-
-  obese_high /
-  (obese_high + obese_normal)
-
-# Relative risk / prevalence ratio: Obese vs Not obese
-risk_ratio <-
-  risk_obese / risk_not_obese
-
-# Odds ratio: Obese vs Not obese
-odds_obese <-
-  obese_high / obese_normal
-
-odds_not_obese <-
-  not_obese_high / not_obese_normal
-
-odds_ratio <-
-  odds_obese / odds_not_obese
-
-# Risk difference: Obese minus Not obese
-risk_difference <-
-  risk_obese - risk_not_obese
-
-# 90% CI for relative risk
-se_log_rr <-
-  sqrt(
-    (1 / obese_high) -
-      (1 / (obese_high + obese_normal)) +
-      (1 / not_obese_high) -
-      (1 / (not_obese_high + not_obese_normal))
-  )
-
-rr_lower <-
-  exp(
-    log(risk_ratio) -
-      qnorm(0.95) * se_log_rr
-  )
-
-rr_upper <-
-  exp(
-    log(risk_ratio) +
-      qnorm(0.95) * se_log_rr
-  )
-
-# 90% CI for odds ratio
-se_log_or <-
-  sqrt(
-    1 / obese_high +
-      1 / obese_normal +
-      1 / not_obese_high +
-      1 / not_obese_normal
-  )
-
-or_lower <-
-  exp(
-    log(odds_ratio) -
-      qnorm(0.95) * se_log_or
-  )
-
-or_upper <-
-  exp(
-    log(odds_ratio) +
-      qnorm(0.95) * se_log_or
-  )
-
-# 90% CI for risk difference
-se_rd <-
-  sqrt(
-    risk_obese * (1 - risk_obese) /
-      (obese_high + obese_normal) +
-      risk_not_obese * (1 - risk_not_obese) /
-      (not_obese_high + not_obese_normal)
-  )
-
-rd_lower <-
-  risk_difference -
-    qnorm(0.95) * se_rd
-
-rd_upper <-
-  risk_difference +
-    qnorm(0.95) * se_rd
+prevalence_not_obese <-
+  analysis_D |>
+  filter(obesity == "Not obese") |>
+  summarise(
+    prevalence = mean(high_sbp == "Elevated/High SBP")
+  ) |>
+  pull(prevalence)
 ```
 
-## Column {width="25%"}
+## Row {height="25%"}
 
 ```{r}
 #| component: valuebox
@@ -832,7 +759,7 @@ rd_upper <-
 list(
   color = "primary",
   value = paste0(
-    round(risk_obese * 100, 1),
+    round(prevalence_obese * 100, 1),
     "%"
   )
 )
@@ -845,7 +772,7 @@ list(
 list(
   color = "primary",
   value = paste0(
-    round(risk_not_obese * 100, 1),
+    round(prevalence_not_obese * 100, 1),
     "%"
   )
 )
@@ -853,25 +780,27 @@ list(
 
 ```{r}
 #| component: valuebox
-#| title: "Relative Risk"
+#| title: "Participants"
 
 list(
   color = "primary",
-  value = round(risk_ratio, 2)
+  value = nrow(analysis_D)
 )
 ```
 
 ```{r}
 #| component: valuebox
-#| title: "Odds Ratio"
+#| title: "SBP Cutoff"
 
 list(
   color = "primary",
-  value = round(odds_ratio, 2)
+  value = "≥120 mmHg"
 )
 ```
 
-## Column {width="40%"}
+## Row
+
+### Column {width=50%}
 
 ```{r}
 #| title: "Elevated/High SBP by Obesity Status"
@@ -884,9 +813,7 @@ analysis_D_summary |>
       fill = high_sbp
     )
   ) +
-  geom_col(
-    position = "stack"
-  ) +
+  geom_col() +
   scale_y_continuous(
     labels = scales::percent
   ) +
@@ -895,8 +822,10 @@ analysis_D_summary |>
     y = "Proportion",
     fill = "SBP status"
   ) +
-  theme_minimal(base_size = 11)
+  theme_minimal(base_size = 18)
 ```
+
+### Column {width="50%"}
 
 ```{r}
 #| title: "2 × 2 Table"
@@ -916,47 +845,33 @@ analysis_D |>
   )
 ```
 
-## Column {width="35%"}
-
-### Effect Estimates
 
 ```{r}
-analysis_D_effects <-
-  tibble(
-    Measure = c(
-      "Relative Risk",
-      "Odds Ratio",
-      "Risk Difference"
-    ),
-    Estimate = c(
-      risk_ratio,
-      odds_ratio,
-      risk_difference
-    ),
-    Lower_90 = c(
-      rr_lower,
-      or_lower,
-      rd_lower
-    ),
-    Upper_90 = c(
-      rr_upper,
-      or_upper,
-      rd_upper
-    )
-  ) |>
-  mutate(
-    Estimate = round(Estimate, 3),
-    Lower_90 = round(Lower_90, 3),
-    Upper_90 = round(Upper_90, 3)
-  )
-
-analysis_D_effects |>
-  knitr::kable(
-    col.names = c(
-      "Measure",
-      "Estimate",
-      "90% CI Lower",
-      "90% CI Upper"
-    )
-  )
+#| title: "Epi 2 × 2 Results"
+Epi::twoby2(
+  analysis_D_table,
+  conf.level = 0.90,
+  print = TRUE,
+  dec = 3
+)
 ```
+
+
+
+
+<!--
+____________________________________________________________________________________________
+Analysis E
+____________________________________________________________________________________________
+-->
+
+```{r}
+#| label: analysis-e
+#| include: false
+
+analysis_E <- 
+  analytic_data |>
+  filter 
+```
+
+
