@@ -210,8 +210,8 @@ This dashboard summarizes systolic blood pressure data among adults aged 21–79
 | **Source** | NHANES |
 | **Cycle** | 2017–March 2020 |
 | **Population** | Adults aged 21–79 years |
-| **Total participants** | 7,968 |
-| **Complete data** | 7,187 |
+| **Total participants** | 7,853 |
+| **Complete data** | 7,025 |
 
 ------------------------------------------------------------------------
 ::: {.callout-note collapse="true"}
