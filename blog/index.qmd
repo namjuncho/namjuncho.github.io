@@ -13,22 +13,53 @@ I am still in the process of learning R and Github, so I played around with the 
 # Central Hypothesis
 **Research question:** How is systolic blood pressure (SBP) associated with sex, education level, and obesity status among U.S. adults?
 
-**Hypothesis:** SBP will vary by sex, education level, and obesity status, with the largest differences expected between obesity groups.
+**Hypothesis:** Systolic blood pressure will differ across sex, education, and obesity groups. In particular, I expect participants with obesity to have a higher prevalence of elevated or high SBP than participants without obesity.
 
-I centered my first project around the hypothesis that higher BMI is associated with higher SBP among U.S. adults between the ages of 21 and 79 years old. I kept it very simple, since the goal of this project is to get comfortable with data presentation on a website using R.
+I centered my first project around the hypothesis that obesity status is associated with elevated SBP. I kept it very simple, since the goal of this project is to get comfortable with data presentation on a website using R.
 
 ----
 
 # The Data
 
-Data from the NHANES 2017–March 2020 pre-pandemic Demographics, Body Measures, and Blood Pressure Examination files were merged using the unique participant identifier, SEQN. The analytic sample was restricted to participants aged 20–79 years who completed both the interview and MEC examination. Average SBP was calculated from up to three available systolic blood pressure measurements, retaining the mean when at least one measurement was present. Education was collapsed into four categories, sex was coded as female or male, and obesity status was defined using BMI ≥ 30.0 kg/m². Missing values were retained as NA, and participants with complete data on all variables used in the main analyses were identified for quality checks.
+Data from the NHANES 2017–March 2020 pre-pandemic Demographics, Body Measures, and Blood Pressure Examination files were merged using the unique participant identifier, SEQN. The analytic sample was restricted to participants aged 21–79 years who completed both the interview and MEC examination. Average SBP was calculated from up to three available systolic blood pressure measurements, retaining the mean when at least one measurement was present. Education was collapsed into four categories, sex was coded as female or male, and obesity status was defined using BMI ≥ 30.0 kg/m². Missing values were retained as NA, and participants with complete data on all variables used in the main analyses were identified for quality checks.
 
 ----
 
 # Analysis
 
 ## Sex vs. SBP
+I first wanted to see the difference in SBP based on sex. I found that the mean SBP for females was 121.5 mmHg and for males, it was 126.8 mmHg. The estimated difference in population means (female minus male) was −5.3 mmHg. Then, I used Welch’s two-sample t procedure to obtain the 90% confidence interval for this difference, coming out to −6.03 to −4.58 mmHg. Because the interval does not span across 0, the results provide evidence of a difference in mean systolic blood pressure between females and males, with females having a lower mean systolic blood pressure on average. The Welch's two-sample t-test was used because I was comparing a quantitative outcome between two independent groups, and the test does not require equal group variances.
 
-I wanted to tackle the broadest category first, so I chose sex. I found that the mean SBP for females was 121.26 mmHg and for males, it was 126.70 mmHg. The estimated difference in population means (female minus male) was −5.44 mmHg. Then, I used Welch’s two-sample t procedure to obtain the 90% confidence interval for this difference, coming out to −6.16 to −4.72 mmHg. Because interval does not span across 0, the results provide evidence of a difference in mean systolic blood pressure between females and males, with females having a lower mean systolic blood pressure on average.
+## Education vs. SBP
+Education was divided into four groups: less than high school, high school graduate, some college, and college graduate. Education is an interesting variable to analyze in relation to SBP, but its interpretation requires some nuance because educational attainment may reflect many social, economic, and environmental factors. Therefore, I treated education strictly as a variable associated with SBP rather than assuming that education itself causes differences in blood pressure.
 
+Because I was comparing a quantitative outcome across four independent groups, I used a one-way ANOVA to test whether there was evidence that mean SBP differed among the education groups. The ANOVA provided evidence of a difference in mean SBP across education levels. The group summaries also showed a general pattern in which participants with less than a high school education had the highest mean SBP of 128.2 mmHg, while college graduates had the lowest mean SBP of 119.3 mmHg.
 
+Since the ANOVA only tells us whether at least one population mean differs from the others, I followed it with Tukey's honestly significant difference (HSD) procedure. This allowed me to examine pairwise differences between education groups while accounting for the multiple comparisons being made. Overall, the results suggest an association between greater educational attainment and lower SBP in this NHANES sample. However, this analysis does not establish that increasing education would directly lower blood pressure, since factors such as age, income, access to health care, diet, and other characteristics could contribute to the observed relationship.
+
+## Obesity vs. SBP
+I next investigated whether elevated or high SBP was more common among participants with obesity. Obesity was defined as a BMI of at least 30 kg/m², while SBP was categorized as normal when the average SBP was below 120 mmHg and elevated/high when the average SBP was at least 120 mmHg.
+
+I organized the observations into a 2 × 2 contingency table, as both obesity status and SBP status were binary variables. The proportion of participants with elevated/high SBP was greater among participants with obesity than among participants without obesity. This result was consistent with my original hypothesis that elevated or high SBP would be more prevalent in the obesity group.
+
+I used the 2 × 2 analysis to examine the association using the risk ratio, odds ratio, and risk difference. Here, the risk ratio compares the prevalence of elevated/high SBP in participants with obesity with the prevalence in participants without obesity, where a ratio of >1 means that elevated/high SBP is more prevalent among obese participants. The odds ratio makes a similar comparison using the odds of elevated/high SBP, while the risk difference describes the absolute difference in prevalence between the two groups. Together, these measures indicate that obesity status was associated with elevated/high SBP in this sample, since the risk (=1.11) and odds (=1.25) ratios were >1 and risk difference (=0.056) was >0.
+
+These findings should be interpreted as an association rather than evidence that obesity directly caused the observed differences in SBP. NHANES is observational, and other characteristics that differ between participants with and without obesity could also contribute to the relationship.
+
+## Education vs. Categorized SBP
+For my final analysis, I examined education and SBP as two categorical variables. Participants were divided into four education groups and four SBP categories: normal, elevated, Stage 1 range, and Stage 2 range or higher. This produced a 4 × 4 contingency table.
+
+I used a Pearson chi-square test of independence to determine whether the distribution of SBP categories was associated with education level, which produced a chi-square statistic of 109.67 with 9 degrees of freedom and a p-value below 0.001. Therefore, the results provide strong evidence of an association between education level and SBP category.
+
+The proportions also showed a noticeable pattern across education groups. Among college graduates, 50.9% were in the healthy SBP category, compared with 39.9% of participants with less than a high school education. In contrast, 13.1% of college graduates had Stage 2-range or higher SBP, compared with 26.1% of participants with less than a high school education. Thus, higher educational attainment was associated with a greater proportion of participants in the healthier SBP categories and a smaller proportion in the highest SBP category.
+
+As is the case with the previous education analysis, this relationship should not be interpreted as causal. Educational attainment may be related to other characteristics that affect blood pressure, and these potential confounding variables were not controlled for in this project.
+
+## Conclusion
+Overall, the analyses supported my central hypothesis that systolic blood pressure differs across demographic and health-related groups. Mean SBP was lower among females than males and varied across education levels. Participants with obesity had a greater prevalence of elevated/high SBP than participants without obesity. Finally, the distribution of SBP categories was associated with educational attainment, with higher education groups generally having a larger proportion of participants in healthier SBP categories.
+
+Although obesity was more emphasized in my original motivation and hypothesis for this project, the results also demonstrate that blood pressure varies in relation to demographic and socioeconomic characteristics. This highlights why population health outcomes such as blood pressure should not necessarily be considered in isolation from the broader characteristics of the population being studied.
+
+There are several limitations to these analyses. First, the data are observational and cross-sectional, so the results show associations rather than causal relationships. Second, the analyses considered each variable separately and did not adjust for potential confounding factors such as age, income, medication use, diet, or other health conditions. Finally, NHANES uses a complex survey sampling design. Because survey weights were not incorporated for this course project, the numerical results presented here should be interpreted as descriptions of the analyzed NHANES sample rather than nationally representative values for all U.S. adults.
+
+Despite these limitations, this project allowed me to employ several statistical methods and techniques to an interesting research question, including a Welch two-sample t procedure, one-way ANOVA with Tukey pairwise comparisons, a 2 × 2 contingency table analysis, and a Pearson chi-square test of independence. Most of all, building the dashboard helped me build a rewarding skill combining statistical analysis, visualization, and interpretation to communicate data in a user-friendly and accessible format.

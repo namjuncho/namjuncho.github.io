@@ -5,6 +5,9 @@ format:
     page-title: "Systolic Blood Pressure (SBP) Dashboard"
 theme: [sandstone, theme/custom.scss]
 
+execute:
+  freeze: false
+
 editor_options: 
   chunk_output_type: console
 ---
@@ -96,7 +99,7 @@ analytic_raw <-
   ) |>
   filter(
     RIDSTATR == "Both interviewed and MEC examined",
-    RIDAGEYR >= 20,
+    RIDAGEYR >= 21,
     RIDAGEYR <= 79
   )
 ```
@@ -203,17 +206,24 @@ ________________________________________________________________________________
 
 #  {.sidebar}
 
-This dashboard summarizes systolic blood pressure data among adults aged 20–79 years in the 2017 – March 2020 pre-pandemic dataset from NHANES.
+This dashboard summarizes systolic blood pressure data among adults aged 21–79 years in the 2017 – March 2020 pre-pandemic dataset from NHANES.
 
 | | |
 |---|---|
 | **Source** | NHANES |
 | **Cycle** | 2017–March 2020 |
-| **Population** | Adults aged 20–79 years |
+| **Population** | Adults aged 21–79 years |
 | **Total participants** | 7,968 |
 | **Complete data** | 7,187 |
 
 ------------------------------------------------------------------------
+::: {.callout-note collapse="true"}
+## Disclaimer
+
+Because NHANES sampling weights were not incorporated for this course project, these results should not be interpreted as nationally representative estimates for all U.S. adults.
+:::
+
+
 # Overview
 
 ## Row {height="25%"}
@@ -247,7 +257,7 @@ mean_bmi_overall <- mean(analytic_data$BMXBMI, na.rm = TRUE)
 
 list(
   color = "primary",
-  value = round(mean_bmi_overall, 1)
+  value = paste(round(mean_bmi_overall, 1), "kg/m²")
 )
 ```
 
@@ -875,17 +885,17 @@ analysis_E <-
   mutate(
     sbp_category = factor(
       case_when(
-        avg_sbp < 120 ~ "Healthy",
+        avg_sbp < 120 ~ "Normal",
         avg_sbp >= 120 & avg_sbp < 130 ~ "Elevated",
-        avg_sbp >= 130 & avg_sbp < 140 ~ "Stage 1",
-        avg_sbp >= 140 ~ "Stage 2 or Crisis",
+        avg_sbp >= 130 & avg_sbp < 140 ~ "Stage 1 range",
+        avg_sbp >= 140 ~ "Stage 2 range or higher",
         TRUE ~ NA_character_
       ),
       levels = c(
-        "Healthy",
+        "Normal",
         "Elevated",
-        "Stage 1",
-        "Stage 2 or Crisis"
+        "Stage 1 range",
+        "Stage 2 range or higher"
       )
     )
   ) |>
@@ -949,11 +959,6 @@ list(
 ```{r}
 #| component: valuebox
 #| title: "Chi-square p-value"
-
-list(
-  color = "primary",
-  value = nrow(analysis_E)
-)
 
 chi_p_label <-
   ifelse(
@@ -1046,7 +1051,7 @@ analysis_E_summary |>
 ### Row {height="33%"}
 
 **Description:**
-The chi-square test of independence showed evidence of an association between the education level and SBP categories, as the X² value computed to 104.38, with  p<0.001. Individuals with a higher education level tended to have a greater proportion of healthy SBP values and a lower proportion of Stage 2 hypertension or crisis-level values. For example, 50.9% of college graduates were in the healthy SBP category compared with 40.3% of participants with less than a high school education, while Stage 2 hypertension or crisis occurred in 13.1% and 25.8% of those groups, respectively.
+The chi-square test of independence showed evidence of an association between the education level and SBP categories, as the X² value computed to 109.67, with  p<0.001. Individuals with a higher education level tended to have a greater proportion of normal SBP values and a lower proportion of Stage 2 range or higher values. For example, 50.9% of college graduates were in the normal SBP category compared with 40.3% of participants with less than a high school education, while Stage 2 hypertension or crisis occurred in 13.1% and 25.8% of those groups, respectively.
 
 
 ### Row {height="40%"}
@@ -1062,18 +1067,18 @@ analysis_E |>
   ) |>
   select(
     education,
-    Healthy,
+    Normal,
     Elevated,
-    'Stage 1',
-    'Stage 2 or Crisis'
+    'Stage 1 range',
+    'Stage 2 range or higher'
   ) |>
   knitr::kable(
     col.names = c(
       "Education",
-      "Healthy",
+      "Normal",
       "Elevated",
-      "Stage 1",
-      "Stage 2 or Crisis"
+      "Stage 1 range",
+      "Stage 2 range or higher"
     )
   )
 ```
