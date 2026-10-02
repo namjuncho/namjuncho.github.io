@@ -6,16 +6,18 @@ title: "Blog"
 
 Since this was my first time building a website, I followed the <a href="https://www.marvinschmitt.com/blog/website-tutorial-quarto/">tutorial</a> and template generously shared online by <a href="https://github.com/marvinschmitt/quarto-website-template/">Marvin Schmitt</a>. It gives a step-by-step with helpful explanations that anybody could follow. For the data presentation, I used the Labor and Delivery dashboard template provided by Dr. Zhang in PQHS 431 at CWRU.
 
-I am still in the process of learning R and Github, so I played around with the structures of both templates and Googled function parameters to get an idea of how things work in this environment. Doing so helped me understand the function of each component and become more confident with my coding. With each obstacle, I learned something new.
+I am still in the process of learning R and GitHub, so I played around with the structures of both templates and Googled function parameters to get an idea of how things work in this environment. Doing so helped me understand the function of each component and become more confident with my coding. With each obstacle, I learned something new.
 
 ----
 
 # Central Hypothesis
 **Research question:** How is systolic blood pressure (SBP) associated with sex, education level, and obesity status among U.S. adults?
 
-**Hypothesis:** Systolic blood pressure will differ across sex, education, and obesity groups. In particular, I expect participants with obesity to have a higher prevalence of elevated or high SBP than participants without obesity.
+**Hypothesis:** I hypothesized that mean SBP would differ by sex and education level, and that elevated/high SBP would be more prevalent among participants with obesity than among participants without obesity
 
 I centered my first project around the hypothesis that obesity status is associated with elevated SBP. I kept it very simple, since the goal of this project is to get comfortable with data presentation on a website using R.
+
+[View the Systolic Blood Pressure Dashboard](../dashboard-main/dashboard.qmd)
 
 ----
 
@@ -28,12 +30,12 @@ Data from the NHANES 2017–March 2020 pre-pandemic Demographics, Body Measures,
 # Analysis
 
 ## Sex vs. SBP
-I first wanted to see the difference in SBP based on sex. I found that the mean SBP for females was 121.5 mmHg and for males, it was 126.8 mmHg. The estimated difference in population means (female minus male) was −5.3 mmHg. Then, I used Welch’s two-sample t procedure to obtain the 90% confidence interval for this difference, coming out to −6.03 to −4.58 mmHg. Because the interval does not span across 0, the results provide evidence of a difference in mean systolic blood pressure between females and males, with females having a lower mean systolic blood pressure on average. The Welch's two-sample t-test was used because I was comparing a quantitative outcome between two independent groups, and the test does not require equal group variances.
+I first wanted to see the difference in SBP based on sex. I found that the mean SBP for females was 121.5 mmHg and for males, it was 126.8 mmHg. The estimated mean difference (female minus male) was −5.3 mmHg. Then, I used Welch’s two-sample t procedure to obtain the 90% confidence interval for this difference, coming out to −6.03 to −4.58 mmHg. Because the interval does not span across 0, the results provide evidence of a difference in mean systolic blood pressure between females and males, with females having a lower mean systolic blood pressure on average. The Welch's two-sample t-test was used because I was comparing a quantitative outcome between two independent groups, and the test does not require equal group variances.
 
 ## Education vs. SBP
 Education was divided into four groups: less than high school, high school graduate, some college, and college graduate. Education is an interesting variable to analyze in relation to SBP, but its interpretation requires some nuance because educational attainment may reflect many social, economic, and environmental factors. Therefore, I treated education strictly as a variable associated with SBP rather than assuming that education itself causes differences in blood pressure.
 
-Because I was comparing a quantitative outcome across four independent groups, I used a one-way ANOVA to test whether there was evidence that mean SBP differed among the education groups. The ANOVA provided evidence of a difference in mean SBP across education levels. The group summaries also showed a general pattern in which participants with less than a high school education had the highest mean SBP of 128.2 mmHg, while college graduates had the lowest mean SBP of 119.3 mmHg.
+Because I was comparing a quantitative outcome across four independent groups, I used a one-way ANOVA to test whether there was evidence that mean SBP differed among the education groups. The ANOVA provided evidence of a difference in mean SBP across education levels. The group summaries also showed a general pattern in which participants with less than a high school education had the highest mean SBP of 128.2 mmHg, while college graduates had the lowest mean SBP of 121.2 mmHg.
 
 Since the ANOVA only tells us whether at least one population mean differs from the others, I followed it with Tukey's honestly significant difference (HSD) procedure. This allowed me to examine pairwise differences between education groups while accounting for the multiple comparisons being made. Overall, the results suggest an association between greater educational attainment and lower SBP in this NHANES sample. However, this analysis does not establish that increasing education would directly lower blood pressure, since factors such as age, income, access to health care, diet, and other characteristics could contribute to the observed relationship.
 

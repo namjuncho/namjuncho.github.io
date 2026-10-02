@@ -5,6 +5,9 @@ format:
     page-title: "Systolic Blood Pressure (SBP) Dashboard"
 theme: [sandstone, theme/custom.scss]
 
+execute:
+  freeze: false
+
 editor_options: 
   chunk_output_type: console
 ---
@@ -162,6 +165,16 @@ analytic_data <-
       levels = c("Normal SBP", "Elevated/High SBP")
       )
   )
+study1_data <-
+  analytic_data |>
+  tidyr::drop_na(
+    avg_sbp,
+    BMXBMI,
+    sex,
+    education,
+    obesity,
+    high_sbp
+  )
 ```
 
 ```{r}
@@ -210,8 +223,9 @@ This dashboard summarizes systolic blood pressure data among adults aged 21–79
 | **Source** | NHANES |
 | **Cycle** | 2017–March 2020 |
 | **Population** | Adults aged 21–79 years |
-| **Total participants** | 7,853 |
-| **Complete data** | 7,025 |
+| **Total participants** | `r format(nrow(analytic_data), big.mark = ",")` |
+| **Complete data** | `r format(nrow(study1_data), big.mark = ",")` |
+| **Last rendered** | `r Sys.Date()` |
 
 ------------------------------------------------------------------------
 ::: {.callout-note collapse="true"}
@@ -329,7 +343,7 @@ ________________________________________________________________________________
 #| include: false
 
 analysis_B <-
-  analytic_data |>
+  study1_data |>
   filter(
     !is.na(avg_sbp),
     !is.na(sex)
@@ -437,6 +451,34 @@ analysis_B_summary |>
   )
 ```
 
+```{r}
+#| title: "Difference"
+sex_test_table <-
+  tibble(
+    `Mean difference (Female - Male)` = mean_difference,
+    `90% CI lower` = analysis_B_test$conf.int[1],
+    `90% CI upper` = analysis_B_test$conf.int[2],
+    `p-value` = analysis_B_test$p.value
+  ) |>
+  mutate(
+    across(
+      c(
+        `Mean difference (Female - Male)`,
+        `90% CI lower`,
+        `90% CI upper`
+      ),
+      ~ round(.x, 2)
+    ),
+    `p-value` = if_else(
+      `p-value` < 0.001,
+      "<0.001",
+      sprintf("%.3f", `p-value`)
+    )
+  )
+
+knitr::kable(sex_test_table)
+```
+
 
 <!--
 ____________________________________________________________________________________________
@@ -451,7 +493,7 @@ ________________________________________________________________________________
 #| include: false
 
 analysis_C <-
-  analytic_data |>
+  study1_data |>
   filter(
     !is.na(avg_sbp),
     !is.na(education)
@@ -705,7 +747,7 @@ ________________________________________________________________________________
 #| include: false
 
 analysis_D <-
-  analytic_data |>
+  study1_data |>
   filter(
     !is.na(obesity),
     !is.na(high_sbp)
@@ -877,8 +919,8 @@ ________________________________________________________________________________
 #| label: analysis-e
 #| include: false
 
-analysis_E <- 
-  analytic_data |>
+analysis_E <-
+  study1_data |>
   mutate(
     sbp_category = factor(
       case_when(
@@ -895,10 +937,6 @@ analysis_E <-
         "Stage 2 range or higher"
       )
     )
-  ) |>
-  filter(
-    !is.na(education),
-    !is.na(sbp_category)
   )
 
 # Cross-tabulation
@@ -960,7 +998,8 @@ list(
 chi_p_label <-
   ifelse(
     analysis_E_p < 0.001,
-    "< 0.001"
+    "< 0.001",
+    sprintf("%.3f", analysis_E_p)
   )
 
 list(
@@ -1048,7 +1087,7 @@ analysis_E_summary |>
 ### Row {height="33%"}
 
 **Description:**
-The chi-square test of independence showed evidence of an association between the education level and SBP categories, as the X² value computed to 109.67, with  p<0.001. Individuals with a higher education level tended to have a greater proportion of normal SBP values and a lower proportion of Stage 2 range or higher values. For example, 50.9% of college graduates were in the normal SBP category compared with 40.3% of participants with less than a high school education, while Stage 2 hypertension or crisis occurred in 13.1% and 25.8% of those groups, respectively.
+The chi-square test of independence showed evidence of an association between the education level and SBP categories, as the X² value computed to 109.67, with  p<0.001. Individuals with a higher education level tended to have a greater proportion of normal SBP values and a lower proportion of Stage 2 range or higher values. For example, 50.9% of college graduates were in the normal SBP category compared with 39.9% of participants with less than a high school education, while Stage 2 hypertension or crisis occurred in 13.1% and 26.1% of those groups, respectively.
 
 
 ### Row {height="40%"}
