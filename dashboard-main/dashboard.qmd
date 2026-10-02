@@ -5,9 +5,6 @@ format:
     page-title: "Systolic Blood Pressure (SBP) Dashboard"
 theme: [sandstone, theme/custom.scss]
 
-execute:
-  freeze: false
-
 editor_options: 
   chunk_output_type: console
 ---
