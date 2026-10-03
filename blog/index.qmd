@@ -11,6 +11,7 @@ I am still in the process of learning R and GitHub, so I played around with the 
 ----
 
 # Central Hypothesis
+
 **Research question:** How is systolic blood pressure (SBP) associated with sex, education level, and obesity status among U.S. adults?
 
 **Hypothesis:** I hypothesized that mean SBP would differ by sex and education level, and that elevated/high SBP would be more prevalent among participants with obesity than among participants without obesity
@@ -30,14 +31,14 @@ Data from the NHANES 2017–March 2020 pre-pandemic Demographics, Body Measures,
 # Analysis
 
 ## Sex vs. SBP
-I first wanted to see the difference in SBP based on sex. I found that the mean SBP for females was 121.5 mmHg and for males, it was 126.8 mmHg. The estimated mean difference (female minus male) was −5.3 mmHg. Then, I used Welch’s two-sample t procedure to obtain the 90% confidence interval for this difference, coming out to −6.03 to −4.58 mmHg. Because the interval does not span across 0, the results provide evidence of a difference in mean systolic blood pressure between females and males, with females having a lower mean systolic blood pressure on average. The Welch's two-sample t-test was used because I was comparing a quantitative outcome between two independent groups, and the test does not require equal group variances.
+I first wanted to see the difference in SBP based on sex. I found that the mean SBP for females was 121.4 mmHg and for males, it was 126.7 mmHg. The estimated mean difference (female minus male) was −5.3 mmHg. Then, I used Welch’s two-sample t procedure to obtain the 90% confidence interval for this difference, coming out to −6.03 to −4.58 mmHg. Because the interval does not span across 0, the results provide evidence of a difference in mean systolic blood pressure between females and males, with females having a lower mean systolic blood pressure on average. The Welch's two-sample t-test was used because I was comparing a quantitative outcome between two independent groups, and the test does not require equal group variances.
 
 ## Education vs. SBP
-Education was divided into four groups: less than high school, high school graduate, some college, and college graduate. Education is an interesting variable to analyze in relation to SBP, but its interpretation requires some nuance because educational attainment may reflect many social, economic, and environmental factors. Therefore, I treated education strictly as a variable associated with SBP rather than assuming that education itself causes differences in blood pressure.
+Education was divided into four groups: less than high school, high school graduate, some college, and college graduate. Education is an interesting variable to analyze in relation to SBP, but its interpretation requires some nuance because education level may reflect many social, economic, and environmental factors. Therefore, I treated education strictly as a variable associated with SBP rather than assuming that education itself causes differences in blood pressure.
 
-Because I was comparing a quantitative outcome across four independent groups, I used a one-way ANOVA to test whether there was evidence that mean SBP differed among the education groups. The ANOVA provided evidence of a difference in mean SBP across education levels. The group summaries also showed a general pattern in which participants with less than a high school education had the highest mean SBP of 128.2 mmHg, while college graduates had the lowest mean SBP of 121.2 mmHg.
+Because I was comparing a quantitative outcome across four independent groups, I used a one-way ANOVA to test whether there was evidence that mean SBP differed among the education groups. The ANOVA provided evidence of a difference in mean SBP across education levels. The group summaries also showed a general pattern in which participants with less than a high school education had the highest mean SBP of 127.9 mmHg, while college graduates had the lowest mean SBP of 121.2 mmHg.
 
-Since the ANOVA only tells us whether at least one population mean differs from the others, I followed it with Tukey's honestly significant difference (HSD) procedure. This allowed me to examine pairwise differences between education groups while accounting for the multiple comparisons being made. Overall, the results suggest an association between greater educational attainment and lower SBP in this NHANES sample. However, this analysis does not establish that increasing education would directly lower blood pressure, since factors such as age, income, access to health care, diet, and other characteristics could contribute to the observed relationship.
+Since the ANOVA only tells us whether at least one population mean differs from the others, I followed it with Tukey's honestly significant difference (HSD) procedure. This allowed me to examine pairwise differences between education groups while accounting for the multiple comparisons being made. Overall, the results suggest an association between greater education level and lower SBP in this NHANES sample. However, this analysis does not establish that increasing education would directly lower blood pressure, since factors such as age, income, access to health care, diet, and other characteristics could contribute to the observed relationship.
 
 ## Obesity vs. SBP
 I next investigated whether elevated or high SBP was more common among participants with obesity. Obesity was defined as a BMI of at least 30 kg/m², while SBP was categorized as normal when the average SBP was below 120 mmHg and elevated/high when the average SBP was at least 120 mmHg.
@@ -49,16 +50,21 @@ I used the 2 × 2 analysis to examine the association using the risk ratio, odds
 These findings should be interpreted as an association rather than evidence that obesity directly caused the observed differences in SBP. NHANES is observational, and other characteristics that differ between participants with and without obesity could also contribute to the relationship.
 
 ## Education vs. Categorized SBP
-For my final analysis, I examined education and SBP as two categorical variables. Participants were divided into four education groups and four SBP categories: normal, elevated, Stage 1 range, and Stage 2 range or higher. This produced a 4 × 4 contingency table.
+For my final analysis, I examined education and SBP as two categorical variables. This time, the average SBP was divided into four categories:
 
-I used a Pearson chi-square test of independence to determine whether the distribution of SBP categories was associated with education level, which produced a chi-square statistic of 109.67 with 9 degrees of freedom and a p-value below 0.001. Therefore, the results provide strong evidence of an association between education level and SBP category.
+- Normal: <120 mmHg
+- Elevated: 120 to <130 mmHg
+- Stage 1 range: 130 to <140 mmHg
+- Stage 2 range or higher: ≥140 mmHg
 
-The proportions also showed a noticeable pattern across education groups. Among college graduates, 50.9% were in the normal SBP category, compared with 39.9% of participants with less than a high school education. In contrast, 13.1% of college graduates had Stage 2-range or higher SBP, compared with 26.1% of participants with less than a high school education. Thus, higher educational attainment was associated with a greater proportion of participants in the healthier SBP categories and a smaller proportion in the highest SBP category.
+I used a Pearson chi-square test of independence to determine whether the distribution of SBP categories was associated with education level, which produced a chi-square statistic of 102.74 with 9 degrees of freedom and a p-value below 0.001. Therefore, the results provide strong evidence of an association between education level and SBP category.
 
-As is the case with the previous education analysis, this relationship should not be interpreted as causal. Educational attainment may be related to other characteristics that affect blood pressure, and these potential confounding variables were not controlled for in this project.
+The proportions also showed a noticeable pattern across education groups. Among college graduates, 51.1% were in the normal SBP category, compared with 40.2% of participants with less than a high school education. In contrast, 13.1% of college graduates had Stage 2-range or higher SBP, compared with 25.6% of participants with less than a high school education. Thus, higher education level was associated with a greater proportion of participants in the healthier SBP categories and a smaller proportion in the highest SBP category.
+
+As is the case with the previous education analysis, this relationship should not be interpreted as causal. Education level may be related to other characteristics that affect blood pressure, and these potential confounding variables were not controlled for in this project.
 
 ## Conclusion
-Overall, the analyses supported my central hypothesis that systolic blood pressure differs across demographic and health-related groups. Mean SBP was lower among females than males and varied across education levels. Participants with obesity had a greater prevalence of elevated/high SBP than participants without obesity. Finally, the distribution of SBP categories was associated with educational attainment, with higher education groups generally having a larger proportion of participants in healthier SBP categories.
+Overall, the analyses supported my central hypothesis that systolic blood pressure differs across demographic and health-related groups. Mean SBP was lower among females than males and varied across education levels. Participants with obesity had a greater prevalence of elevated/high SBP than participants without obesity. Finally, the distribution of SBP categories was associated with education level, with higher education groups generally having a larger proportion of participants in healthier SBP categories.
 
 Although obesity was more emphasized in my original motivation and hypothesis for this project, the results also demonstrate that blood pressure varies in relation to demographic and socioeconomic characteristics. This highlights why population health outcomes such as blood pressure should not necessarily be considered in isolation from the broader characteristics of the population being studied.
 

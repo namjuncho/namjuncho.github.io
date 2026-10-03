@@ -48,6 +48,8 @@ demo_raw <- readRDS("data/P_DEMO.Rds")
 
 <!--
 ____________________________________________________________________________________________
+STUDY 1
+
 DATA DEVELOPMENT AND CLEANING
 ____________________________________________________________________________________________-->
 
@@ -163,17 +165,23 @@ analytic_data <-
         TRUE ~ NA_character_
         ),
       levels = c("Normal SBP", "Elevated/High SBP")
+      ),
+
+    sbp_category = factor(
+      case_when(
+        avg_sbp < 120 ~ "Normal",
+        avg_sbp >= 120 & avg_sbp < 130 ~ "Elevated",
+        avg_sbp >= 130 & avg_sbp < 140 ~ "Stage 1 range",
+        avg_sbp >= 140 ~ "Stage 2 range or higher",
+        TRUE ~ NA_character_
+      ),
+      levels = c(
+        "Normal",
+        "Elevated",
+        "Stage 1 range",
+        "Stage 2 range or higher"
       )
-  )
-study1_data <-
-  analytic_data |>
-  tidyr::drop_na(
-    avg_sbp,
-    BMXBMI,
-    sex,
-    education,
-    obesity,
-    high_sbp
+    )
   )
 ```
 
@@ -182,6 +190,7 @@ study1_data <-
 #| message: false
 #| include: false
 
+study1_data <- analytic_data
 
 analytic_data |>
   summarise(
@@ -224,7 +233,7 @@ This dashboard summarizes systolic blood pressure data among adults aged 21–79
 | **Cycle** | 2017–March 2020 |
 | **Population** | Adults aged 21–79 years |
 | **Total participants** | `r format(nrow(analytic_data), big.mark = ",")` |
-| **Complete data** | `r format(nrow(study1_data), big.mark = ",")` |
+| **Cleaned sample** | `r format(nrow(study1_data), big.mark = ",")` |
 | **Last rendered** | `r Sys.Date()` |
 
 ------------------------------------------------------------------------
@@ -244,7 +253,7 @@ Because NHANES sampling weights were not incorporated for this course project, t
 #| title: "Participants"
 
 list(
-  value = nrow(analytic_data)
+  value = nrow(study1_data)
 )
 ```
 
@@ -252,7 +261,7 @@ list(
 #| component: valuebox
 #| title: "Mean SBP"
 
-mean_sbp_overall <- mean(analytic_data$avg_sbp, na.rm = TRUE)
+mean_sbp_overall <- mean(study1_data$avg_sbp, na.rm = TRUE)
 
 list(
   color = "primary",
@@ -264,7 +273,7 @@ list(
 #| component: valuebox
 #| title: "Mean BMI"
 
-mean_bmi_overall <- mean(analytic_data$BMXBMI, na.rm = TRUE)
+mean_bmi_overall <- mean(study1_data$BMXBMI, na.rm = TRUE)
 
 list(
   color = "primary",
@@ -279,9 +288,9 @@ list(
 list(
   color = "primary",
   value = paste(
-    min(analytic_data$RIDAGEYR, na.rm = TRUE),
+    min(study1_data$RIDAGEYR, na.rm = TRUE),
     "–",
-    max(analytic_data$RIDAGEYR, na.rm = TRUE),
+    max(study1_data$RIDAGEYR, na.rm = TRUE),
     "years"
   )
 )
@@ -294,7 +303,7 @@ list(
 ```{r}
 #| title: "Distribution of Systolic Blood Pressure"
 
-analytic_data |>
+study1_data |>
   filter(!is.na(avg_sbp)) |>
   ggplot(aes(x = avg_sbp)) +
   geom_histogram(
@@ -313,7 +322,7 @@ analytic_data |>
 ```{r}
 #| title: "Distribution of BMI"
 
-analytic_data |>
+study1_data |>
   filter(!is.na(BMXBMI)) |>
   ggplot(aes(x = BMXBMI)) +
   geom_histogram(
@@ -921,22 +930,9 @@ ________________________________________________________________________________
 
 analysis_E <-
   study1_data |>
-  mutate(
-    sbp_category = factor(
-      case_when(
-        avg_sbp < 120 ~ "Normal",
-        avg_sbp >= 120 & avg_sbp < 130 ~ "Elevated",
-        avg_sbp >= 130 & avg_sbp < 140 ~ "Stage 1 range",
-        avg_sbp >= 140 ~ "Stage 2 range or higher",
-        TRUE ~ NA_character_
-      ),
-      levels = c(
-        "Normal",
-        "Elevated",
-        "Stage 1 range",
-        "Stage 2 range or higher"
-      )
-    )
+  filter(
+    !is.na(education),
+    !is.na(sbp_category)
   )
 
 # Cross-tabulation
@@ -956,7 +952,7 @@ analysis_E_summary <-
   count(education, sbp_category) |>
   group_by(education) |>
   mutate(
-    proportion = n/sum(n)
+    proportion = n / sum(n)
   ) |>
   ungroup()
 
@@ -1087,7 +1083,7 @@ analysis_E_summary |>
 ### Row {height="33%"}
 
 **Description:**
-The chi-square test of independence showed evidence of an association between the education level and SBP categories, as the X² value computed to 109.67, with  p<0.001. Individuals with a higher education level tended to have a greater proportion of normal SBP values and a lower proportion of Stage 2 range or higher values. For example, 50.9% of college graduates were in the normal SBP category compared with 39.9% of participants with less than a high school education, while Stage 2 hypertension or crisis occurred in 13.1% and 26.1% of those groups, respectively.
+The chi-square test of independence showed evidence of an association between the education level and SBP categories, as the X² value computed to 102.74, with  p<0.001. Individuals with a higher education level tended to have a greater proportion of normal SBP values and a lower proportion of Stage 2 range or higher values. For example, 51.1% of college graduates were in the normal SBP category compared with 40.2% of participants with less than a high school education, while Stage 2 hypertension or crisis occurred in 13.1% and 25.6% of those groups, respectively.
 
 
 ### Row {height="40%"}
@@ -1140,3 +1136,4 @@ tibble(
   ) |>
   knitr::kable()
 ```
+
